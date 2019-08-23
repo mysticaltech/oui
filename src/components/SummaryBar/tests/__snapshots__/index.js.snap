@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/ExampleComponent should match the Jest Snapshot 1`] = `
+<ExampleComponent
+  aBoolean={true}
+  aFunction={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "updated",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": "updated",
+        },
+      ],
+    }
+  }
+  aNumber={5}
+  aString="aStringValue"
+  anArray={
+    Array [
+      1,
+      2,
+      3,
+    ]
+  }
+  anObject={
+    Object {
+      "initialValue": "INITIAL_VALUE",
+    }
+  }
+>
+  <div
+    className="oui-example-component"
+  >
+    <Input
+      isRequired={false}
+      note={null}
+      onInput={[Function]}
+      testSection="nameInput"
+      type="text"
+    >
+      <input
+        className="oui-text-input"
+        data-oui-component={true}
+        data-test-section="nameInput"
+        onInput={[Function]}
+        required={false}
+        type="text"
+      />
+    </Input>
+    <div
+      data-test-section="inputNameValue"
+    />
+    <Button
+      isDisabled={false}
+      isLink={false}
+      isLoading={false}
+      isSubmit={false}
+      loadingText=""
+      onBlur={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      style="outline"
+      testSection="pressMe"
+      width="default"
+    >
+      <button
+        aria-live="polite"
+        className="oui-button oui-button--outline oui-button--default"
+        data-oui-component={true}
+        data-test-section="pressMe"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        type="button"
+      >
+        Press Me!
+      </button>
+    </Button>
+    <div
+      data-test-section="aString"
+    >
+      aStringValue (with updates)
+    </div>
+    <div
+      data-test-section="aNumber"
+    >
+      6
+    </div>
+    <div
+      data-test-section="aBoolean"
+    >
+      false
+    </div>
+    <div
+      data-test-section="anArray"
+    >
+      [1,2,3,4,5,6]
+    </div>
+    <div
+      data-test-section="anObject"
+    >
+      {"initialValue":"INITIAL_VALUE","newKey":true}
+    </div>
+  </div>
+</ExampleComponent>
+`;

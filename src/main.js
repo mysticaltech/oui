@@ -51,6 +51,7 @@ export { default as Sidebar } from './components/Sidebar';
 export { default as Sortable } from './components/Sortable';
 export { default as Spinner } from './components/Spinner';
 export { default as Steps } from './components/Steps';
+export { default as SummaryBar } from './components/SummaryBar';
 export { default as Switch } from './components/Switch';
 export { default as Table } from './components/Table';
 export { default as TabNav } from './components/TabNav';
