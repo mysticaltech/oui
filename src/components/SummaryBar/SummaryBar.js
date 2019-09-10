@@ -6,7 +6,7 @@ import Container from '../Layout/Container';
 
 const Item = props => {
   return (
-    <div className="item">{ props.children }</div>
+    <Col paddedContent="around">{ props.children }</Col>
   );
 };
 
@@ -24,35 +24,7 @@ const SummaryBar = (props) => {
       <Row
         border="ends"
         paddedContent="ends">
-        <Col paddedContent="around">
-          <h2 className="push-half--bottom">
-            Some Title
-          </h2>
-          Col with border sides
-        </Col>
-        <Col
-          paddedContent="around"
-          border="left">
-          <h2 className="push-half--bottom">
-            A Longer Page Title
-          </h2>
-          Col with border sides and long-ish content that will definitely run to multiple lines.
-        </Col>
-        <Col
-          paddedContent="around"
-          border="left">
-          Col with border sides
-        </Col>
-        <Col
-          paddedContent="around"
-          border="left">
-          Col with border sides
-        </Col>
-        <Col
-          paddedContent="around"
-          border="left">
-          Col with border right
-        </Col>
+        { props.children }
       </Row>
     </Container>
   );
