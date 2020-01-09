@@ -382,4 +382,22 @@ describe('components/Dropdown', () => {
       expect(component.find('[data-test-section="dropdown-children"]').length).toBe(0);
     }
   );
+
+  it('should add a label when the buttonContent specifies one', () => {
+    const component = mount(
+      <Dropdown
+        arrowIcon="down"
+        buttonContent={{label: 'date', content: 'test'}}
+        placement="bottom-start"
+        style="outline">
+        <div data-test-section="dropdown-children">
+          <p data-test-section="dropdown-text">This is some initial text! Click me, nothing happens.</p>
+          <button data-test-section="dropdown-button-1">Doesn't Hide</button>,
+          <button data-test-section="dropdown-button-2">Hide Dropdown</button>,
+        </div>
+      </Dropdown>
+    );
+
+    expect(component.find('.oui-assistive-text').length).toBe(1);
+  });
 });

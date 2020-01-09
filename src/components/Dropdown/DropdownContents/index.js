@@ -33,6 +33,7 @@ export const DropdownContents = React.forwardRef((props, ref) => {
       {props.renderHeader()}
       <ul
         className={ listClasses }
+        role="listbox"
         style={ styleProps }
         { ...(props.testSection ? { 'data-test-section': props.testSection } : {}) }>
         {props.children}

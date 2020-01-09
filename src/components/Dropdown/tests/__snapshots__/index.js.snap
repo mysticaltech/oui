@@ -152,6 +152,7 @@ exports[`components/Dropdown should not render children or Popper when isDisable
                 setReferenceNode={[Function]}
               >
                 <button
+                  aria-haspopup="listbox"
                   className="oui-button"
                   disabled={false}
                   onBlur={[Function]}

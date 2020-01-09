@@ -16,12 +16,16 @@ import DropdownBlockLinkSecondaryText from './DropdownBlockLinkSecondaryText';
 class Dropdown extends React.Component {
   static displayName = 'Dropdown';
 
-  static shouldDisplayChildren = ({ isOpen, isDisabled }) => isOpen && !isDisabled;
+  static shouldDisplayChildren = ({ isOpen, isDisabled }) =>
+    isOpen && !isDisabled;
 
   componentDidUpdate = prevProps => {
     // For performance reasons, only listen to global clicks
     // while the children are displayed.
-    if (Dropdown.shouldDisplayChildren(prevProps) === Dropdown.shouldDisplayChildren(this.props)) {
+    if (
+      Dropdown.shouldDisplayChildren(prevProps) ===
+      Dropdown.shouldDisplayChildren(this.props)
+    ) {
       return;
     }
     if (Dropdown.shouldDisplayChildren(this.props)) {
@@ -50,7 +54,11 @@ class Dropdown extends React.Component {
 
   handleToggle = event => {
     const { isDisabled, overChildren, shouldHideChildrenOnClick } = this.props;
-    if (isDisabled || event.ignoreToggle || (!shouldHideChildrenOnClick && overChildren)) {
+    if (
+      isDisabled ||
+      event.ignoreToggle ||
+      (!shouldHideChildrenOnClick && overChildren)
+    ) {
       return;
     }
     this.props.setOverChildren(false);
@@ -100,20 +108,36 @@ class Dropdown extends React.Component {
 
     return (
       <Manager>
-        <div className={ groupClass } data-oui-component={ true } data-test-section={ testSection }>
+        <div
+          className={ groupClass }
+          data-oui-component={ true }
+          data-test-section={ testSection }>
           <Reference>
             {({ ref }) => {
               if (buttonContent) {
                 return (
                   <button
                     type="button"
+                    aria-haspopup="listbox"
                     className={ buttonClass }
                     disabled={ isDisabled }
                     onClick={ this.handleToggle }
                     onBlur={ this.handleOnBlur }
                     ref={ ref }>
                     <div className="flex flex-align--center">
-                      <div className="flex--1 truncate">{buttonContent}</div>
+                      <div className="flex--1 truncate">
+                        {buttonContent.label ? (
+                          <div className="line--tight text--left push--right">
+                            <div className="micro muted">
+                              {buttonContent.label}
+                              <span className="oui-assistive-text">:</span>
+                            </div>
+                            <div>{buttonContent.content}</div>
+                          </div>
+                        ) : (
+                          buttonContent
+                        )}
+                      </div>
                       {!!arrowIcon && arrowIcon !== 'none' && (
                         <div className="text--right">
                           <span className={ iconClass } />
@@ -193,7 +217,13 @@ Dropdown.propTypes = {
    * Either this prop OR activator should be used, not both
    * Not included in defaultProps because undefined is an expected value
    */
-  buttonContent: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  buttonContent: PropTypes.oneOfType(
+    [
+      PropTypes.string,
+      PropTypes.element,
+      PropTypes.shape({label: PropTypes.string, content: PropTypes.string}),
+    ]
+  ),
   /**
    * Dropdown contents, typically using the <Blocklist> component
    * Use render prop function for custom hide configuration

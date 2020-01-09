@@ -95,9 +95,9 @@ stories.add('Icon', () => {
         isDisabled={ boolean('isDisabled', false) }
         fullWidth={ boolean('fullWidth', false) }
         buttonContent={
-          <div>
+          <div className="flex flex-align--center">
             Hamburgers{' '}
-            <span className="push-half--left">
+            <span className="push-half--left flex">
               <Icon name="hamburger" />
             </span>
           </div>
@@ -107,6 +107,36 @@ stories.add('Icon', () => {
           {data.map((item, index) => {
             return (
               <Dropdown.ListItem key={ index }>
+                <Dropdown.BlockLink onClick={ action('click on complex item') }>
+                  <Dropdown.BlockLinkText text={ item.title } />
+                  <Dropdown.BlockLinkSecondaryText secondaryText={ item.description } />
+                </Dropdown.BlockLink>
+              </Dropdown.ListItem>
+            );
+          })}
+        </Dropdown.Contents>
+      </Dropdown>
+    </Container>
+  );
+});
+
+stories.add('With a Label', () => {
+  return (
+    <Container>
+      <Dropdown
+        isDisabled={ boolean('isDisabled', false) }
+        fullWidth={ boolean('fullWidth', false) }
+        buttonContent={{
+          label: 'Date',
+          content: 'Anytime',
+        }}
+        style="plain"
+        arrowIcon="down"
+        width={ number('width', 350) }>
+        <Dropdown.Contents>
+          {data.map((item, index) => {
+            return (
+              <Dropdown.ListItem key={ index } role="option">
                 <Dropdown.BlockLink onClick={ action('click on complex item') }>
                   <Dropdown.BlockLinkText text={ item.title } />
                   <Dropdown.BlockLinkSecondaryText secondaryText={ item.description } />
@@ -295,12 +325,10 @@ stories.add('Custom hide function', () => {
     <Container key="story">
       <Dropdown
         arrowIcon={ select('arrowIcon', { up: 'up', down: 'down', left: 'left', right: 'right', none: 'none' }, 'down') }
-        buttonContent={
-          <div className="line--tight text--left micro push--right">
-            <div className="muted">Date</div>
-            <div>Anytime</div>
-          </div>
-        }
+        buttonContent={{
+          label: 'Date',
+          content: 'Anytime',
+        }}
         placement={ select(
           'placement',
           {
@@ -320,7 +348,7 @@ stories.add('Custom hide function', () => {
           'bottom-start'
         ) }
         shouldHideChildrenOnClick={ boolean('shouldHideChildrenOnClick', false) }
-        style="outline"
+        style="plain"
         width={ number('width', 300) }>
         {({ handleHideChildren }) => (
           <div className="soft background--white">
