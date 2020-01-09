@@ -94,6 +94,8 @@ div[class*="col"].padded-content--remove,
   flex: 1;
   margin-right: spacer(-1.5);
   margin-left: spacer(-1.5);
+  min-width: 0;
+  min-height: 0;
 }
 
 .row--no-wrap {

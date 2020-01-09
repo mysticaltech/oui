@@ -33,7 +33,6 @@ const propTypes = {
    * Force overflow scrolling
    */
   overflow: PropTypes.oneOf([
-    'none',
     'overflow-y--scroll',
     'overflow-x--auto',
     'overflow-y--auto',
@@ -54,13 +53,21 @@ const propTypes = {
   removeGutters: PropTypes.bool,
   /** Whether this row should wrap at small screen sizes */
   shouldWrap: PropTypes.bool,
+  /**
+   * How to vertically align content
+   */
+  verticalAlignment: PropTypes.oneOf([
+    'start',
+    'center',
+    'end',
+  ]),
 };
 
 const defaultProps = {
   as: 'div',
   border: 'none',
   displayVertical: false,
-  overflow: 'none',
+  overflow: null,
   outlineDebug: false,
   paddedContent: 'none',
   removeGutters: false,
@@ -76,6 +83,7 @@ const Row = React.forwardRef(({
   paddedContent,
   removeGutters,
   shouldWrap,
+  verticalAlignment,
   ...props
 }, ref) => {
 
@@ -103,6 +111,10 @@ const Row = React.forwardRef(({
 
   if (paddedContent && paddedContent !== 'none') {
     classes.push(`padded-content--${paddedContent}`);
+  }
+
+  if (verticalAlignment) {
+    classes.push(`flex-align--${verticalAlignment}`);
   }
 
   return (

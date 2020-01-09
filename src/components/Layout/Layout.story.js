@@ -442,7 +442,7 @@ stories
             pushRowsTop={ true }
             paddedContent={ 'none' }
             fluid={ boolean('fluid', true) }>
-            <Row>
+            <Row verticalAlignment={ 'center' }>
               <Col small={ 'auto' }>URL</Col>
               <Col small={ 'fitContent' }>
                 <SelectDropdown items={ items } value={ 'does' } />

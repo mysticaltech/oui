@@ -79,6 +79,15 @@ const propTypes = {
    */
   large: column,
 
+  /**
+   * Force overflow scrolling
+   */
+  overflow: PropTypes.oneOf([
+    'overflow-y--scroll',
+    'overflow-x--auto',
+    'overflow-y--auto',
+  ]),
+
   /** Add default amount of padding. */
   paddedContent: PropTypes.oneOf([
     'around',
@@ -103,13 +112,18 @@ const defaultProps = {
 };
 
 const Col = React.forwardRef(
-  ({ border, paddedContent, isReadingColumn, as: Component, ...props }, ref) => {
+  ({ border, overflow, paddedContent, isReadingColumn, as: Component, ...props }, ref) => {
     const prefix = 'col';
     const spans = [];
     const classes = [];
 
     if (border) {
       classes.push(`border--${border}`);
+    }
+
+    if (overflow) {
+      classes.push(overflow);
+      classes.push('height--1-1');
     }
 
     if (paddedContent && paddedContent !== 'none') {
