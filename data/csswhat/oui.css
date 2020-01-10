@@ -3250,7 +3250,9 @@ div[class*="col"].padded-content--remove,
   flex-wrap: wrap;
   flex: 1;
   margin-right: -15px;
-  margin-left: -15px; }
+  margin-left: -15px;
+  min-width: 0;
+  min-height: 0; }
 
 .row--no-wrap {
   flex-wrap: nowrap; }
@@ -7028,6 +7030,18 @@ body:target *[data-oui-component],
 
 .visibility--hidden {
   visibility: hidden !important; }
+
+.oui-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important; }
 
 .unselectable {
   -moz-user-select: none;

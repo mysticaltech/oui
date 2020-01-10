@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+
+## 44.16.0 - 2020-01-10
 - [Feature] Update the **Row** Layout component to support a `verticalAlignment` prop and the **Col** component to support `overflow` options ([#1272](https://github.com/optimizely/oui/pull/1272))
 - [Feature] Add ability in **Dropdown** to supply a label and content object for `buttonContent` prop ([#1270](https://github.com/optimizely/oui/pull/1270))
 - [Feature] Add new helper class `oui-assistive-text` to use for visually hidden, screen-reader-only text ([#1270](https://github.com/optimizely/oui/pull/1270))
