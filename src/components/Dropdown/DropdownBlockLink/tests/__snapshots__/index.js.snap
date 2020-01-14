@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Dropdown/DropdownBlockLink should add a checked checkbox when isItemSelected is true 1`] = `
+<DropdownBlockLink
+  isItemSelected={true}
+  isLink={true}
+  isMultiSelect={true}
+>
+  <div
+    className="link oui-dropdown__block-link"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <Checkbox
+      defaultChecked={true}
+      isDisabled={false}
+      label="foo"
+      labelWeight="normal"
+    >
+      <Label>
+        <label
+          className={null}
+          data-oui-component={true}
+        >
+          <div
+            className="flex"
+          >
+            <input
+              className="flex--none"
+              data-oui-component={true}
+              defaultChecked={true}
+              disabled={false}
+              style={
+                Object {
+                  "marginTop": "0.35em",
+                }
+              }
+              type="checkbox"
+            />
+            <div
+              className="flush--bottom push--left weight--normal cursor--pointer"
+            >
+              foo
+            </div>
+          </div>
+        </label>
+      </Label>
+    </Checkbox>
+  </div>
+</DropdownBlockLink>
+`;

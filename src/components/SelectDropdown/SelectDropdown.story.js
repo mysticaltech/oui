@@ -25,6 +25,7 @@ const items = [
   {
     label: 'Dog',
     value: 'dog',
+    isSelected: true,
   },
   {
     label: 'Dog with a really long name',
@@ -34,6 +35,7 @@ const items = [
     label: 'Bear',
     description: 'Likes honey',
     value: 'bear',
+    isSelected: true,
   },
   {
     label: 'Squirrel',
@@ -162,6 +164,18 @@ stories.add('Default', (() => {
       <SelectDropdown
         items={ itemsWithActivatorLabel }
         value='Production'
+        onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
+})).add('Multi Select', (() => {
+  return (
+    <Container>
+      <SelectDropdown
+        isMultiSelect={ true }
+        items={ items }
+        initialPlaceholder="Select a value..."
+        minDropdownWidth={ '400px ' }
         onChange={ action('SelectDropdown value changed') }
       />
     </Container>

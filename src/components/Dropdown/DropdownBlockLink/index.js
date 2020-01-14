@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Checkbox from '../../Checkbox';
 
 export const DropdownBlockLink = (props) => {
   const el = useRef(null);
@@ -36,7 +37,15 @@ export const DropdownBlockLink = (props) => {
       { ...(props.testSection ? { 'data-test-section': props.testSection } : {}) }
       { ...(props.trackId ? { 'data-track-id': props.trackId } : {}) }
       onClick={ onClick }>
-      { props.children }
+      {
+        props.isMultiSelect ?
+          <Checkbox
+            defaultChecked={ props.isItemSelected }
+            label={ props.children }
+            isDisabled={ false }
+          /> :
+          props.children
+      }
     </div>
   );
 };
@@ -50,8 +59,12 @@ DropdownBlockLink.propTypes = {
   children: PropTypes.node.isRequired,
   /** Whether or not this element should be highlighted. */
   hasFauxFocus: PropTypes.bool,
-  /** should this be a link or nonclickable text */
+  /** Whether or not this item's checkbox is checked' */
+  isItemSelected: PropTypes.bool,
+  /** Whether or not this item should include a checkbox */
   isLink: PropTypes.bool.isRequired,
+  /** Should this be a link or nonclickable text */
+  isMultiSelect: PropTypes.bool,
   /** Minimum width of the list item, useful if
     * you need to have a block of description text */
   minWidth: PropTypes.oneOfType([

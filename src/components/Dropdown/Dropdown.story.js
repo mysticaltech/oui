@@ -307,6 +307,43 @@ stories.add('Warnings', () => {
   );
 });
 
+stories.add('Multi Select', () => {
+  return (
+    <Container>
+      <div>
+        <p>Add <code>isMultiSelect = true</code>
+          for each BlockLink that should include a checkbox, and
+          <code>isItemSelected = true</code> for each item that
+          should appear as checked/selected
+        </p>
+      </div>
+      <Dropdown
+        buttonContent={{
+          label: 'Type',
+          content: 'Any',
+        }}
+        style="plain"
+        arrowIcon="down"
+        shouldHideChildrenOnClick={ boolean('shouldHideChildrenOnClick', false) }>
+        <Dropdown.Contents>
+          {data.map((item, index) => {
+            return (
+              <Dropdown.ListItem key={ index } >
+                <Dropdown.BlockLink
+                  isMultiSelect={ true }
+                  isItemSelected={ item.title === 'Manual' }
+                  onClick={ action('click on complex item') }>
+                  <Dropdown.BlockLinkText text={ item.title } />
+                </Dropdown.BlockLink>
+              </Dropdown.ListItem>
+            );
+          })}
+        </Dropdown.Contents>
+      </Dropdown>
+    </Container>
+  );
+});
+
 stories.add('Custom hide function', () => {
   return [
     <p key="sourceLink" className="push--bottom">
@@ -372,6 +409,7 @@ stories.add('Custom hide function', () => {
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
   height: 100vh;
 `;

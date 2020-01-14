@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Feature] Add ability to **Dropdown** and **SelectDropdown** to support multi select of options with checkboxes using `isMultiSelect` and `isItemSelected` properties ([#1273](https://github.com/optimizely/oui/pull/1273))
 
 ## 44.16.0 - 2020-01-10
 - [Feature] Update the **Row** Layout component to support a `verticalAlignment` prop and the **Col** component to support `overflow` options ([#1272](https://github.com/optimizely/oui/pull/1272))

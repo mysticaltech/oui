@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
+
 import Dropdown from '../../Dropdown';
 import SelectDropdown from '../index';
 
@@ -17,6 +18,20 @@ describe('components/SelectDropdown', function() {
       label: 'label 2',
       value: 'value 2',
       description: 'description 2',
+    },
+  ];
+
+  const multiSelectItems = [
+    {
+      label: 'label 1',
+      value: 'value 1',
+      description: 'description 1',
+    },
+    {
+      label: 'label 2',
+      value: 'value 2',
+      description: 'description 2',
+      isSelected: true,
     },
   ];
 
@@ -160,5 +175,33 @@ describe('components/SelectDropdown', function() {
       />);
     const activator = component.find('Button');
     expect(activator.text()).toBe('Select a value...');
+  });
+
+  it('should display items with checkboxes if isMultiSelect is true', function() {
+    component = mount(
+      <SelectDropdown
+        isMultiSelect={ true }
+        items={ items }
+        initialPlaceholder="Select a value..."
+        onChange={ onChange }
+      />);
+    const activator = component.find('Button');
+    activator.simulate('click');
+
+    expect(component.find('input[type="checkbox"]').length).toBe(2);
+  });
+
+  it('should display items with checked checkboxes if item\'s isSelected is true', function() {
+    component = mount(
+      <SelectDropdown
+        isMultiSelect={ true }
+        items={ multiSelectItems }
+        initialPlaceholder="Select a value..."
+        onChange={ onChange }
+      />);
+    const activator = component.find('Button');
+    activator.simulate('click');
+    expect(component.find('Checkbox').length).toBe(2);
+    expect(component.find('Checkbox').last().prop('defaultChecked')).toBe(true);
   });
 });

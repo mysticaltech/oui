@@ -32,11 +32,17 @@ class SelectDropdown extends React.Component {
      */
     isDisabled: PropTypes.bool,
     /**
+     * Whether this dropdown supports Multi Select
+     * If true, automatically sets shouldHideChildrenOnClick to false
+     */
+    isMultiSelect: PropTypes.bool,
+    /**
      * Dropdown items that can be selected from the select dropdown.
      */
     items: PropTypes.arrayOf(PropTypes.shape({
       activatorLabel: PropTypes.node,
       description: PropTypes.string,
+      isSelected: PropTypes.bool,
       label: PropTypes.node.isRequired,
       value: PropTypes.oneOfType([
         PropTypes.string,
@@ -149,7 +155,7 @@ class SelectDropdown extends React.Component {
   };
 
   renderContents = () => {
-    const { items, onChange, value, minDropdownWidth, dropdownDirection } = this.props;
+    const { isMultiSelect, items, onChange, value, minDropdownWidth, dropdownDirection } = this.props;
 
     return (
       <Dropdown.Contents minWidth={ minDropdownWidth } direction={ dropdownDirection }>
@@ -159,6 +165,8 @@ class SelectDropdown extends React.Component {
               value={ entry.value }
               onClick={ onChange }
               isLink={ entry.value !== value }
+              isItemSelected={ entry.isSelected }
+              isMultiSelect={ isMultiSelect }
               testSection={ 'dropdown-block-link-' + entry.value }>
               { entry.label }
               { entry.description && (
@@ -174,14 +182,15 @@ class SelectDropdown extends React.Component {
   };
 
   render() {
-    const { isDisabled, zIndex, fullWidth } = this.props;
+    const { fullWidth, isDisabled, isMultiSelect, zIndex } = this.props;
 
     return (
       <Dropdown
         { ...(zIndex ? { zIndex } : {}) }
         isDisabled={ isDisabled }
         fullWidth={ fullWidth }
-        renderActivator={ this.renderActivator }>
+        renderActivator={ this.renderActivator }
+        shouldHideChildrenOnClick={ !isMultiSelect }>
         { this.renderContents() }
       </Dropdown>
     );

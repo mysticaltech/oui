@@ -1,6 +1,8 @@
 import React from 'react';
 import DropdownBlockLink from '../index';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { mountToJson } from 'enzyme-to-json';
+
 
 describe('components/Dropdown/DropdownBlockLink', () => {
   it('should render as a `div`', () => {
@@ -52,5 +54,15 @@ describe('components/Dropdown/DropdownBlockLink', () => {
     component.simulate('click');
 
     expect(obj.func).toHaveBeenCalled();
+  });
+
+  it('should add a checkbox when isMultiSelect is true', () => {
+    const component = shallow(<DropdownBlockLink isMultiSelect={ true }>foo</DropdownBlockLink>);
+    expect(component.find('Checkbox').length).toBe(1);
+  });
+
+  it('should add a checked checkbox when isItemSelected is true', () => {
+    const component = mount(<DropdownBlockLink isItemSelected={ true } isMultiSelect={ true }>foo</DropdownBlockLink>);
+    expect(mountToJson(component)).toMatchSnapshot();
   });
 });
