@@ -43,6 +43,7 @@ export { default as Poptip } from './components/Poptip';
 export { default as Radio } from './components/Radio';
 export { default as RangeSlider } from './components/RangeSlider';
 export { default as Row } from './components/Layout/Row';
+export { default as SearchPicker } from './components/SearchPicker';
 export { default as Select } from './components/Select';
 export { default as SelectDropdown } from './components/SelectDropdown';
 export { default as Sheet } from './components/Sheet';

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/SearchPicker default case should render component same as snapshot 1`] = `
+<withkeyboardTracker(undefined)
+  onItemSelected={[MockFunction]}
+  searchFunction={[Function]}
+  supportedTypes={
+    Array [
+      "feature",
+    ]
+  }
+>
+  <SearchPicker
+    currentFauxFocusIndex={0}
+    handleKeyDown={[Function]}
+    onItemSelected={[MockFunction]}
+    searchFunction={[Function]}
+    searchOptions={Object {}}
+    selectedEntityIds={Array []}
+    setItemCount={[Function]}
+    setOnItemSelect={[Function]}
+    supportedTypes={
+      Array [
+        "feature",
+      ]
+    }
+  >
+    <div>
+      <[object Object]
+        isFilter={true}
+        isRequired={false}
+        note={null}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Search for features"
+        testSection="filter-features-input"
+        type="search"
+        value=""
+      >
+        <input
+          className="oui-text-input oui-text-input--search"
+          data-oui-component={true}
+          data-test-section="filter-features-input"
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Search for features"
+          required={false}
+          type="search"
+          value=""
+        />
+      </[object Object]>
+      <p>
+        A list of entities
+      </p>
+    </div>
+  </SearchPicker>
+</withkeyboardTracker(undefined)>
+`;
