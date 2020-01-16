@@ -7,6 +7,9 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 
+## 44.18.0 - 2020-01-16
+- [Feature] Adding a `SearchPicker` component ([#1253](https://github.com/optimizely/oui/pull/1253)))
+
 ## 44.17.0 - 2020-01-14
 - [Feature] Add ability to **Dropdown** and **SelectDropdown** to support multi select of options with checkboxes using `isMultiSelect` and `isItemSelected` properties ([#1273](https://github.com/optimizely/oui/pull/1273))
 
