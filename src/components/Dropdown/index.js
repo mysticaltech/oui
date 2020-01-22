@@ -162,10 +162,8 @@ class Dropdown extends React.Component {
                 return React.cloneElement(this.props.activator, {
                   buttonRef: ref,
                   ref,
-                  disabled: isDisabled,
                   onBlur: this.handleOnBlur,
                   onClick: this.handleToggle,
-                  testSection: testSection,
                 });
               }
             }}

@@ -7,6 +7,7 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 - [Release] Remove deprecated CodeDiffLegacy component in favor of CodeDiff ([#1277](https://github.com/optimizely/oui/pull/1277))
+- [Patch] Undo parent prop inheritance on Activator in **Dropdown** ([#1278](https://github.com/optimizely/oui/pull/1278))
 
 ## 44.18.0 - 2020-01-16
 - [Feature] Adding a `SearchPicker` component ([#1253](https://github.com/optimizely/oui/pull/1253)))
