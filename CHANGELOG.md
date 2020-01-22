@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Release] Remove deprecated CodeDiffLegacy component in favor of CodeDiff ([#1277](https://github.com/optimizely/oui/pull/1277))
 
 ## 44.18.0 - 2020-01-16
 - [Feature] Adding a `SearchPicker` component ([#1253](https://github.com/optimizely/oui/pull/1253)))

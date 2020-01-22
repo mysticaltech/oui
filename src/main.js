@@ -9,8 +9,7 @@ export { default as ButtonRow } from './components/ButtonRow';
 export { default as Card } from './components/Card';
 export { default as Checkbox } from './components/Checkbox';
 export { default as Code } from './components/Code';
-// TODO(APPX-1337): Remove after new CodeDiff is determined to be stable
-export { default as CodeDiff, CodeDiffLegacy } from './components/CodeDiff';
+export { default as CodeDiff } from './components/CodeDiff';
 export { default as Col } from './components/Layout/Col';
 export { default as Container } from './components/Layout/Container';
 export { default as CopyButton } from './components/CopyButton';
