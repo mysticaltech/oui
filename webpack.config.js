@@ -35,7 +35,7 @@ const config = {
         loader: 'json',
       },
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         // This excludes all directories in /bower_components
         // and /node_modules, except for /node_modules/react-diff-viewer
         // which requires the spread operator babel plugin
@@ -61,12 +61,11 @@ const config = {
   },
   resolve: {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js'],
+    extensions: ['.ts', '.tsx', '.json', '.js'],
   },
   plugins: plugins,
   externals: {
-    react:
-      'React',
+    react: 'React',
     'react-dom': 'ReactDOM',
   },
 };
