@@ -70,15 +70,9 @@ class Dropdown extends React.Component {
 
   onPopperMouseLeave = () => this.props.setOverChildren(false);
 
-  onActivatorMouseOver = () => {
-    debugger
-    this.props.setOverActivator(true)
-  };
+  onActivatorMouseOver = () => this.props.setOverActivator(true);
 
-  onActivatorMouseLeave = () => {
-    debugger
-    this.props.setOverActivator(false)
-  };
+  onActivatorMouseLeave = () => this.props.setOverActivator(false);
 
   render() {
     const {
