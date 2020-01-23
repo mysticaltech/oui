@@ -13,6 +13,7 @@ import DropdownBlockLinkSecondaryText from './DropdownBlockLinkSecondaryText';
 
 @withToggle
 @withState('overChildren', 'setOverChildren', false)
+@withState('overActivator', 'setOverActivator', false)
 class Dropdown extends React.Component {
   static displayName = 'Dropdown';
 
@@ -47,7 +48,7 @@ class Dropdown extends React.Component {
   };
 
   handleOnBlur = () => {
-    if (!this.props.overChildren) {
+    if (!this.props.overChildren & !this.props.overActivator) {
       this.props.hide();
     }
   };
@@ -65,9 +66,19 @@ class Dropdown extends React.Component {
     this.props.toggle();
   };
 
-  onMouseOver = () => this.props.setOverChildren(true);
+  onPopperMouseOver = () => this.props.setOverChildren(true);
 
-  onMouseLeave = () => this.props.setOverChildren(false);
+  onPopperMouseLeave = () => this.props.setOverChildren(false);
+
+  onActivatorMouseOver = () => {
+    debugger
+    this.props.setOverActivator(true)
+  };
+
+  onActivatorMouseLeave = () => {
+    debugger
+    this.props.setOverActivator(false)
+  };
 
   render() {
     const {
@@ -155,6 +166,8 @@ class Dropdown extends React.Component {
                   disabled: isDisabled,
                   onBlur: this.handleOnBlur,
                   onClick: this.handleToggle,
+                  onMouseOver: this.onActivatorMouseOver,
+                  onMouseLeave: this.onActivatorMouseLeave,
                   testSection: testSection,
                 });
               } else if (this.props.activator) {
@@ -175,8 +188,8 @@ class Dropdown extends React.Component {
                   ref={ ref }
                   data-placement={ popperPlacement }
                   className="oui-dropdown-children"
-                  onMouseOver={ this.onMouseOver }
-                  onMouseLeave={ this.onMouseLeave }
+                  onMouseOver={ this.onPopperMouseOver }
+                  onMouseLeave={ this.onPopperMouseLeave }
                   onClick={ this.handleToggle }
                   style={{
                     zIndex: zIndex,
