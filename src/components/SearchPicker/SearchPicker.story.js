@@ -25,40 +25,32 @@ stories.addDecorator(withKnobs).addDecorator(story => (
   </div>
 ));
 
-stories
-  .add('Default', () => {
-    return (
-      <SearchPicker
-        onItemSelected={ action('keyboard selection item') }
-        searchFunction={ searchFunction }
-        supportedTypes={ ['feature'] }>
-        {({
-          availableEntities,
-          renderInput,
-          isLoading,
-          searchQuery,
-          currentFauxFocusIndex,
-          resultsText,
-        }) => (
-          <Dropdown width={ 600 } fullWidth={ true } renderActivator={ renderInput }>
-            <Dropdown.Contents minWidth={ 600 } isLoading={ isLoading }>
-              <Dropdown.ListItem ignoreToggle={ true }>
-                <span className="micro muted soft--sides">{resultsText.summary}</span>
+stories.add('Default', () => {
+  return (
+    <SearchPicker
+      onItemSelected={ action('keyboard selection item') }
+      searchFunction={ searchFunction }
+      supportedTypes={ ['feature'] }>
+      {({ availableEntities, renderInput, isLoading, searchQuery, currentFauxFocusIndex, resultsText }) => (
+        <Dropdown width={ 600 } fullWidth={ true } renderActivator={ renderInput } activatorCanHide={ false }>
+          <Dropdown.Contents minWidth={ 600 } isLoading={ isLoading }>
+            <Dropdown.ListItem ignoreToggle={ true }>
+              <span className="micro muted soft--sides">{resultsText.summary}</span>
+            </Dropdown.ListItem>
+            {availableEntities.map((item, index) => (
+              <Dropdown.ListItem key={ index }>
+                <Dropdown.BlockLink
+                  hasFauxFocus={ currentFauxFocusIndex === index }
+                  onClick={ action(`click dropdown block link ${item.name}`) }>
+                  <Dropdown.BlockLinkText text={ item.name } />
+                  <Dropdown.BlockLinkSecondaryText secondaryText={ item.description } />
+                </Dropdown.BlockLink>
               </Dropdown.ListItem>
-              {availableEntities.map((item, index) => (
-                <Dropdown.ListItem key={ index }>
-                  <Dropdown.BlockLink
-                    hasFauxFocus={ currentFauxFocusIndex === index }
-                    onClick={ action(`click dropdown block link ${item.name}`) }>
-                    <Dropdown.BlockLinkText text={ item.name } />
-                    <Dropdown.BlockLinkSecondaryText secondaryText={ item.description } />
-                  </Dropdown.BlockLink>
-                </Dropdown.ListItem>
-              ))}
-              {isLoading && <Spinner hasOverlay={ true } />}
-            </Dropdown.Contents>
-          </Dropdown>
-        )}
-      </SearchPicker>
-    );
-  });
+            ))}
+            {isLoading && <Spinner hasOverlay={ true } />}
+          </Dropdown.Contents>
+        </Dropdown>
+      )}
+    </SearchPicker>
+  );
+});
