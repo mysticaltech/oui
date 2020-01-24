@@ -81,8 +81,8 @@ stories
             <Dropdown.Contents minWidth={ 600 } isLoading={ isLoading }>
               <Dropdown.ListItem>
                 <Dropdown.BlockLink
-                  hasFauxFocus={currentFauxFocusIndex === 0}
-                  onClick={ action(`click create dropdown block link`) }>
+                  hasFauxFocus={ currentFauxFocusIndex === 0 }
+                  onClick={ action('click create dropdown block link') }>
                   <div className="flex flex-align--center">
                     Create new audience
                   </div>
