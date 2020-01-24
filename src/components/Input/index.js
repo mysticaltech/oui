@@ -31,9 +31,6 @@ const Input = React.forwardRef((props, ref) => {
     onFocus,
     onInput,
     onKeyDown,
-    onMouseDownCapture,
-    onMouseOver,
-    onMouseLeave,
     placeholder,
     step,
     testSection,
@@ -90,9 +87,6 @@ const Input = React.forwardRef((props, ref) => {
         { ...(typeof maxLength === 'undefined' ? {} : { maxLength }) }
         data-test-section={ testSection }
         autoFocus={ focus }
-        onMouseDownCapture={ onMouseDownCapture }
-        onMouseOver={onMouseOver}
-        onMouseLeave={onMouseLeave}
       />
     );
   };

@@ -13,11 +13,14 @@ import DropdownBlockLinkSecondaryText from './DropdownBlockLinkSecondaryText';
 
 @withToggle
 @withState('overChildren', 'setOverChildren', false)
+@withState('isFocused', 'setIsFocused', false)
 class Dropdown extends React.Component {
   static displayName = 'Dropdown';
 
   static shouldDisplayChildren = ({ isOpen, isDisabled }) =>
     isOpen && !isDisabled;
+
+  static targetIsInput = (target) => target.nodeName === 'INPUT';
 
   componentDidUpdate = prevProps => {
     // For performance reasons, only listen to global clicks
@@ -46,23 +49,32 @@ class Dropdown extends React.Component {
     setOverChildren(false);
   };
 
+  handleOnActivatorBlur = () => {
+    this.handleOnBlur();
+    this.props.setIsFocused(false);
+  };
+
   handleOnBlur = () => {
-    if (!this.props.overChildren) {
+    const { target } = event;
+    if (!this.props.overChildren && !Dropdown.targetIsInput(target)) {
       this.props.hide();
     }
   };
 
   handleToggle = event => {
-    const { isDisabled, overChildren, shouldHideChildrenOnClick } = this.props;
+    const { isDisabled, overChildren, shouldHideChildrenOnClick, isFocused } = this.props;
+    const targetIsInput = Dropdown.targetIsInput(event.target);
     if (
       isDisabled ||
       event.ignoreToggle ||
+      (isFocused && targetIsInput) ||
       (!shouldHideChildrenOnClick && overChildren)
     ) {
       return;
     }
     this.props.setOverChildren(false);
     this.props.toggle();
+    this.props.setIsFocused(true);
   };
 
   onMouseOver = () => this.props.setOverChildren(true);
@@ -122,7 +134,7 @@ class Dropdown extends React.Component {
                     className={ buttonClass }
                     disabled={ isDisabled }
                     onClick={ this.handleToggle }
-                    onBlur={ this.handleOnBlur }
+                    onBlur={ this.handleOnActivatorBlur }
                     ref={ ref }>
                     <div className="flex flex-align--center">
                       <div className="flex--1 truncate">
@@ -153,7 +165,7 @@ class Dropdown extends React.Component {
                   ref: ref,
                   buttonRef: ref,
                   disabled: isDisabled,
-                  onBlur: this.handleOnBlur,
+                  onBlur: this.handleOnActivatorBlur,
                   onClick: this.handleToggle,
                   testSection: testSection,
                 });
