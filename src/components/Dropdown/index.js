@@ -47,9 +47,7 @@ class Dropdown extends React.Component {
   };
 
   handleOnBlur = () => {
-    const { target } = event;
-    const targetIsInput = target.nodeName === 'INPUT';
-    if (!this.props.overChildren && !targetIsInput) {
+    if (!this.props.overChildren) {
       this.props.hide();
     }
   };
@@ -157,8 +155,6 @@ class Dropdown extends React.Component {
                   disabled: isDisabled,
                   onBlur: this.handleOnBlur,
                   onClick: this.handleToggle,
-                  onMouseOver: this.onActivatorMouseOver,
-                  onMouseLeave: this.onActivatorMouseLeave,
                   testSection: testSection,
                 });
               } else if (this.props.activator) {

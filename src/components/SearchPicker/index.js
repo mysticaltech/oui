@@ -138,7 +138,6 @@ class SearchPicker extends React.Component {
     isLoading: true,
     results: null,
     searchQuery: '',
-    isFocused: false,
   };
 
   handleItemSelected = index => {
@@ -279,21 +278,6 @@ class SearchPicker extends React.Component {
     const { searchQuery } = this.state;
     const { handleOnInput } = this;
     const placeholderNoun = supportedTypes.map(i => `${i}s`).join(',');
-    const onClick = (e) => {
-      if (this.state.isFocused){
-        return;
-      }
-      this.setState({
-        isFocused: true,
-      })
-      props.onClick(e)
-    }
-
-    const onBlur = (e) => {
-      this.setState({
-        isFocused: false,
-      })
-    }
     return (
       <Input
         isFilter={ true }
@@ -304,8 +288,6 @@ class SearchPicker extends React.Component {
         value={ searchQuery }
         onKeyDown={ handleKeyDown }
         { ...props }
-        onClick={ onClick }
-        onBlur={ onBlur }
       />
     );
   };
