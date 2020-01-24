@@ -40,6 +40,11 @@ class SearchPicker extends React.Component {
      * via @keyboardTracker
      */
     handleKeyDown: PropTypes.object.isRequired,
+    /**
+     * Number of extra items shown in the children, used to keep
+     * keyboard selection in the correct place
+     */
+    itemOffset: PropTypes.number.isRequired,
 
     /**
      * The element ref to use for capturing keyboard input.
@@ -90,6 +95,7 @@ class SearchPicker extends React.Component {
   };
 
   static defaultProps = {
+    itemOffset: 0,
     searchOptions: {},
     selectedEntityIds: [],
     setItemCount: noop,
@@ -128,8 +134,9 @@ class SearchPicker extends React.Component {
    * the faux focus index to 0)
    */
   componentDidUpdate = () => {
+    const { itemOffset } = this.props;
     const items = this.getAvailableEntities();
-    this.props.setItemCount(items.length);
+    this.props.setItemCount(items.length + itemOffset);
   };
 
   state = {
