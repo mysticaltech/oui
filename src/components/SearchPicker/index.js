@@ -13,12 +13,6 @@ const INPUT_DEBOUNCE_PERIOD = 120;
 class SearchPicker extends React.Component {
   static propTypes = {
     /**
-     * Number of extra items shown in the children, used to keep
-     * keyboard selection in the correct place.
-     * used by @keyboardTracker
-     */
-    additionalItems: PropTypes.number,
-    /**
      * A render function that is invoked with the following info:
      *   availableEntities {Array<Entity>} - The list of entities available
      *                     based on the current input. If no query term is

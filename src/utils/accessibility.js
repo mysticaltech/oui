@@ -34,9 +34,9 @@ export const getAssistiveTextFromColorClass = className => {
  */
 export const keyboardTracker = Component => {
   const wrappedComponent = props => {
-    const { additionalItems } = props;
+    const { additionalItems, ...rest } = props;
     const [currentFauxFocusIndex, setIndex] = useState(0);
-    const [currentItemCount, setItemCount] = useState(additionalItems);
+    const [currentItemCount, setItemCount] = useState(0);
     const [onItemSelect, setOnItemSelect] = useState(() => noop);
     /**
      * Event handler for keyboard activity.
@@ -54,7 +54,8 @@ export const keyboardTracker = Component => {
             event.preventDefault();
             break;
           case 'ArrowDown':
-            newIndex = Math.max(Math.min(currentFauxFocusIndex + 1, currentItemCount - 1), 0);
+          const totalItemCount = currentItemCount + additionalItems;
+            newIndex = Math.max(Math.min(currentFauxFocusIndex + 1, totalItemCount - 1), 0);
             setIndex(newIndex);
             event.preventDefault();
             break;
@@ -68,23 +69,22 @@ export const keyboardTracker = Component => {
             break;
         }
       },
-      [currentFauxFocusIndex, currentItemCount, onItemSelect]
+      [currentFauxFocusIndex, currentItemCount, onItemSelect, additionalItems]
     );
     /**
      * Handler to update the item count, which should reset the
      * current index to 0 if the number has changed.
      */
     const handleSetItemCount = useCallback((count) => {
-      const totalCount = count + additionalItems;
-      setItemCount(totalCount);
-      if (totalCount !== currentItemCount) {
+      setItemCount(count);
+      if (count !== currentItemCount) {
         setIndex(0);
       }
     }, [currentItemCount]);
 
     return (
       <Component
-        { ...props }
+        { ...rest }
         currentFauxFocusIndex={ currentFauxFocusIndex }
         handleKeyDown={ handleKeyDown }
         setItemCount={ handleSetItemCount }
