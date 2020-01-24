@@ -2,8 +2,6 @@
 // Project: OUI
 // Definitions by: ui-engineering <https://github.com/optimizely/oui>
 
-/// <reference types="optimizely-oui" />
-
 declare module 'optimizely-oui' {
   export { default as Autocomplete } from 'components/Autocomplete/index';
   export { default as Accordion } from 'components/Accordion/index';
