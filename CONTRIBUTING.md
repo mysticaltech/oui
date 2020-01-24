@@ -35,25 +35,29 @@ Typescript is enabled (_but not required_) in this repo. Typescript is a superse
 
 Writing plain javascript (ES5/6/7/latest) in `.ts/.tsx` files works totally fine. You can slowly introduce Typescript typings more and more as you get more familiar.
 
-#### Look at Examples
+### Look at Examples
 
 Chances are whatever you're trying to type, someone else has typed it before! There are a myriad of examples and support questions on the internet due to the widespread adoption of Typescript. Google around and you'll likely find excellent help.
 
 When it comes to React components, typing can get a little tricky, but fortunately, React itself has excellent Typescript support. Check out the following resources for extensive examples of React Typing:
 
-[React Basic] - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#basic-cheatsheet-table-of-contents
-[React Advanced] - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/ADVANCED.md
-[React HOC] - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/HOC.md
+**[React Basic]** - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#basic-cheatsheet-table-of-contents
 
-**Additional Resources:**
+**[React Advanced]** - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/ADVANCED.md
 
-[Typescript in 5min] - https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
-[Typescript Handbook] - https://www.typescriptlang.org/docs/handbook/basic-types.html
-[Justification - Why Typescript?] - https://medium.com/@jtomaszewski/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164
+**[React HOC]** - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/HOC.md
 
-#### @ts-ignore and `:any`
+#### Additional Resources:
 
-Don't let Typescript errors slow down your development if you dont want them to. Use `// @ts-ignore` to tell the Typescript compiler to ignore the next line, or specify a type as `:any` if you can't figure out why the compiler is complaining to you. Typescript is fun once you get a hang of it, but sometimes you just wanna see if your code works and come back to typing it later.
+**[Typescript in 5min]** - https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
+
+**[Typescript Handbook]** - https://www.typescriptlang.org/docs/handbook/basic-types.html
+
+**[Justification - Why Typescript?]** - https://medium.com/@jtomaszewski/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164
+
+### //@ts-ignore and `:any`
+
+Don't let Typescript errors slow down your development if you dont want them to. Use `//@ts-ignore` to tell the Typescript compiler to ignore the next line, or specify a type as `:any` if you can't figure out why the compiler is complaining to you. Typescript is fun once you get a hang of it, but sometimes you just wanna see if your code works and come back to typing it later.
 
 ## :pencil: Develop
 
