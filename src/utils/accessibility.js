@@ -54,7 +54,7 @@ export const keyboardTracker = Component => {
             event.preventDefault();
             break;
           case 'ArrowDown':
-          const totalItemCount = currentItemCount + additionalItems;
+            const totalItemCount = currentItemCount + additionalItems;
             newIndex = Math.max(Math.min(currentFauxFocusIndex + 1, totalItemCount - 1), 0);
             setIndex(newIndex);
             event.preventDefault();
@@ -97,7 +97,7 @@ export const keyboardTracker = Component => {
     additionalItems: PropTypes.number,
   };
   wrappedComponent.defaultProps = {
-    additionalItems: 0, 
+    additionalItems: 0,
   };
   return wrappedComponent;
 };
