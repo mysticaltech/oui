@@ -281,7 +281,6 @@ class SearchPicker extends React.Component {
     const placeholderNoun = supportedTypes.map(i => `${i}s`).join(',');
     const onClick = (e) => {
       if (this.state.isFocused){
-        event.ignoreToggle = true;
         return;
       }
       this.setState({

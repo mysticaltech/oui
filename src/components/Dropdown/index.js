@@ -13,7 +13,6 @@ import DropdownBlockLinkSecondaryText from './DropdownBlockLinkSecondaryText';
 
 @withToggle
 @withState('overChildren', 'setOverChildren', false)
-@withState('overActivator', 'setOverActivator', false)
 class Dropdown extends React.Component {
   static displayName = 'Dropdown';
 
@@ -48,7 +47,9 @@ class Dropdown extends React.Component {
   };
 
   handleOnBlur = () => {
-    if (!this.props.overChildren & !this.props.overActivator) {
+    const { target } = event;
+    const targetIsInput = target.nodeName === 'INPUT';
+    if (!this.props.overChildren && !targetIsInput) {
       this.props.hide();
     }
   };
@@ -66,13 +67,9 @@ class Dropdown extends React.Component {
     this.props.toggle();
   };
 
-  onPopperMouseOver = () => this.props.setOverChildren(true);
+  onMouseOver = () => this.props.setOverChildren(true);
 
-  onPopperMouseLeave = () => this.props.setOverChildren(false);
-
-  onActivatorMouseOver = () => this.props.setOverActivator(true);
-
-  onActivatorMouseLeave = () => this.props.setOverActivator(false);
+  onMouseLeave = () => this.props.setOverChildren(false);
 
   render() {
     const {
@@ -182,8 +179,8 @@ class Dropdown extends React.Component {
                   ref={ ref }
                   data-placement={ popperPlacement }
                   className="oui-dropdown-children"
-                  onMouseOver={ this.onPopperMouseOver }
-                  onMouseLeave={ this.onPopperMouseLeave }
+                  onMouseOver={ this.onMouseOver }
+                  onMouseLeave={ this.onMouseLeave }
                   onClick={ this.handleToggle }
                   style={{
                     zIndex: zIndex,
