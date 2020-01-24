@@ -74,6 +74,15 @@ type InputProps = {
   /** Function that fires when a key is pressed down */
   onKeyDown?: (...args: any[]) => any;
 
+  /** Passthrough handler for onMouseDown */
+  onMouseDown?: (...args: any[]) => any;
+
+  /** Passthrough handler for onMouseLeave */
+  onMouseLeave?: (...args: any[]) => any;
+
+  /** Passthrough handler for onMouseOver */
+  onMouseOver?: (...args: any[]) => any;
+
   /** Input placeholder text */
   placeholder?: string;
 
@@ -115,6 +124,9 @@ const Input: React.SFC<InputProps> = React.forwardRef((props, ref?: React.Ref<HT
     onFocus,
     onInput,
     onKeyDown,
+    onMouseDown,
+    onMouseLeave,
+    onMouseOver,
     placeholder,
     step,
     testSection,
@@ -161,6 +173,9 @@ const Input: React.SFC<InputProps> = React.forwardRef((props, ref?: React.Ref<HT
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         onFocus={onFocus}
+        onMouseDown={onMouseDown}
+        onMouseLeave={onMouseLeave}
+        onMouseOver={onMouseOver}
         min={min}
         max={max}
         step={step}
