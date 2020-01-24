@@ -90,7 +90,6 @@ class SearchPicker extends React.Component {
   };
 
   static defaultProps = {
-    additionalItems: 0,
     searchOptions: {},
     selectedEntityIds: [],
     setItemCount: noop,

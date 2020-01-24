@@ -12,7 +12,6 @@ exports[`components/SearchPicker default case should render component same as sn
   }
 >
   <SearchPicker
-    additionalItems={0}
     currentFauxFocusIndex={0}
     handleKeyDown={[Function]}
     onItemSelected={[MockFunction]}
