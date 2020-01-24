@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 import { noop } from 'lodash';
 
 /**
@@ -33,8 +34,9 @@ export const getAssistiveTextFromColorClass = className => {
  */
 export const keyboardTracker = Component => {
   const wrappedComponent = props => {
+    const { additionalItems } = props;
     const [currentFauxFocusIndex, setIndex] = useState(0);
-    const [currentItemCount, setItemCount] = useState(0);
+    const [currentItemCount, setItemCount] = useState(additionalItems);
     const [onItemSelect, setOnItemSelect] = useState(() => noop);
     /**
      * Event handler for keyboard activity.
@@ -73,8 +75,9 @@ export const keyboardTracker = Component => {
      * current index to 0 if the number has changed.
      */
     const handleSetItemCount = useCallback((count) => {
-      setItemCount(count);
-      if (count !== currentItemCount) {
+      const totalCount = count + additionalItems;
+      setItemCount(totalCount);
+      if (totalCount !== currentItemCount) {
         setIndex(0);
       }
     }, [currentItemCount]);
@@ -90,5 +93,11 @@ export const keyboardTracker = Component => {
     );
   };
   wrappedComponent.displayName = `withkeyboardTracker(${Component.displayName})`;
+  wrappedComponent.propTypes = {
+    additionalItems: PropTypes.number,
+  };
+  wrappedComponent.defaultProps = {
+    additionalItems: 0, 
+  };
   return wrappedComponent;
 };

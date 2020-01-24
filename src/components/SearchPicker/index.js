@@ -13,6 +13,12 @@ const INPUT_DEBOUNCE_PERIOD = 120;
 class SearchPicker extends React.Component {
   static propTypes = {
     /**
+     * Number of extra items shown in the children, used to keep
+     * keyboard selection in the correct place.
+     * used by @keyboardTracker
+     */
+    additionalItems: PropTypes.number,
+    /**
      * A render function that is invoked with the following info:
      *   availableEntities {Array<Entity>} - The list of entities available
      *                     based on the current input. If no query term is
@@ -40,11 +46,6 @@ class SearchPicker extends React.Component {
      * via @keyboardTracker
      */
     handleKeyDown: PropTypes.object.isRequired,
-    /**
-     * Number of extra items shown in the children, used to keep
-     * keyboard selection in the correct place
-     */
-    itemOffset: PropTypes.number.isRequired,
 
     /**
      * The element ref to use for capturing keyboard input.
@@ -95,7 +96,7 @@ class SearchPicker extends React.Component {
   };
 
   static defaultProps = {
-    itemOffset: 0,
+    additionalItems: 0,
     searchOptions: {},
     selectedEntityIds: [],
     setItemCount: noop,
@@ -134,9 +135,8 @@ class SearchPicker extends React.Component {
    * the faux focus index to 0)
    */
   componentDidUpdate = () => {
-    const { itemOffset } = this.props;
     const items = this.getAvailableEntities();
-    this.props.setItemCount(items.length + itemOffset);
+    this.props.setItemCount(items.length);
   };
 
   state = {

@@ -66,7 +66,7 @@ stories
     return (
       <SearchPicker
         onItemSelected={ action('keyboard selection item') }
-        itemOffset={ 1 }
+        additionalItems={ 1 }
         searchFunction={ searchFunction }
         supportedTypes={ ['feature'] }>
         {({
