@@ -7,6 +7,10 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 
+## 45.1.0 - 2020-01-24
+- [Feature] Add new **DragAndDrop** component using react-beautiful-dnd that allows for dynamic lists, interactive elements inside the draggable items, and keyboard accessibility ([#1261](https://github.com/optimizely/oui/pull/1261))
+- [Feature] Enable Typescript compilation and generate type definitions for JS and TSX components. ([#1268](https://github.com/optimizely/oui/pull/1268))
+
 ## 45.0.0 - 2020-01-22
 - [Release] Remove deprecated CodeDiffLegacy component in favor of CodeDiff ([#1277](https://github.com/optimizely/oui/pull/1277))
 - [Patch] Undo parent prop inheritance on Activator in **Dropdown** ([#1278](https://github.com/optimizely/oui/pull/1278))

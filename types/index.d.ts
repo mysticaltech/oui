@@ -2,8 +2,6 @@
 // Project: OUI
 // Definitions by: ui-engineering <https://github.com/optimizely/oui>
 
-/// <reference types="optimizely-oui" />
-
 declare module 'optimizely-oui' {
   export { default as Autocomplete } from 'components/Autocomplete/index';
   export { default as Accordion } from 'components/Accordion/index';
@@ -73,6 +71,7 @@ declare module 'optimizely-oui' {
 // SEE yarn generate-types
 //
 /// <reference types="react" />
+/// <reference types="lodash" />
 declare module "components/Accordion/index" {
     export function AccordionSection({ _isSelected, _onClickHandler, children, testSection, title, }: {
         _isSelected: any;
@@ -263,15 +262,73 @@ declare module "components/Label/index" {
     import PropTypes from "prop-types";
 }
 declare module "components/Input/index" {
+    import React from 'react';
+    type InputProps = {
+        /** The default value of the input used on initial render */
+        defaultValue?: string;
+        /** Includes search icon if true */
+        displayError?: boolean;
+        /** Whether or not to automatically focus this input */
+        focus?: boolean;
+        /** Id of the input to properly associate with the input's label */
+        id?: string;
+        /** Prevents input from being modified and appears disabled */
+        isDisabled?: boolean;
+        /** Includes error if true */
+        isFilter?: boolean;
+        /** Adds an optional label if there is a label provided */
+        isOptional?: any;
+        /** Prevents input from being modified but doesn't appear disabled */
+        isReadOnly?: boolean;
+        /** Includes required asterisk label if true */
+        isRequired?: any;
+        /** Text that describes the input */
+        label?: string;
+        /**
+         * Max value for the `input`. Should be used only when `type` is `number`.
+         */
+        max?: number;
+        /**
+         * Max length of the input value. Should be used only when type is 'text',
+         * 'email', 'search', 'password', 'tel', or 'url'.
+         */
+        maxLength?: number;
+        /**
+         * Min value for the `input`. Should be used only when `type` is `number`.
+         */
+        min?: number;
+        /** Form note for the input */
+        note?: string | null;
+        /**
+         * Function that fires when the input loses focus. It fires regardless of
+         * whether the value has changed.
+         */
+        onBlur?: (...args: any[]) => any;
+        /** Function that fires when the input loses focus after the value changes */
+        onChange?: (...args: any[]) => any;
+        /** Function that fires when the input is clicked */
+        onClick?: (...args: any[]) => any;
+        /** Function that fires when the input gains focus */
+        onFocus?: (...args: any[]) => any;
+        /** Function that fires anytime the input value changes */
+        onInput?: (...args: any[]) => any;
+        /** Function that fires when a key is pressed down */
+        onKeyDown?: (...args: any[]) => any;
+        /** Input placeholder text */
+        placeholder?: string;
+        /** Input step value */
+        step?: string;
+        /** Hook for automated JavaScript tests */
+        testSection?: string;
+        /** Align text inside input. Default is left. */
+        textAlign?: 'left' | 'right';
+        /** Supported input types */
+        type: 'text' | 'password' | 'date' | 'number' | 'email' | 'url' | 'search' | 'tel' | 'time';
+        /** Text within the input */
+        value?: string | number;
+    };
+    const Input: React.SFC<InputProps>;
     export default Input;
-    /**
-     * Generates an `input` element (optionally wrapped in a label) and accepts
-     * most of the common input types.
-     * @param {Object} props - Properties passed to component
-     * @returns {ReactElement}
-     */
-    const Input: React.ForwardRefExoticComponent<React.RefAttributes<any>>;
-    import React from "react";
 }
 declare module "components/BlockList/Category/index" {
     export default Category;
@@ -712,19 +769,127 @@ declare module "components/ButtonIcon/index" {
     import PropTypes from "prop-types";
 }
 declare module "components/Layout/Container" {
+    import React from 'react';
+    type ContainerProps = {
+        /**
+         * Use a custom element for this component
+         */
+        as?: React.ElementType;
+        /**
+         * Allow the Container to fill available horizontal space.
+         */
+        fluid?: boolean;
+        /**
+         * For testing/debugging only -- show hotpink grid borders and backgrounds.
+         */
+        outlineDebug?: boolean;
+        /**
+         * Pad inner content.
+         */
+        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
+        /**
+         * Remove first and last child side padding.
+         */
+        pullRowPadding?: boolean;
+        /**
+         * Add top margin space between rows.
+         */
+        pushRowsTop?: boolean;
+    };
+    const Container: React.SFC<ContainerProps>;
     export default Container;
-    const Container: React.ForwardRefExoticComponent<React.RefAttributes<any>>;
-    import React from "react";
 }
 declare module "components/Layout/Row" {
+    import React from 'react';
+    type RowProps = {
+        /**
+         * @default 'row'
+         */
+        as?: React.ElementType;
+        /**
+         * Add visible border to row
+         */
+        border?: 'top' | 'bottom' | 'left' | 'right' | 'sides' | 'ends' | 'all' | 'none';
+        /**
+         * Display layout as vertical column.
+         */
+        displayVertical?: boolean;
+        /**
+         * For testing/debugging only -- show grid hotpink borders and backgrounds.
+         */
+        outlineDebug?: boolean;
+        /**
+         * Force overflow scrolling
+         */
+        overflow?: 'overflow-y--scroll' | 'overflow-x--auto' | 'overflow-y--auto';
+        /**
+         * Pad inner content.
+         */
+        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
+        /**
+         * Removes gutters and negative margins.
+         */
+        removeGutters?: boolean;
+        /** Whether this row should wrap at small screen sizes */
+        shouldWrap?: boolean;
+        /**
+         * How to vertically align content
+         */
+        verticalAlignment?: 'start' | 'center' | 'end';
+    };
+    const Row: React.SFC<RowProps>;
     export default Row;
-    const Row: React.ForwardRefExoticComponent<React.RefAttributes<any>>;
-    import React from "react";
 }
 declare module "components/Layout/Col" {
+    import React from 'react';
+    /** colSize shorthand */
+    type colSizeShorthand = boolean | number | 'fitContent' | 'fillSpace';
+    type column = colSizeShorthand | {
+        /** Draw border on this single column. */
+        border: 'top' | 'bottom' | 'left' | 'right' | 'sides' | 'ends' | 'all';
+        /** Push columns around with an offset. */
+        offset: string | number;
+        /** Specify a content display order different from HTML source order. */
+        order: string | number;
+        /** Pad inner content with a default amount. */
+        paddedContent: 'none' | 'around' | 'sides' | 'ends' | 'remove';
+        /** Size of this column; allows for some shorthand. */
+        size: colSizeShorthand;
+    };
+    type ColPropTypes = {
+        /** Specify an element besides <div>. */
+        as?: React.ElementType;
+        /** Add single border column. */
+        border?: 'top' | 'bottom' | 'left' | 'right' | 'sides' | 'ends' | 'all';
+        /** Inner contents. */
+        children: React.ReactNode;
+        /** Whether or not this is a reading column layout */
+        isReadingColumn?: boolean;
+        /**
+         * The number of columns to span on large devices (≥992px)
+         *
+         * @type {("fillSpace"|"fitContent"|number|
+         *  { span: "fillSpace"|"fitContent"|number, offset: number, order: number }
+         * )}
+         */
+        large?: column;
+        /**
+         * Force overflow scrolling
+         */
+        overflow?: 'overflow-y--scroll' | 'overflow-x--auto' | 'overflow-y--auto';
+        /** Add default amount of padding. */
+        paddedContent?: 'around' | 'sides' | 'ends' | 'none';
+        /**
+         * The number of columns to span on small devices (≥576px)
+         *
+         * @type {("fillSpace"|"fitContent"|number|
+         *  { span: "fillSpace"|"fitContent"|number, offset: number, order: number }
+         * )}
+         */
+        small?: column;
+    };
+    const Col: React.SFC<ColPropTypes>;
     export default Col;
-    const Col: React.ForwardRefExoticComponent<React.RefAttributes<any>>;
-    import React from "react";
 }
 declare module "tokens/forimport/index.es" {
     export var brandBlueLight: string;
@@ -1346,9 +1511,25 @@ declare module "utils/recompose-utils" {
     export const withToggle: any;
 }
 declare module "components/Dropdown/DropdownContents/index" {
-    export const DropdownContents: React.ForwardRefExoticComponent<React.RefAttributes<any>>;
+    import React from 'react';
+    type DropdownContentsProps = {
+        /** Whether contents can scroll */
+        canScroll?: boolean;
+        /** Direction of contents */
+        direction?: 'left' | 'right' | 'up';
+        /** Whether or not the dropdown is in a loading state. */
+        isLoading?: boolean;
+        /** Whether to wrap contents or not */
+        isNoWrap?: boolean;
+        /** Minimum width of contents */
+        minWidth?: string | number;
+        /** Optional render function to display a header before the list. */
+        renderHeader?: (...args: any[]) => any;
+        /** Test section for element */
+        testSection?: string;
+    };
+    export const DropdownContents: React.SFC<DropdownContentsProps>;
     export default DropdownContents;
-    import React from "react";
 }
 declare module "components/Dropdown/DropdownListItem/index" {
     function DropdownListItem(props: any): JSX.Element;
@@ -5013,8 +5194,8 @@ declare module "components/PaginationControls/index" {
             remainingSlotsToFill: number;
             currentPage: number;
         };
-        fillPageSlots(): any;
-        renderPageNumbers(): any;
+        fillPageSlots(): any[];
+        renderPageNumbers(): JSX.Element[];
         render(): JSX.Element;
     }
     namespace PaginationControls {
@@ -5257,8 +5438,8 @@ declare module "components/SearchPicker/index" {
         static defaultProps: {
             searchOptions: {};
             selectedEntityIds: never[];
-            setItemCount: any;
-            setOnItemSelect: any;
+            setItemCount: (...args: any[]) => void;
+            setOnItemSelect: (...args: any[]) => void;
         };
         constructor(props: Readonly<any>);
         constructor(props: any, context?: any);
@@ -5300,7 +5481,7 @@ declare module "components/SearchPicker/index" {
          * A debounced method to invoke the search and store the result in state.
          * @param {string} query - The term to search for.
          */
-        handleOnInputDebounced: any;
+        handleOnInputDebounced: ((query: any) => void) & import("lodash").Cancelable;
         /**
          * Filter the current result set to exclude selected entities.
          * @returns {Array<Object>}
