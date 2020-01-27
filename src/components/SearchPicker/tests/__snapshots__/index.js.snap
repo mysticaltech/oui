@@ -2,6 +2,7 @@
 
 exports[`components/SearchPicker default case should render component same as snapshot 1`] = `
 <withkeyboardTracker(undefined)
+  additionalItems={0}
   onItemSelected={[MockFunction]}
   searchFunction={[Function]}
   supportedTypes={

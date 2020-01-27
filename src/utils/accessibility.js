@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 import { noop } from 'lodash';
 
 /**
@@ -33,6 +34,7 @@ export const getAssistiveTextFromColorClass = className => {
  */
 export const keyboardTracker = Component => {
   const wrappedComponent = props => {
+    const { additionalItems, ...rest } = props;
     const [currentFauxFocusIndex, setIndex] = useState(0);
     const [currentItemCount, setItemCount] = useState(0);
     const [onItemSelect, setOnItemSelect] = useState(() => noop);
@@ -52,7 +54,8 @@ export const keyboardTracker = Component => {
             event.preventDefault();
             break;
           case 'ArrowDown':
-            newIndex = Math.max(Math.min(currentFauxFocusIndex + 1, currentItemCount - 1), 0);
+            const totalItemCount = currentItemCount + additionalItems;
+            newIndex = Math.max(Math.min(currentFauxFocusIndex + 1, totalItemCount - 1), 0);
             setIndex(newIndex);
             event.preventDefault();
             break;
@@ -66,7 +69,7 @@ export const keyboardTracker = Component => {
             break;
         }
       },
-      [currentFauxFocusIndex, currentItemCount, onItemSelect]
+      [currentFauxFocusIndex, currentItemCount, onItemSelect, additionalItems]
     );
     /**
      * Handler to update the item count, which should reset the
@@ -81,7 +84,7 @@ export const keyboardTracker = Component => {
 
     return (
       <Component
-        { ...props }
+        { ...rest }
         currentFauxFocusIndex={ currentFauxFocusIndex }
         handleKeyDown={ handleKeyDown }
         setItemCount={ handleSetItemCount }
@@ -90,5 +93,11 @@ export const keyboardTracker = Component => {
     );
   };
   wrappedComponent.displayName = `withkeyboardTracker(${Component.displayName})`;
+  wrappedComponent.propTypes = {
+    additionalItems: PropTypes.number,
+  };
+  wrappedComponent.defaultProps = {
+    additionalItems: 0,
+  };
   return wrappedComponent;
 };
