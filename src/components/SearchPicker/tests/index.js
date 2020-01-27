@@ -7,7 +7,7 @@ import MOCK_DATA from '../mock_api/mock_data';
 
 import SearchPicker from '../';
 
-const MOCK_API_DELAY = 10;
+const MOCK_API_DELAY = 100;
 
 const searchFunction = getSearchFunction(MOCK_API_DELAY);
 
@@ -96,8 +96,7 @@ describe('components/SearchPicker', () => {
     it('should wait to show results until all queries are completed', function() {
       expect(renderedData.isLoading).toBe(true);
       return getDelayedPromise(MOCK_API_DELAY).then(() => {
-        expect(renderedData.searchQuery).toBe('');
-        expect(renderedData.isLoading).toBe(false);
+        expect(renderedData.resultsText).toEqual({summary: 'Recently created features'});
         component.find('input').simulate('mouseenter');
         component.find('input').simulate('click');
         component.find('input').simulate('input', { target: { value: '123' }});
@@ -113,6 +112,11 @@ describe('components/SearchPicker', () => {
           component.find('input').simulate('click');
           component.find('input').simulate('input', { target: { value: '202' }});
         })
+        .then(() => getDelayedPromise(MOCK_API_DELAY))
+        .then(() => {
+          component.update();
+          expect(renderedData.resultsText).toEqual({summary: 'Searching for "features" matching "202"'});
+        })
         // Account for our mock API delay and the debounce delay
         .then(() => getDelayedPromise(MOCK_API_DELAY + 10))
         .then(() => {
@@ -120,7 +124,6 @@ describe('components/SearchPicker', () => {
           expect(renderedData.isLoading).toBe(false);
           expect(renderedData.resultsText).toEqual({summary: 'Found 1 features matching "202"'});
         });
-
     })
   });
 });
