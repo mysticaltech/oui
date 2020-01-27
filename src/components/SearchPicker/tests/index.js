@@ -3,6 +3,8 @@ import { mount } from 'enzyme';
 import { mountToJson } from 'enzyme-to-json';
 
 import { getSearchFunction } from '../mock_api';
+import MOCK_DATA from '../mock_api/mock_data';
+
 import SearchPicker from '../';
 
 const MOCK_API_DELAY = 10;
@@ -68,7 +70,7 @@ describe('components/SearchPicker', () => {
         });
     });
 
-    it('should pass isLoading and the searchQuery correctly', () => {
+    it('should pass isLoading, searchQuery, and availableEntities correctly', () => {
       expect(renderedData.isLoading).toBe(true);
       return getDelayedPromise(MOCK_API_DELAY).then(() => {
         expect(renderedData.searchQuery).toBe('');
@@ -88,7 +90,37 @@ describe('components/SearchPicker', () => {
         .then(() => {
           component.update();
           expect(renderedData.isLoading).toBe(false);
+          expect(renderedData.availableEntities).toEqual([MOCK_DATA[0]]);
         });
     });
+    it('should wait to show results until all queries are completed', function() {
+      expect(renderedData.isLoading).toBe(true);
+      return getDelayedPromise(MOCK_API_DELAY).then(() => {
+        expect(renderedData.searchQuery).toBe('');
+        expect(renderedData.isLoading).toBe(false);
+        component.find('input').simulate('mouseenter');
+        component.find('input').simulate('click');
+        component.find('input').simulate('input', { target: { value: '123' }});
+      })
+        // Wait for debounce
+        .then(() => getDelayedPromise(10))
+        .then(() => {
+          expect(renderedData.searchQuery).toBe('123');
+          expect(renderedData.isLoading).toBe(true);
+          component.update()
+          expect(renderedData.resultsText).toEqual({summary: 'Searching for "features" matching "123"'});
+          component.find('input').simulate('mouseenter');
+          component.find('input').simulate('click');
+          component.find('input').simulate('input', { target: { value: '202' }});
+        })
+        // Account for our mock API delay and the debounce delay
+        .then(() => getDelayedPromise(MOCK_API_DELAY + 10))
+        .then(() => {
+          component.update();
+          expect(renderedData.isLoading).toBe(false);
+          expect(renderedData.resultsText).toEqual({summary: 'Found 1 features matching "202"'});
+        });
+
+    })
   });
 });

@@ -200,7 +200,10 @@ class SearchPicker extends React.Component {
         query: query.toLowerCase(),
       })
         .then(resolve, reject);
-    }).then(r => r, e => { /** Swallow rejections */});
+    }).then(r => r, e => { 
+      // Pass rejections to executeNewSearch error handler
+      throw new Error(e)
+    });
 
   /**
    * A debounced method to invoke the search and store the result in state.
@@ -212,14 +215,10 @@ class SearchPicker extends React.Component {
       this.setState({
         isLoading: false,
         currentSearch: null,
+        // Ensure the query wasn't killed while waiting for the result.
+        ...(searchQuery ? { results: results } : {})
       });
-      // Ensure the query wasn't killed while waiting for the result.
-      if (searchQuery) {
-        this.setState({
-          results,
-        });
-      }
-    });
+    }, e => { /* Swallow errors */ });
   }, !!process.env.JEST_WORKER_ID ? 0 : INPUT_DEBOUNCE_PERIOD);
 
   /**
@@ -247,11 +246,10 @@ class SearchPicker extends React.Component {
    */
   getResultsText = () => {
     const { supportedTypes } = this.props;
-    const { isLoading, searchQuery } = this.state;
+    const { isLoading, searchQuery, results } = this.state;
     const resultCount = this.getResultSet().length;
     const summaryNoun = supportedTypes.length > 1 ? 'entities' : `${supportedTypes[0]}s`;
     let summary = `Recently created ${summaryNoun}`;
-
     if (isLoading) {
       summary = `Searching for "${summaryNoun}" matching "${searchQuery}"`;
     } else if (searchQuery) {
