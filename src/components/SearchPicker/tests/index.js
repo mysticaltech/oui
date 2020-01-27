@@ -106,7 +106,7 @@ describe('components/SearchPicker', () => {
         .then(() => {
           expect(renderedData.searchQuery).toBe('123');
           expect(renderedData.isLoading).toBe(true);
-          component.update()
+          component.update();
           expect(renderedData.resultsText).toEqual({summary: 'Searching for "features" matching "123"'});
           component.find('input').simulate('mouseenter');
           component.find('input').simulate('click');
@@ -124,6 +124,6 @@ describe('components/SearchPicker', () => {
           expect(renderedData.isLoading).toBe(false);
           expect(renderedData.resultsText).toEqual({summary: 'Found 1 features matching "202"'});
         });
-    })
+    });
   });
 });
