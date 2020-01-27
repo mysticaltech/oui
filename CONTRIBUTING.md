@@ -79,6 +79,7 @@ Don't let Typescript errors slow down your development if you dont want them to.
 
    ```sh
    cd ~/projects/optimizely-oui          # go into package directory
+   nvm use                               # ensure you are using the correct version specificed in .nvmrc
    yarn watch                            # build your oui folder so that your latest changes are included in the linked module
    yarn link                             # in a new shell, create global link to OUI
    cd ./node_modules/react && yarn link  # create global link for OUI's React
