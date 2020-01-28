@@ -71,7 +71,6 @@ declare module 'optimizely-oui' {
 // SEE yarn generate-types
 //
 /// <reference types="react" />
-/// <reference types="lodash" />
 declare module "components/Accordion/index" {
     export function AccordionSection({ _isSelected, _onClickHandler, children, testSection, title, }: {
         _isSelected: any;
@@ -1900,6 +1899,63 @@ declare module "components/DockedFooter/index" {
     import PropTypes from "prop-types";
 }
 declare module "components/DockedFooter/DockedFooter.story" {
+    export {};
+}
+declare module "components/DragAndDrop/DraggableItem/index" {
+    export default DraggableItem;
+    function DraggableItem({ id, index, item, renderFunc, useCustomDragHandle, }: {
+        id: any;
+        index: any;
+        item: any;
+        renderFunc: any;
+        useCustomDragHandle: any;
+    }): JSX.Element;
+    namespace DraggableItem {
+        export namespace propTypes {
+            export const id: PropTypes.Validator<number>;
+            export const index: PropTypes.Validator<number>;
+            export const item: PropTypes.Validator<PropTypes.InferProps<{
+                id: PropTypes.Requireable<number>;
+            }>>;
+            export const renderFunc: PropTypes.Validator<(...args: any[]) => any>;
+            export const useCustomDragHandle: PropTypes.Requireable<boolean>;
+        }
+    }
+    import PropTypes from "prop-types";
+}
+declare module "components/DragAndDrop/index" {
+    export default DragAndDrop;
+    function DragAndDrop({ idForDroppableRegion, items, onBeforeCapture, onDragEnd, renderItem, useCustomDragHandle, }: {
+        idForDroppableRegion: any;
+        items: any;
+        onBeforeCapture: any;
+        onDragEnd: any;
+        renderItem: any;
+        useCustomDragHandle: any;
+    }): JSX.Element;
+    namespace DragAndDrop {
+        export namespace propTypes {
+            export const idForDroppableRegion: PropTypes.Validator<string>;
+            export const items: PropTypes.Validator<(PropTypes.InferProps<{
+                id: PropTypes.Requireable<number>;
+            }> | null | undefined)[]>;
+            export const onBeforeCapture: PropTypes.Requireable<(...args: any[]) => any>;
+            export const onDragEnd: PropTypes.Requireable<(...args: any[]) => any>;
+            export const renderItem: PropTypes.Validator<(...args: any[]) => any>;
+            export const useCustomDragHandle: PropTypes.Requireable<boolean>;
+        }
+        export namespace defaultProps {
+            export function onBeforeCapture_1(): void;
+            export { onBeforeCapture_1 as onBeforeCapture };
+            export function onDragEnd_1(): void;
+            export { onDragEnd_1 as onDragEnd };
+            const useCustomDragHandle_1: boolean;
+            export { useCustomDragHandle_1 as useCustomDragHandle };
+        }
+    }
+    import PropTypes from "prop-types";
+}
+declare module "components/DragAndDrop/DragAndDrop.story" {
     export {};
 }
 declare module "components/Dropdown/Dropdown.story" {
@@ -5194,8 +5250,8 @@ declare module "components/PaginationControls/index" {
             remainingSlotsToFill: number;
             currentPage: number;
         };
-        fillPageSlots(): any[];
-        renderPageNumbers(): JSX.Element[];
+        fillPageSlots(): any;
+        renderPageNumbers(): any;
         render(): JSX.Element;
     }
     namespace PaginationControls {
@@ -5438,8 +5494,8 @@ declare module "components/SearchPicker/index" {
         static defaultProps: {
             searchOptions: {};
             selectedEntityIds: never[];
-            setItemCount: (...args: any[]) => void;
-            setOnItemSelect: (...args: any[]) => void;
+            setItemCount: any;
+            setOnItemSelect: any;
         };
         constructor(props: Readonly<any>);
         constructor(props: any, context?: any);
@@ -5481,7 +5537,7 @@ declare module "components/SearchPicker/index" {
          * A debounced method to invoke the search and store the result in state.
          * @param {string} query - The term to search for.
          */
-        handleOnInputDebounced: ((query: any) => void) & import("lodash").Cancelable;
+        handleOnInputDebounced: any;
         /**
          * Filter the current result set to exclude selected entities.
          * @returns {Array<Object>}
@@ -5741,7 +5797,7 @@ declare module "components/Sortable/index" {
     import Immutable from "immutable";
     import PropTypes from "prop-types";
 }
-declare module "components/Sortable/DragAndDrop.story" {
+declare module "components/Sortable/Sortable.story" {
     export {};
 }
 declare module "components/Spinner/Spinner.story" {

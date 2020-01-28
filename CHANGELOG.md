@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Patch] Update `isReadingColumn` prop on **Col** component to create a nested reading column ([#1285](https://github.com/optimizely/oui/pull/1285))
 
 ## 45.1.0 - 2020-01-24
 - [Feature] Add new **DragAndDrop** component using react-beautiful-dnd that allows for dynamic lists, interactive elements inside the draggable items, and keyboard accessibility ([#1261](https://github.com/optimizely/oui/pull/1261))

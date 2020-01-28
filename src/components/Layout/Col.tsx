@@ -55,7 +55,7 @@ type ColPropTypes = {
 };
 const Col: React.SFC<ColPropTypes> = React.forwardRef(
   (
-    { as: Component = 'div', border, overflow, paddedContent = 'none', isReadingColumn, ...props },
+    { as: Component = 'div', border, children, overflow, paddedContent = 'none', isReadingColumn, ...props },
     ref?: React.Ref<HTMLElement | React.ElementType>
   ) => {
     const prefix = 'col';
@@ -72,7 +72,7 @@ const Col: React.SFC<ColPropTypes> = React.forwardRef(
       classes.push(`padded-content--${paddedContent}`);
     }
     if (isReadingColumn) {
-      classes.push('reading-column');
+    children = <div className="reading-column">{children}</div>
     }
     DEVICE_SIZES.forEach(brkPoint => {
       let propValue = props[brkPoint];
@@ -98,7 +98,7 @@ const Col: React.SFC<ColPropTypes> = React.forwardRef(
     if (!spans.length) {
       spans.push(prefix); // plain 'col'
     }
-    return <Component {...props} ref={ref} className={classNames(...spans, ...classes)} />;
+    return <Component {...props} children={children} ref={ref} className={classNames(...spans, ...classes)}></Component>;
   }
 );
 
