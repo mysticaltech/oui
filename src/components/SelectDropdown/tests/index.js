@@ -204,4 +204,63 @@ describe('components/SelectDropdown', function() {
     expect(component.find('Checkbox').length).toBe(2);
     expect(component.find('Checkbox').last().prop('defaultChecked')).toBe(true);
   });
+  describe('links', function() {
+    describe('if linkURL and linkText are provided', function() {
+      beforeEach(function() {
+        component = mount(
+          <SelectDropdown
+            isMultiSelect={ true }
+            items={ [{label: 'label0', value: 'value0', description: 'description0', linkURL: '#', linkText: 'some link'}].concat(items) }
+            initialPlaceholder="Select a value..."
+            onChange={ onChange }
+          />);
+        const activator = component.find('Button');
+        activator.simulate('click');
+      });
+
+      it('should display text and link', function() {
+        expect(component.find('DropdownListItem').at(0).find('Link').length).toBe(1);
+        expect(component.find('DropdownListItem').at(0).find('Link').text()).toBe('some link');
+        expect(component.find('DropdownListItem').at(0).find('Link').props().href).toBe('#');
+      });
+
+      it('should not close the dropdown if clicked', function() {
+        const link = component.find('DropdownListItem').at(0).find('Link');
+        link.simulate('click'); // clicking on the link shouldn't close the dropdown
+        // this signals that the dropdown contents box doesn't close even when the link is clicked on
+        const dropdownContents = component.find('DropdownContents');
+        expect(dropdownContents.length).toBe(1);
+      });
+    });
+
+    describe('if linkURL is not provided', function() {
+      it('should not display text and link', function() {
+        component = mount(
+          <SelectDropdown
+            isMultiSelect={ true }
+            items={ [{label: 'label0', value: 'value0', description: 'description0', linkURL: '#'}].concat(items) }
+            initialPlaceholder="Select a value..."
+            onChange={ onChange }
+          />);
+        const activator = component.find('Button');
+        activator.simulate('click');
+        expect(component.find('DropdownListItem').at(0).find('Link').length).toBe(0);
+      });
+    });
+
+    describe('if linkText is not provided', function() {
+      it('should not display text and link', function() {
+        component = mount(
+          <SelectDropdown
+            isMultiSelect={ true }
+            items={ [{label: 'label0', value: 'value0', description: 'description0', linkText: 'some link'}].concat(items) }
+            initialPlaceholder="Select a value..."
+            onChange={ onChange }
+          />);
+        const activator = component.find('Button');
+        activator.simulate('click');
+        expect(component.find('DropdownListItem').at(0).find('Link').length).toBe(0);
+      });
+    });
+  });
 });

@@ -180,10 +180,11 @@ class SelectDropdown extends React.Component {
             </Dropdown.BlockLink>
             { entry.linkText && entry.linkURL && (
               <div className="micro muted">
-                <Link title={ entry.linkText }
-                      onClick={ (e) => e.stopPropagation() }
-                      newWindow={true}
-                      href={entry.linkURL}>
+                <Link
+                  title={ entry.linkText }
+                  onClick={ (e) => e.stopPropagation() }
+                  newWindow={ true }
+                  href={ entry.linkURL }>
                   { entry.linkText}
                 </Link>
               </div>
