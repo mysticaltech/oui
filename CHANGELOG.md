@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+
+## 45.2.0 - 2020-01-28
 - [Patch] Update `isReadingColumn` prop on **Col** component to create a nested reading column ([#1285](https://github.com/optimizely/oui/pull/1285))
 - [Patch] Wait for all queries to be complete before showing result summary in **SearchPicker** ([#1284](https://github.com/optimizely/oui/pull/1284))
 - [Patch] Allow for an offset in **SearchPicker** children ([#1281](https://github.com/optimizely/oui/pull/1281))

@@ -4915,8 +4915,10 @@ code {
   box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.12); }
 
 .oui-docked-footer .oui-button-row--right {
-  transition: all .2s ease-in-out;
   margin-right: 10px; }
+
+.oui-docked-footer .oui-button-row--left {
+  margin-left: 10px; }
 
 .oui-empty-dashboard__button-row {
   margin-top: 20px;
