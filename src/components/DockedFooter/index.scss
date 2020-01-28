@@ -15,6 +15,9 @@
 }
 
 .oui-docked-footer .oui-button-row--right  {
-  transition: all .2s ease-in-out;
-  margin-right: spacer(1)
+  margin-right: spacer(1);
+}
+
+.oui-docked-footer .oui-button-row--left  {
+  margin-left: spacer(1);
 }

@@ -9,13 +9,14 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 - [Patch] Update `isReadingColumn` prop on **Col** component to create a nested reading column ([#1285](https://github.com/optimizely/oui/pull/1285))
 - [Patch] Wait for all queries to be complete before showing result summary in **SearchPicker** ([#1284](https://github.com/optimizely/oui/pull/1284))
 - [Patch] Allow for an offset in **SearchPicker** children ([#1281](https://github.com/optimizely/oui/pull/1281))
+- [Feature] Update **DockedFooter** to use a `scrollRef` prop for activating listeners, and add ability to specify `leftGroup`, `rightGroup`, and `centerGroup` button row options ([#1276](https://github.com/optimizely/oui/pull/1276))
 
 ## 45.1.0 - 2020-01-24
 - [Feature] Add new **DragAndDrop** component using react-beautiful-dnd that allows for dynamic lists, interactive elements inside the draggable items, and keyboard accessibility ([#1261](https://github.com/optimizely/oui/pull/1261))
 - [Feature] Enable Typescript compilation and generate type definitions for JS and TSX components. ([#1268](https://github.com/optimizely/oui/pull/1268))
 
 ## 45.0.0 - 2020-01-22
-- [Release] Remove deprecated CodeDiffLegacy component in favor of CodeDiff ([#1277](https://github.com/optimizely/oui/pull/1277))
+- [Release] Remove deprecated CodeDiffLegacy component in favor of **CodeDiff** ([#1277](https://github.com/optimizely/oui/pull/1277))
 - [Patch] Undo parent prop inheritance on Activator in **Dropdown** ([#1278](https://github.com/optimizely/oui/pull/1278))
 
 ## 44.18.0 - 2020-01-16

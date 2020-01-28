@@ -15,31 +15,31 @@ describe('components/DockedFooter ', () => {
     function componentFooter() {
       return (
         <DockedFooter
-          testSection="docked-footer-less-content"
-          parentTestSection="helloTesting"
-          includesMargin={ false }>
-          {[
+          scrollRef={ 'scroll-ref' }
+          testSection={ 'test-footer' }
+          includesMargin={ true }
+          rightGroup={ [
             <Button style="plain" key={ 0 }>
-                Cancel
+              Cancel
             </Button>,
             <Button style="highlight" key={ 1 }>
-                Confirm
+              Confirm
             </Button>,
-          ]}
-        </DockedFooter>);
+          ] }></DockedFooter>
+      );
     }
 
     it('should render DockedFooter with testSection and parentTestSection', () => {
-      const component = mount(
-        <div data-test-section="helloTesting" className="overflow-y--hidden" >
-          <h2 className="push-double--top">Test</h2>
-          <p>Test content...</p>
-          {componentFooter()}
-        </div>, { attachTo: window.domNode }
+      const component = mount(componentFooter(), { attachTo: window.domNode }
       );
       expect(component.find('.oui-docked-footer').length).toBeGreaterThanOrEqual(1);
-      expect(component.find('[data-test-section="docked-footer-less-content"]').length).toBe(1);
-      expect(component.find('[data-test-section="helloTesting"]').length).toBe(1);
+      expect(
+        component.find('[data-test-section="test-footer"]')
+          .length
+      ).toBeGreaterThanOrEqual(1);
+      expect(
+        component.find('[scrollRef="scroll-ref"]').length
+      ).toBeGreaterThanOrEqual(1);
     });
 
     it('should not dock when isDocked is false', () => {
@@ -68,10 +68,10 @@ describe('components/DockedFooter ', () => {
         componentFooter(), { attachTo: window.domNode }
       );
       const instance = component.instance();
-      jest.spyOn(instance, 'onScroll');
-      expect(instance.onScroll).not.toHaveBeenCalled();
-      instance.onScroll();
-      expect(instance.onScroll).toHaveBeenCalled();
+      jest.spyOn(instance, 'setAtBottom');
+      expect(instance.setAtBottom).not.toHaveBeenCalled();
+      instance.setAtBottom();
+      expect(instance.setAtBottom).toHaveBeenCalled();
     });
   });
 });

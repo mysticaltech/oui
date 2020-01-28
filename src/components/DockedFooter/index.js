@@ -8,40 +8,89 @@ class DockedFooter extends React.Component {
     super(props);
     this.state = {
       isDocked: true,
+      listenersSet: false,
+      dockedFooterNode: null,
+      parentNode: null,
+      atBottom: true,
+      shouldDockByHeight: true,
     };
-    this.shouldDock = this.shouldDock.bind(this);
-    this.onScroll = this.onScroll.bind(this);
+    this.dockedFooterRef = React.createRef();
+    this.storeThisNode = this.storeThisNode.bind(this);
+    this.domNodesInState = this.domNodesInState.bind(this);
+    this.setShouldDockByHeight = this.setShouldDockByHeight.bind(this);
+    this.setAtBottom = this.setAtBottom.bind(this);
     this.setEventListeners = this.setEventListeners.bind(this);
     this.throttle = this.throttle.bind(this);
   }
 
   componentDidMount() {
-    this.shouldDock();
-    this.setEventListeners();
+    this.storeThisNode();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.footerToTop !== this.state.footerToTop) {
-      this.shouldDock();
-    } else if (prevState.viewableArea !== this.state.viewableArea) {
-      this.shouldDock();
+    if (this.props.scrollRef !== prevProps.scrollRef) {
+      this.setState({ parentNode: this.props.scrollRef });
+    }
+
+    if (this.state.parentNode !== prevState.parentNode) {
+      this.setShouldDockByHeight();
+      this.setAtBottom();
+    }
+
+    if (this.state.shouldDockByHeight !== prevState.shouldDockByHeight) {
+      this.setState({ isDocked: this.state.shouldDockByHeight});
+    }
+
+    if (this.state.atBottom !== prevState.atBottom) {
+      this.setState({ isDocked: !this.state.atBottom});
+    }
+
+    this.setEventListeners();
+  }
+
+  storeThisNode() {
+    if (this.dockedFooterRef.current !== null) {
+      this.setState({ dockedFooterNode: this.dockedFooterRef.current });
     }
   }
 
-  shouldDock() {
-    const parentElement = document.querySelector('[data-test-section="' + this.props.parentTestSection + '"]');
-    const footerElement = document.querySelector('[data-test-section="' + this.props.testSection + '"]')[0];
-    if (footerElement !== undefined && parentElement !== undefined) {
-      let shouldReDock = (footerElement.offsetTop) >= (parentElement.offsetHeight - footerElement.offsetHeight);
-      this.setState({shouldDock: shouldReDock});
-    }
-    this.onScroll();
+  domNodesInState() {
+    return !!this.state.dockedFooterNode && !!this.state.parentNode;
   }
 
-  onScroll() {
-    const parentElement = document.querySelector('[data-test-section="' + this.props.parentTestSection + '"]');
-    let atScrollBottom = parentElement.scrollHeight - parentElement.scrollTop === parentElement.clientHeight;
-    this.setState({isDocked: !atScrollBottom});
+  setEventListeners() {
+    if (!this.state.listenersSet && this.domNodesInState()) {
+      let scrollContainer = this.state.parentNode;
+      window.addEventListener(
+        'resize',
+        this.throttle(3, this.setShouldDockByHeight),
+        { passive: false },
+        { useCapture: true }
+      );
+      window.addEventListener(
+        'mousemove',
+        this.throttle(3, this.setShouldDockByHeight),
+        { passive: false },
+        { useCapture: true }
+      );
+      scrollContainer.addEventListener(
+        'scroll',
+        this.throttle(3, this.setAtBottom),
+        { passive: true }
+      );
+      scrollContainer.addEventListener(
+        'wheel',
+        this.throttle(3, this.setAtBottom),
+        { passive: true }
+      );
+      scrollContainer.addEventListener('click', this.setShouldDockByHeight, {
+        passive: true,
+      });
+      scrollContainer.addEventListener('keydown', this.setShouldDockByHeight, {
+        passive: true,
+      });
+      this.setState({ listenersSet: true });
+    }
   }
 
   throttle(delay, fn) {
@@ -56,43 +105,94 @@ class DockedFooter extends React.Component {
     };
   }
 
-  setEventListeners() {
-    const parentElement = document.querySelector('[data-test-section="' + this.props.parentTestSection + '"]');
-    window.addEventListener('resize', this.throttle(3, this.shouldDock));
-    parentElement.addEventListener('click', this.shouldDock);
-    parentElement.addEventListener('scroll', this.onScroll);
+  setShouldDockByHeight() {
+    if (this.domNodesInState()) {
+      const newState = {
+        shouldDockByHeight:
+      this.state.dockedFooterNode.offsetTop >=
+      this.state.parentNode.offsetHeight -
+        this.state.dockedFooterNode.offsetHeight,
+      };
+      this.setState(newState);
+    }
+    this.setAtBottom();
+  }
+
+  setAtBottom() {
+    if (this.domNodesInState()) {
+      let newState = {
+        atBottom: this.state.parentNode.scrollHeight - this.state.parentNode.scrollTop === this.state.parentNode.clientHeight,
+      };
+      this.setState(newState);
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.throttle(3, this.shouldDock));
+    window.removeEventListener(
+      'mousemove',
+      this.throttle(5, this.setShouldDockByHeight),
+      { passive: false },
+      { useCapture: true }
+    );
+    this.state.parentNode.removeEventListener(
+      'scroll',
+      this.throttle(3, this.setAtBottom),
+      { passive: true }
+    );
+    this.state.parentNode.removeEventListener('wheel', this.throttle(3, this.setAtBottom), {
+      passive: true,
+    });
+    this.state.parentNode.removeEventListener('click', this.shouldDock, {
+      passive: true,
+    });
+    this.state.parentNode.removeEventListener('keydown', this.shouldDock, {
+      passive: true,
+    });
   }
 
   render() {
     return (
-      <footer
+      <div
         data-test-section={ this.props.testSection }
+        ref={ this.dockedFooterRef }
         className={ classNames({
           'oui-docked-footer': true,
           'oui-docked-footer--is-docked': this.state.isDocked,
           'push-double--top': this.props.includesMargin,
         }) }>
         <ButtonRow
-          rightGroup={ this.props.children }
+          leftGroup={ this.props.leftGroup }
+          centerGroup={ this.props.centerGroup }
+          rightGroup={ this.props.rightGroup }
+          testSection={ this.props.testSection }
         />
-      </footer>
+      </div>
     );
   }
 }
 
 DockedFooter.propTypes = {
   /**
-   *  Button components to be included in the DockedFooter.
+   *  Any components to be included in the DockedFooter
    */
-  children: PropTypes.node,
+  centerGroup: PropTypes.arrayOf(PropTypes.element),
   /**
-  *  Used to determine if there should be top margin.
+   *  Used to determine if there should be top margin
    */
   includesMargin: PropTypes.bool,
   /**
-   * Identifier to check parent height and visible space for docked footer.
+   * Array of buttons for left side
    */
-  parentTestSection: PropTypes.string.isRequired,
+  leftGroup: PropTypes.arrayOf(PropTypes.element),
+  /**
+   * Array of buttons for right side
+   */
+  rightGroup: PropTypes.arrayOf(PropTypes.element),
+  /**
+   * Ref from parent element for DockedFooter to set listeners
+   */
+  scrollRef: PropTypes.node,
   /**
    * Identifier used to create data-test-section attributes for testing.
    */
@@ -100,9 +200,9 @@ DockedFooter.propTypes = {
 };
 
 DockedFooter.defaultProps = {
+  scrollRef: null,
   includesMargin: false,
   testSection: '',
-  parentTestSection: '',
 };
 
 export default DockedFooter;
