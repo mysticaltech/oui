@@ -7,6 +7,8 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 - [Patch] Update `isReadingColumn` prop on **Col** component to create a nested reading column ([#1285](https://github.com/optimizely/oui/pull/1285))
+- [Patch] Wait for all queries to be complete before showing result summary in **SearchPicker** ([#1284](https://github.com/optimizely/oui/pull/1284))
+- [Patch] Allow for an offset in **SearchPicker** children ([#1281](https://github.com/optimizely/oui/pull/1281))
 
 ## 45.1.0 - 2020-01-24
 - [Feature] Add new **DragAndDrop** component using react-beautiful-dnd that allows for dynamic lists, interactive elements inside the draggable items, and keyboard accessibility ([#1261](https://github.com/optimizely/oui/pull/1261))

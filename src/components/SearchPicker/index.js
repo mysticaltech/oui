@@ -200,7 +200,7 @@ class SearchPicker extends React.Component {
         query: query.toLowerCase(),
       })
         .then(resolve, reject);
-    }).then(r => r, e => { /** Swallow rejections */});
+    });
 
   /**
    * A debounced method to invoke the search and store the result in state.
@@ -219,7 +219,7 @@ class SearchPicker extends React.Component {
           results,
         });
       }
-    });
+    }, e => { /** Swallow rejections */});
   }, !!process.env.JEST_WORKER_ID ? 0 : INPUT_DEBOUNCE_PERIOD);
 
   /**
