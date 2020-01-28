@@ -237,7 +237,6 @@ describe('components/SelectDropdown', function() {
       it('should not display text and link', function() {
         component = mount(
           <SelectDropdown
-            isMultiSelect={ true }
             items={ [{label: 'label0', value: 'value0', description: 'description0', linkURL: '#'}].concat(items) }
             initialPlaceholder="Select a value..."
             onChange={ onChange }
@@ -252,7 +251,6 @@ describe('components/SelectDropdown', function() {
       it('should not display text and link', function() {
         component = mount(
           <SelectDropdown
-            isMultiSelect={ true }
             items={ [{label: 'label0', value: 'value0', description: 'description0', linkText: 'some link'}].concat(items) }
             initialPlaceholder="Select a value..."
             onChange={ onChange }
