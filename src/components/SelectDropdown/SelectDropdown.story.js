@@ -180,6 +180,16 @@ stories.add('Default', (() => {
       />
     </Container>
   );
+})).add('Items with linkText or linkURL', (() => {
+  return (
+    <Container>
+      <SelectDropdown
+        items={ [{label: 'Elephant', description: 'Very loud', value: 'elephant', linkText: 'I am a link, click me!', linkURL: 'https://www.google.com'}].concat(items) }
+        initialPlaceholder="Select a value..."
+        onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
 }));
 
 const Container = styled.div`

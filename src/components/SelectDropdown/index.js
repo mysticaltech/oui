@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import Button from '../Button';
 import Dropdown from '../Dropdown';
+import Link from '../Link';
 
 class SelectDropdown extends React.Component {
   static propTypes = {
@@ -49,6 +50,8 @@ class SelectDropdown extends React.Component {
         PropTypes.number,
         PropTypes.bool,
       ]).isRequired,
+      linkText: PropTypes.string,
+      linkURL: PropTypes.string,
     })).isRequired,
     /**
      * Max width of the activator container.
@@ -175,6 +178,16 @@ class SelectDropdown extends React.Component {
                 </div>
               )}
             </Dropdown.BlockLink>
+            { entry.linkText && entry.linkURL && (
+              <div className="micro muted">
+                <Link title={ entry.linkText }
+                      onClick={ (e) => e.stopPropagation() }
+                      newWindow={true}
+                      href={entry.linkURL}>
+                  { entry.linkText}
+                </Link>
+              </div>
+            )}
           </Dropdown.ListItem>
         ))}
       </Dropdown.Contents>
