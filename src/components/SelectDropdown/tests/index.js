@@ -210,7 +210,13 @@ describe('components/SelectDropdown', function() {
         component = mount(
           <SelectDropdown
             isMultiSelect={ true }
-            items={ [{label: 'label0', value: 'value0', description: 'description0', linkURL: '#', linkText: 'some link'}].concat(items) }
+            items={ [{
+              label: 'label0',
+              value: 'value0',
+              description: 'description0',
+              linkURL: '#',
+              linkText: 'some link',
+            }].concat(items) }
             initialPlaceholder="Select a value..."
             onChange={ onChange }
           />);
@@ -227,7 +233,7 @@ describe('components/SelectDropdown', function() {
       it('should not close the dropdown if clicked', function() {
         const link = component.find('DropdownListItem').at(0).find('Link');
         link.simulate('click'); // clicking on the link shouldn't close the dropdown
-        // this signals that the dropdown contents box doesn't close even when the link is clicked on
+        // check that the dropdown contents box doesn't close on link click
         const dropdownContents = component.find('DropdownContents');
         expect(dropdownContents.length).toBe(1);
       });
@@ -237,7 +243,12 @@ describe('components/SelectDropdown', function() {
       it('should not display text and link', function() {
         component = mount(
           <SelectDropdown
-            items={ [{label: 'label0', value: 'value0', description: 'description0', linkURL: '#'}].concat(items) }
+            items={ [{
+              label: 'label0',
+              value: 'value0',
+              description: 'description0',
+              linkURL: '#',
+            }].concat(items) }
             initialPlaceholder="Select a value..."
             onChange={ onChange }
           />);
@@ -251,7 +262,12 @@ describe('components/SelectDropdown', function() {
       it('should not display text and link', function() {
         component = mount(
           <SelectDropdown
-            items={ [{label: 'label0', value: 'value0', description: 'description0', linkText: 'some link'}].concat(items) }
+            items={ [{
+              label: 'label0',
+              value: 'value0',
+              description: 'description0',
+              linkText: 'some link',
+            }].concat(items) }
             initialPlaceholder="Select a value..."
             onChange={ onChange }
           />);

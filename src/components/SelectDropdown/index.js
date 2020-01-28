@@ -157,6 +157,10 @@ class SelectDropdown extends React.Component {
     );
   };
 
+  handleLinkClick = (e) => {
+    e.stopPropagation();
+  };
+
   renderContents = () => {
     const { isMultiSelect, items, onChange, value, minDropdownWidth, dropdownDirection } = this.props;
 
@@ -182,7 +186,7 @@ class SelectDropdown extends React.Component {
               <div className="micro muted">
                 <Link
                   title={ entry.linkText }
-                  onClick={ (e) => e.stopPropagation() }
+                  onClick={ this.handleLinkClick }
                   newWindow={ true }
                   href={ entry.linkURL }>
                   { entry.linkText}
