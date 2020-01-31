@@ -184,7 +184,7 @@ stories.add('Default', (() => {
   return (
     <Container>
       <SelectDropdown
-        items={ [{label: 'Elephant', description: 'Very loud', value: 'elephant', linkText: 'I am a link, click me!', linkURL: 'https://www.google.com'}].concat(items) }
+        items={ [{label: 'Elephant', description: 'Very loud', value: 'elephant', linkText: 'I am a link, click me!', linkURL: 'https://www.google.com', linkNewWindow: true}].concat(items) }
         initialPlaceholder="Select a value..."
         onChange={ action('SelectDropdown value changed') }
       />

@@ -50,6 +50,7 @@ class SelectDropdown extends React.Component {
         PropTypes.number,
         PropTypes.bool,
       ]).isRequired,
+      linkNewWindow: PropTypes.bool,
       linkText: PropTypes.string,
       linkURL: PropTypes.string,
     })).isRequired,
@@ -187,7 +188,7 @@ class SelectDropdown extends React.Component {
                 <Link
                   title={ entry.linkText }
                   onClick={ this.handleLinkClick }
-                  newWindow={ true }
+                  newWindow={ entry.linkNewWindow }
                   href={ entry.linkURL }>
                   { entry.linkText}
                 </Link>
