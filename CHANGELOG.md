@@ -7,7 +7,7 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 
-## 45.3.0 - 2020-01-30
+## 45.2.1 - 2020-01-30
 - [Patch] Add `linkURL` and `linkText` to items on **SelectDropdown** component to allow optional links ([#1286](https://github.com/optimizely/oui/pull/1286))
 
 ## 45.2.0 - 2020-01-28
