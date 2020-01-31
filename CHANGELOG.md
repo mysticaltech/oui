@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Patch] Add `linkURL` and `linkText` to items on **SelectDropdown** component to allow optional links ([#1286](https://github.com/optimizely/oui/pull/1286))
 
 ## 45.2.0 - 2020-01-28
 - [Patch] Update `isReadingColumn` prop on **Col** component to create a nested reading column ([#1285](https://github.com/optimizely/oui/pull/1285))
