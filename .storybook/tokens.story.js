@@ -5,7 +5,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import Code from "../src/components/Code";
 import designTokens from "../src/tokens/src/color.json";
 
-const stories = storiesOf("Design Tokens/", module);
+const stories = storiesOf("Design Tokens", module);
 stories.addDecorator(story => <div id="root-preview">{story()}</div>);
 
 stories.add("Overview", () => {

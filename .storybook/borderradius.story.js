@@ -12,7 +12,7 @@ import SelectDropdown from '../src/components/SelectDropdown';
 import Token from '../src/components/Token';
 import Textarea from '../src/components/Textarea';
 
-const stories = storiesOf('Overview/', module);
+const stories = storiesOf('Overview', module);
 stories
   .addDecorator(story => (
     <div id="root-preview" className="reading-column">

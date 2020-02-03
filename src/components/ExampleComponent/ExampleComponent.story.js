@@ -50,7 +50,7 @@ Every component should contain a README, prop definitions, and a robust set of S
 `,
 };
 
-storiesOf('Overview/', module)
+storiesOf('Overview', module)
   .addDecorator(withKnobs)
   .addDecorator(withInfo(infoAddonConfig))
   .addDecorator(story => (

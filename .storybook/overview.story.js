@@ -47,7 +47,7 @@ const items = [
   },
 ];
 
-const stories = storiesOf('Overview/', module);
+const stories = storiesOf('Overview', module);
 stories
   .addDecorator(story => (
     <div id="root-preview" className="reading-column">
