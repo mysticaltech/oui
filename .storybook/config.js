@@ -40,6 +40,7 @@ storybook.configure(loadStories, module);
 storybook.addParameters(options);
 storybook.addDecorator(withA11y);
 storybook.addDecorator( withInfo({
+  source: false,
   maxPropsIntoLine: 1,
   maxPropObjectKeys: 10,
   maxPropArrayLength: 20,
