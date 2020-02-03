@@ -2,8 +2,6 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
-
 import Code from '../Code';
 
 const langOptions = {
@@ -45,7 +43,7 @@ stories
       </Code>
     );
   }))
-  .add('With styled copy button', withInfo()(() => {
+  .add('With styled copy button', (() => {
     return (
       <Code
         copyButtonStyle="none"

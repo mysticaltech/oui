@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, number, select } from '@storybook/addon-knobs';
+import noop from 'lodash.noop';
 
 import Col from './Col';
 import Row from './Row';
@@ -314,20 +315,23 @@ stories
         pushRowsTop={ boolean('pushRowsTop', false) }
         pullRowPadding={ boolean('pullRowPadding', false) }
         paddedContent={ select('paddedContent', paddingOptions, 'around') }
-        removeGutters={ boolean('Row removeGutters', false) }
         fluid={ boolean('fluid', true) }>
         <Row
           removeGutters={ boolean('Row removeGutters', false) }
           border={ 'ends' }
           paddedContent={ 'ends' }>
           <Col paddedContent={ 'around' }>
-            <h2 className="push-half--bottom">Some Title</h2>
-            Col with border sides
+            <div>
+              <h2 className="push--bottom">Some Title</h2>
+              <p>Col with border sides</p>
+            </div>
           </Col>
           <Col paddedContent={ 'around' } border={ 'left' }>
-            <h2 className="push-half--bottom">A Longer Page Title</h2>
-            Col with border sides and long-ish content that will definitely run
-            to multiple lines.
+            <div>
+              <h2 className="push--bottom">A Longer Page Title</h2>
+              <p>Col with border sides and long-ish content that will definitely run
+              to multiple lines.</p>
+            </div>
           </Col>
           <Col paddedContent={ 'around' } border={ 'left' }>
             Col with border sides
@@ -445,7 +449,7 @@ stories
             <Row verticalAlignment={ 'center' }>
               <Col small={ 'auto' }>URL</Col>
               <Col small={ 'fitContent' }>
-                <SelectDropdown items={ items } value={ 'does' } />
+                <SelectDropdown items={ items } onChange={ noop } value={ 'does' } />
               </Col>
               <Col small={ 'auto' }>
                 these <strong>URLs</strong>:
@@ -458,6 +462,7 @@ stories
               <Col small={ 'fitContent' }>
                 <SelectDropdown
                   items={ items }
+                  onChange={ noop }
                   value={ 'simple' }
                   width={ '200px' }
                 />
@@ -485,11 +490,12 @@ stories
             </Row>
             <Row>
               <Col small={ 'fillSpace' }>
-                <Input id="input-01" type="text" />
+                <Input id="input-02" type="text" />
               </Col>
               <Col small={ 'fitContent' }>
                 <SelectDropdown
                   items={ items }
+                  onChange={ noop }
                   value={ 'simple' }
                   width={ '200px' }
                 />
@@ -670,16 +676,10 @@ stories
             </p>
             {/* eslint-enable max-len */}
             <h6>Try it for yourself</h6>
-            <Code>
-              var enabled = optimizely.isFeatureEnabled(”chat_window”, userId);
-              if(enabled){' '}
-              {
-                // Feature is enabled
-              }{' '}
-              else{' '}
-              {
-                // Feature is disabled
-              }
+            <Code type="block">
+              {'var enabled = optimizely.isFeatureEnabled(”chat_window”, userId);' +
+              '\nif(enabled)\n{\n  // Feature is enabled\n}' +
+              '\nelse {\n  // Feature is disabled\n}'}
             </Code>
             <Row>
               <Col large={ 6 }>

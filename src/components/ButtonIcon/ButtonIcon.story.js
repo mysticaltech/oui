@@ -22,7 +22,7 @@ stories
   .add('Default', () => {
     return (
       <Row style={{background: `${smokeLight}`}} displayVertical={ true }>
-        <Col small="auto">
+        <Col small="fillSpace" paddedContent={ 'around' }>
           <ButtonIcon
             iconName="arrow-left"
             isDisabled={ boolean('isDisabled', false) }
@@ -40,7 +40,7 @@ stories
           />
           <span className="push--left">Default (no style prop applied)</span>
         </Col>
-        <Col small="auto">
+        <Col small="fillSpace" paddedContent={ 'around' }>
           <ButtonIcon
             iconName="arrow-right"
             isDisabled={ boolean('isDisabled', false) }
@@ -59,7 +59,7 @@ stories
           />
           <span className="push--left">Highlight</span>
         </Col>
-        <Col small="auto">
+        <Col small="fillSpace" paddedContent={ 'around' }>
           <ButtonIcon
             iconName="close"
             isDisabled={ boolean('isDisabled', false) }
@@ -78,7 +78,7 @@ stories
           />
           <span className="push--left">Outline</span>
         </Col>
-        <Col small="auto">
+        <Col small="fillSpace" paddedContent={ 'around' }>
           <ButtonIcon
             iconName="add"
             isDisabled={ boolean('isDisabled', false) }
@@ -97,7 +97,7 @@ stories
           />
           <span className="push--left">Danger</span>
         </Col>
-        <Col small="auto">
+        <Col small="fillSpace" paddedContent={ 'around' }>
           <ButtonIcon
             iconName="minus"
             isDisabled={ boolean('isDisabled', false) }
@@ -116,7 +116,7 @@ stories
           />
           <span className="push--left">Danger-outline</span>
         </Col>
-        <Col small="auto">
+        <Col small="fillSpace" paddedContent={ 'around' }>
           <ButtonIcon
             iconName="ellipsis"
             isDisabled={ boolean('isDisabled', false) }
