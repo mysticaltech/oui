@@ -48,7 +48,8 @@ stories
     <div id="root-preview" className="reading-column">
       {story()}
     </div>
-  ));
+  ))
+  .addParameters({ chromatic: { disable: true } });
 
 stories
 .add('Stats', () => {
