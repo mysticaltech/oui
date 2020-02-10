@@ -2,12 +2,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import mockDate from 'mockdate';
+
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import DatePicker from './DatePicker.js';
 import Input from '../Input';
+
+mockDate.set(moment('2019-12-15'));
 
 const stories = storiesOf('DatePicker', module);
 stories
