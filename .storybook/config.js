@@ -1,6 +1,8 @@
 import * as storybook from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
+import moment from 'moment';
+import mockDate from 'mockdate';
 
 require('../dist/styles.js');
 require('../src/oui/oui.scss');
@@ -35,6 +37,8 @@ function loadStories() {
   req.keys().forEach(req);
   require('./AppFrame.story.js');
 }
+const currYear = moment().get('year');
+mockDate.set(moment(`${currYear}-1-15`));
 
 storybook.configure(loadStories, module);
 storybook.addParameters(options);
@@ -47,3 +51,4 @@ storybook.addDecorator( withInfo({
   maxPropStringLength: 200,})
 );
 storybook.addParameters(a11y);
+
