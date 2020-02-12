@@ -47,7 +47,7 @@ const items = [
   },
 ];
 
-const stories = storiesOf('Overview/', module);
+const stories = storiesOf('Overview', module);
 stories
   .addDecorator(story => (
     <div id="root-preview" className="reading-column">
@@ -117,7 +117,7 @@ stories
         <Button key="3" style="danger">Danger</Button>
         <Button key="4" style="danger-outline">Danger Outline</Button>
         <Button key="5" style="outline">Outline</Button>
-        <Button style="highlight" onClick={''} isLoading loadingText="Loading...">
+        <Button style="highlight" onClick={() => {}} isLoading loadingText="Loading...">
           Create Campaign
         </Button>
         <Button key="6" style="plain">Plain</Button>
@@ -128,14 +128,14 @@ stories
         <ButtonIcon
           iconName="arrow-left"
           isDisabled={false}
-          onClick={''}
+          onClick={() => {}}
           title="Previous"
           size="small"
         />
         <ButtonIcon
           iconName="arrow-right"
           isDisabled={false}
-          onClick={''}
+          onClick={() => {}}
           size="small"
           style="highlight"
           title="Next"
@@ -143,14 +143,14 @@ stories
         <ButtonIcon
           iconName="close"
           isDisabled={false}
-          onClick={''}
+          onClick={() => {}}
           size="small"
           style="outline"
           title="Close Dialog"
         />
         <ButtonIcon
           isDisabled={false}
-          onClick={''}
+          onClick={() => {}}
           size="small"
           style="danger"
           title="Add row"
@@ -158,7 +158,7 @@ stories
         <ButtonIcon
           iconName="minus"
           isDisabled={false}
-          onClick={''}
+          onClick={() => {}}
           size="small"
           style="danger-outline"
           title="delete row"
@@ -166,7 +166,7 @@ stories
         <ButtonIcon
           iconName="ellipsis"
           isDisabled={false}
-          onClick={''}
+          onClick={() => {}}
           size="small"
           style="plain"
           title="More options"
@@ -234,7 +234,7 @@ stories
 
       <div className="push--ends">
         <TokensInput
-          onChange={ '' }
+          onChange={ () => {} }
           tokens={ SAMPLE_DATA_WITH_SPACES }
           extraAddKeys={ [' ', '_', ';', '|', '.'] }
         />
@@ -286,7 +286,7 @@ stories
         <Steps
           items={ items }
           currentStep={ 'bear' }
-          onClick={''}
+          onClick={ () => {} }
         />
       </div>
 

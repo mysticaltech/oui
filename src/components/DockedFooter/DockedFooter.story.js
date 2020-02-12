@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { storiesOf } from '@storybook/react';
 import noop from 'lodash.noop';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 
 import DockedFooter from './index.js';
@@ -82,8 +81,7 @@ stories
 
 stories
   .add(
-    'With Less Content',
-    withInfo()(() => (
+    'With Less Content', (() => (
       <ScrollContainer >
         <h2 className="push-double--top">Test</h2>
         <p>If the content doesn't overflow the container, the footer has no shadow</p>
@@ -91,8 +89,7 @@ stories
     ))
   )
   .add(
-    'With More Content',
-    withInfo()(() => (
+    'With More Content', (() => (
       <ScrollContainer>
         <div>
           <h2 className="push-double--top">Test</h2>
@@ -143,8 +140,7 @@ stories
       </ScrollContainer>
     ))
   ).add(
-    'With Different Button Row Content',
-    withInfo()(() => (
+    'With Different Button Row Content', (() => (
       <ScrollContainer hasCenterGroup={ true }>
         <div>
           <h2 className="push-double--top">Test</h2>
