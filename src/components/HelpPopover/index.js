@@ -27,7 +27,6 @@ const HelpPopover = ({
     verticalAttachment={ verticalAttachment }>
     <span
       className="cursor--pointer push-half--left"
-      style={{'marginBottom': '1px'}}
       data-test-section="help-popover-icon">
       <Icon
         name="help"
