@@ -8,6 +8,8 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 ## Unreleased
 - [Patch] If `SelectDropdown` is `fullWidth`, set `Dropdown` width to 100% ([#1295](https://github.com/optimizely/oui/pull/1295))
 
+- [Patch] **Code** no longer wraps child text unless a newline is present in the source ([#1294](https://github.com/optimizely/oui/pull/1294))
+
 ## 45.2.1 - 2020-01-30
 - [Patch] Add `linkURL` and `linkText` to items on **SelectDropdown** component to allow optional links ([#1286](https://github.com/optimizely/oui/pull/1286))
 
