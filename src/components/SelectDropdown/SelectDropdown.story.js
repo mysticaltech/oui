@@ -194,17 +194,6 @@ stories.add('Default', (() => {
       />
     </Container>
   );
-})).add('fullWidth select dropdowns', (() => {
-  return (
-    <Container>
-      <SelectDropdown
-        items={ items }
-        fullWidth={ true }
-        initialPlaceholder="Select a value..."
-        onChange={ action('SelectDropdown value changed') }
-      />
-    </Container>
-  );
 })).add('Items with linkText or linkURL', (() => {
   return (
     <Container>
