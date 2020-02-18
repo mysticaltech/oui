@@ -2255,7 +2255,7 @@ code {
 .pre,
 .oui-pre {
   margin-bottom: 10px;
-  white-space: pre-wrap; }
+  white-space: pre; }
   .pre code,
   .oui-pre code {
     padding: 10px;
@@ -4397,7 +4397,7 @@ code {
 .pre,
 .oui-pre {
   margin-bottom: 10px;
-  white-space: pre-wrap; }
+  white-space: pre; }
   .pre code,
   .oui-pre code {
     padding: 10px;
