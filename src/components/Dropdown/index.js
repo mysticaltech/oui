@@ -181,7 +181,7 @@ class Dropdown extends React.Component {
                   style={{
                     zIndex: zIndex,
                     position: 'absolute',
-                    width: width,
+                    width: fullWidth ? '100%' : width,
                     marginTop: 2,
                     marginBottom: 2,
                     borderRadius: 'var(--border-radius)',

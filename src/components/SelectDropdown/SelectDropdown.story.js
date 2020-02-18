@@ -76,7 +76,7 @@ stories.add('Default', (() => {
       />
     </Container>
   );
-})).add('Full Width Activator', (() => {
+})).add('Full Width Activator with Full Width items', (() => {
   return (
     <Container>
       <div style={{'width': '400px', 'border': '1px solid', 'height': '100px' }}>
@@ -85,6 +85,20 @@ stories.add('Default', (() => {
           value={ 'dog' }
           onChange={ action('SelectDropdown value changed') }
           fullWidth={ true }
+        />
+      </div>
+    </Container>
+  );
+})).add('Full Width Activator with items with a different min width', (() => {
+  return (
+    <Container>
+      <div style={{'width': '400px', 'border': '1px solid', 'height': '100px' }}>
+        <SelectDropdown
+          items={ items }
+          value={ 'dog' }
+          onChange={ action('SelectDropdown value changed') }
+          fullWidth={ true }
+          minDropdownWidth={ 500 }
         />
       </div>
     </Container>
@@ -176,6 +190,17 @@ stories.add('Default', (() => {
         items={ items }
         initialPlaceholder="Select a value..."
         minDropdownWidth={ '400px ' }
+        onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
+})).add('fullWidth select dropdowns', (() => {
+  return (
+    <Container>
+      <SelectDropdown
+        items={ items }
+        fullWidth={ true }
+        initialPlaceholder="Select a value..."
         onChange={ action('SelectDropdown value changed') }
       />
     </Container>
