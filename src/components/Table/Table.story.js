@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import {
   withKnobs,
   select,
+  text,
 } from '@storybook/addon-knobs';
 
 import Table from './index.js';
@@ -16,7 +17,7 @@ stories
     <div id="root-preview">
       {story()}
     </div>
-  ));
+  ))
 
 stories
   .add('Default', (() => (<div>
@@ -30,7 +31,12 @@ stories
       tableLayoutAlgorithm="fixed">
       <Table.THead>
         <Table.TR>
-          <Table.TH> Experiment </Table.TH>
+          <Table.TH
+            maxWidth={text('First column maxWidth')}
+            minWidth={text('First column minWidth')}
+            width={text('First column width')}>
+            Experiment
+          </Table.TH>
           <Table.TH> Conversion Rate </Table.TH>
           <Table.TH> Status </Table.TH>
         </Table.TR>

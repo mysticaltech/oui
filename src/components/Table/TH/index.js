@@ -7,8 +7,10 @@ const TH = ({
   colSpan,
   isCollapsed,
   isNumerical,
-  testSection,
+  maxWidth,
+  minWidth,
   width,
+  testSection,
 }) => {
   let classes = classNames({
     'oui-numerical': isNumerical,
@@ -16,7 +18,9 @@ const TH = ({
   });
 
   const styles = {
-    width: width,
+    maxWidth,
+    minWidth,
+    width,
   };
 
   return (
