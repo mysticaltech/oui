@@ -18,10 +18,9 @@ stories.add('Special: App Frame', (() => {
     <Container
       outlineDebug={ boolean('outlineDebug', true) }
       pushRowsTop={ boolean('pushRowsTop', true) }
-      paddedContent={ boolean('paddedContent', false) }
-      pushColsSides={ boolean('pushColsSides', false) }
+      paddedContent={ text('paddedContent', 'none') }
       fluid={ boolean('fluid', true) }>
-      <Row gutters={ boolean('gutters', false) } shouldWrap={ false }>
+      <Row removeGutters={ boolean('gutters', false) } shouldWrap={ false }>
         <Col small={ 'fitContent' }>
           <NavBar
             isOpen={ true }
@@ -119,7 +118,8 @@ stories.add('Special: App Frame', (() => {
         <Col small={ 'fitContent' }>
               <div style={{width: '285px'}}>Tabs/Header</div>
             </Col>
-            <Col small={ 'fillSpace' } isReadingColumn={ true }>Stage
+            <Col small={ 'fillSpace' } isReadingColumn={ true }>
+              <div>Stage</div>
             </Col>
       </Row>
     </Container>

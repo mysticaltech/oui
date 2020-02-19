@@ -40,7 +40,7 @@ TD.propTypes = {
   /** Hook for automated JavaScript tests */
   testSection: PropTypes.string,
   /** Apply a class that vertically aligns the cells within the children */
-  verticalAlign: PropTypes.oneOf(['top', 'middle']),
+  verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
   /** A number with a unit that becomes the width of the `Table` cell */
   width: PropTypes.string,
 };

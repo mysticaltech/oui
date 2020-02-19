@@ -42,7 +42,7 @@ const searchSelectors = function(e) {
   console.log(this);
 }
 
-const stories = storiesOf('CSS Analytics/', module);
+const stories = storiesOf('CSS Analytics', module);
 stories
   .addDecorator(story => (
     <div id="root-preview" className="reading-column">

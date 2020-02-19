@@ -74,7 +74,7 @@ stories.add('Everything', () => {
 stories.add('Knobs', (() => {
   return (
     <Icon
-      name={ select('name', {bell: 'bell', medium: 'medium', large: 'large'}, 'bell') }
+      name={ select('name', {bell: 'bell', ban: 'ban', calendar: 'calendar'}, 'bell') }
       fill={ text('color', 'black') }
       size={ select('size', {small: 'small', medium: 'medium', large: 'large'}, 'medium') }
     />

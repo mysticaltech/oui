@@ -2,6 +2,7 @@ export { default as Autocomplete } from './components/Autocomplete';
 export { default as Accordion } from './components/Accordion';
 export { default as ArrowsInline } from './components/ArrowsInline';
 export { default as Attention } from './components/Attention';
+export { default as Avatar } from './components/Avatar';
 export { default as Badge } from './components/Badge';
 export { default as BlockList } from './components/BlockList';
 export { default as Button } from './components/Button';

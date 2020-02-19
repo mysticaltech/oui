@@ -22,11 +22,6 @@ exports[`components/HelpPopover renders correctly 1`] = `
   <span
     className="cursor--pointer push-half--left"
     data-test-section="help-popover-icon"
-    style={
-      Object {
-        "marginBottom": "1px",
-      }
-    }
   >
     <Icon
       name="help"

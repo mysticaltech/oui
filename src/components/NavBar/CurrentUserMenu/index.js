@@ -14,6 +14,7 @@ import Popover from '../../Popover';
 import Button from '../../Button';
 
 import AccountSwitcher from './AccountSwitcher';
+import Avatar from '../../Avatar';
 
 class CurrentUserMenu extends React.Component {
   static propTypes = {
@@ -127,14 +128,13 @@ class CurrentUserMenu extends React.Component {
     } = this.props;
     const shouldShowAccountList = accountSwitcherItems.length > 1;
 
-    const profilePicClassNames = classNames('avatar', 'avatar--small', 'flex--none', { 'color-admin--border': showEmulate });
-    const profilePicInlineStyles = profileAvatarUrl ? { backgroundImage: `url(${profileAvatarUrl})` } : {};
     return ([
-      <div
-        className={ profilePicClassNames }
-        data-test-section="profile-pic-wrapper-nav-open"
+      <Avatar
         key="profile-pic-wrapper"
-        style={ profilePicInlineStyles }
+        isEmulating={ showEmulate }
+        testSection="profile-pic-wrapper-nav-open"
+        size="small"
+        imageUrl={ profileAvatarUrl }
       />,
       <ul
         className="push--left flex--1"
@@ -186,9 +186,7 @@ class CurrentUserMenu extends React.Component {
       showEmulate,
       accountSwitcherHandler,
     } = this.props;
-    const profilePicClassNames = classNames('avatar', 'avatar--small', { 'color-admin--border': showEmulate });
 
-    const profilePicInlineStyles = profileAvatarUrl ? { backgroundImage: `url(${profileAvatarUrl})` } : {};
     return (
       <OverlayWrapper
         horizontalAttachment="left"
@@ -213,12 +211,12 @@ class CurrentUserMenu extends React.Component {
             </ul>
           </Popover>
         ) }>
-        <div data-test-section="profile-pic-wrapper-nav-close">
-          <div
-            className={ profilePicClassNames }
-            style={ profilePicInlineStyles }
-          />
-        </div>
+        <Avatar
+          imageUrl={ profileAvatarUrl }
+          isEmulating={ showEmulate }
+          size="small"
+          testSection="profile-pic-wrapper-nav-close"
+        />
       </OverlayWrapper>
     );
   };

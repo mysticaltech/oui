@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import HelpPopover from './index.js';
+import Row from '../Layout/Row';
 
 const stories = storiesOf('HelpPopover', module);
 stories
@@ -30,4 +31,16 @@ stories
        You hovered! 🤓
       </HelpPopover>
     </div>
+  </div>)))
+  .add('Inline with Text', (() => (<div>
+    <Row verticalAlignment="center">
+      <p>This is great some information</p>
+      <HelpPopover
+        popoverTitle="This is a popover title"
+        behavior="hover"
+        horizontalAttachment="left"
+        verticalAttachment="middle">
+       You hovered! 🤓
+      </HelpPopover>
+    </Row>
   </div>)));

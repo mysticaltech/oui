@@ -95,8 +95,7 @@ const ToolbarLink = (props, context) => (
       ['link--disabled']: props.isDisabled,
       'pointer-events--none': props.isDisabled,
     }) }
-    isDisabled={ props.isDisabled }
-    testSection={ props.testSection }
+    data-test-section={ props.testSection }
     href={ props.href }>
     { ToolbarButtonContents(props) }
   </a>

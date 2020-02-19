@@ -2,8 +2,6 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
-
 import Code from '../Code';
 
 const langOptions = {
@@ -31,13 +29,21 @@ stories
     <div id="root-preview">
       {story()}
     </div>
-  ));
+  ))
+  .addParameters({
+    knobs: {
+      // Allows users to paste JSX into the text knobs (e.g. `<MyComponent>`)
+      // w/o it getting rewritten as `&lt;MyComponent&gt`;
+      escapeHTML: false,
+    },
+  });
 
 stories
   .add('Default', (() => {
     return (
       <Code
         hasCopyButton={ boolean('hasCopyButton', true) }
+        isHighlighted={ boolean('isHighlighted', true) }
         testSection='my-code-box'
         type={ select('type', {inline: 'inline', block: 'block'}, 'block') }
         language={ select('language', langOptions, 'js') }>
@@ -45,11 +51,12 @@ stories
       </Code>
     );
   }))
-  .add('With styled copy button', withInfo()(() => {
+  .add('With styled copy button', (() => {
     return (
       <Code
         copyButtonStyle="none"
         hasCopyButton={ boolean('hasCopyButton', true) }
+        isHighlighted={ true }
         testSection='my-code-box'
         type={ select('type', {inline: 'inline', block: 'block'}, 'block') }
         language={ select('language', langOptions, 'js') }>
