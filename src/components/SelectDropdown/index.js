@@ -21,7 +21,7 @@ class SelectDropdown extends React.Component {
      */
     dropdownDirection: PropTypes.oneOf(['right', 'left']),
     /**
-     * Should activator be full width of container
+     * Should activator and dropdown be full width of container
      */
     fullWidth: PropTypes.bool,
     /**

@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Patch] If `SelectDropdown` is `fullWidth`, set `Dropdown` width to 100% ([#1295](https://github.com/optimizely/oui/pull/1295))
 - [Feature] Add new **Avatar** component to use in NavBar and elsewhere ([#1291](https://github.com/optimizely/oui/pull/1291))
 
 - [Patch] **Code** no longer wraps child text unless a newline is present in the source ([#1294](https://github.com/optimizely/oui/pull/1294))
