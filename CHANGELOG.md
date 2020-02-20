@@ -7,6 +7,9 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 
 ## Unreleased
 
+## 45.3.1 - 2020-02-19
+- [Patch] Update travis.yml to resolve npm deploy failures
+
 ## 45.3.0 - 2020-02-19
 - [Patch] If `SelectDropdown` is `fullWidth`, set `Dropdown` width to 100% ([#1295](https://github.com/optimizely/oui/pull/1295))
 - [Feature] Add new **Avatar** component to use in NavBar and elsewhere ([#1291](https://github.com/optimizely/oui/pull/1291))
