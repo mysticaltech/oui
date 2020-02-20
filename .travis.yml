@@ -15,6 +15,7 @@ before_deploy:
 - PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
 deploy:
 - provider: npm
+  edge: true
   skip_cleanup: true
   api_key:
     secure: ZP5NyAOstUcvmQEaAjJ9TRr+7GqiuK3iKBScADkVgetVhgBRaRy0O5x1OrRyy2i2p9Z2NnzIXe4jjDqueZ4lrpmBWgkfSFdVn1zYTgmc5g8yMP5HUIPHhQMj2DZ81VXCWLS2cdPyYspcIm1nFtzXQn6T0H8lH0hzWebXP2/cHrI=
