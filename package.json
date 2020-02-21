@@ -73,7 +73,7 @@
     "babel-plugin-react-docgen": "^2.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-typescript-to-proptypes": "^1.1.0",
-    "codecov": "^1.0.1",
+    "codecov": "^3.6.5",
     "css-loader": "^0.25.0",
     "csswhat": "optimizely/csswhat",
     "del": "^2.2.2",
