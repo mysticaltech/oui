@@ -176,20 +176,35 @@
     }
   }
 
-  &--plain,
-  &--underline {
+  &--plain {
     color: map-fetch($button, type, plain, color);
     border-color: transparent;
     background-color: transparent;
     box-shadow: none;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: map-fetch($button, type, plain, hover, color);
+      border: 1px solid var(--light-blue-25);
     }
 
-    &:active {
-      color: map-fetch($button, type, plain, active, color);
+    &:active,
+    &.is-active:hover,
+    &.is-active:focus {
+      color: map-fetch($button, type, base, active, color);
     }
+
+  }
+
+  &--underline {
+    border-radius: 0 !important;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid map-fetch($button, type, underline, border);
+    color: map-fetch($button, type, base, color);
+    padding-left: spacer(0.5);
+    padding-right: spacer(0.5);
 
     &:visited,
     &:hover,
@@ -199,39 +214,6 @@
       background-color: transparent;
       box-shadow: none;
     }
-  }
-
-  &--underline {
-    border-radius: 0 !important;
-  }
-
-  &--plain {
-    &:focus {
-      border: 1px solid var(--light-blue-25);
-    }
-  }
-
-  &--toggle {
-    &:hover {
-      color: map-fetch($button, type, base, color);
-    }
-
-    &:active,
-    &.is-active:hover {
-      color: map-fetch($button, type, base, active, color);
-    }
-
-    &:not(:hover):not(:active):not(.is-active) {
-      border-color: transparent;
-      background-color: transparent;
-    }
-  }
-
-  &--underline {
-    border-bottom: 2px solid map-fetch($button, type, underline, border);
-    color: map-fetch($button, type, base, color);
-    padding-left: spacer(0.5);
-    padding-right: spacer(0.5);
 
     &:hover {
       border-bottom-width: 2px;
@@ -257,6 +239,22 @@
       & .oui-arrow-inline--down {
         color: map-fetch($button, type, underline, active, arrow-color);
       }
+    }
+  }
+
+  &--toggle {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover, &:focus {
+      color: map-fetch($button, type, base, color);
+      border-color: map-fetch($button, type, base, border);
+    }
+
+    &:active,
+    &.is-active:hover,
+    &.is-active:focus {
+      color: map-fetch($button, type, base, active, color);
     }
   }
 
@@ -358,6 +356,12 @@
     &.#{$namespace}button--outline-reverse,
     &.oui-button--outline-reverse {
       background-color: transparent;
+    }
+
+    &.oui-button--underline {
+      background-color: transparent;
+      border-color: transparent;
+      border-bottom: 2px solid map-fetch($button, type, disabled, border);
     }
   }
 

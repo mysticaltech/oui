@@ -1980,29 +1980,30 @@ blockquote {
     box-shadow: none; }
     
     .button--plain:hover,
+    .button--plain:focus,
     .button--underline:hover,
+    .button--underline:focus,
     .oui-button--plain:hover,
-    .oui-button--underline:hover {
-      color: #4069FF; }
+    .oui-button--plain:focus,
+    .oui-button--underline:hover,
+    .oui-button--underline:focus {
+      color: #4069FF;
+      border: 1px solid var(--light-blue-25); }
     
     .button--plain:active,
     .button--underline:active,
     .oui-button--plain:active,
     .oui-button--underline:active {
       color: #080736; }
+  
+  .button--underline,
+  .oui-button--underline {
+    border-radius: 0 !important; }
     
-    .button--plain:visited,
-    .button--plain:hover,
-    .button--plain:active,
-    .button--plain:focus,
     .button--underline:visited,
     .button--underline:hover,
     .button--underline:active,
     .button--underline:focus,
-    .oui-button--plain:visited,
-    .oui-button--plain:hover,
-    .oui-button--plain:active,
-    .oui-button--plain:focus,
     .oui-button--underline:visited,
     .oui-button--underline:hover,
     .oui-button--underline:active,
@@ -2011,32 +2012,31 @@ blockquote {
       background-color: transparent;
       box-shadow: none; }
   
-  .button--underline,
-  .oui-button--underline {
-    border-radius: 0 !important; }
-  
-  .button--plain:focus,
-  .oui-button--plain:focus {
-    border: 1px solid var(--light-blue-25); }
-  
-  .button--toggle:hover,
-  .toolbar__button:hover,
-  .oui-button--toggle:hover {
-    color: #080736; }
-  
-  .button--toggle:active,
-  .button--toggle.is-active:hover,
-  .toolbar__button:active,
-  .is-active.toolbar__button:hover,
-  .oui-button--toggle:active,
-  .oui-button--toggle.is-active:hover {
-    color: #FFFFFF; }
-  
-  .button--toggle:not(:hover):not(:active):not(.is-active),
-  .toolbar__button:not(:hover):not(:active):not(.is-active),
-  .oui-button--toggle:not(:hover):not(:active):not(.is-active) {
-    border-color: transparent;
-    background-color: transparent; }
+  .button--toggle,
+  .toolbar__button,
+  .oui-button--toggle {
+    background-color: transparent;
+    border-color: transparent; }
+    
+    .button--toggle:hover,
+    .button--toggle:focus,
+    .toolbar__button:hover,
+    .toolbar__button:focus,
+    .oui-button--toggle:hover,
+    .oui-button--toggle:focus {
+      color: #080736;
+      border-color: #bfbfbf; }
+    
+    .button--toggle:active,
+    .button--toggle.is-active:hover,
+    .button--toggle.is-active:focus,
+    .toolbar__button:active,
+    .is-active.toolbar__button:hover,
+    .is-active.toolbar__button:focus,
+    .oui-button--toggle:active,
+    .oui-button--toggle.is-active:hover,
+    .oui-button--toggle.is-active:focus {
+      color: #FFFFFF; }
   
   .button--underline,
   .oui-button--underline {
@@ -2242,6 +2242,23 @@ blockquote {
     .oui-button--disabled:focus.button--outline-reverse,
     .oui-button--disabled:focus.oui-button--outline-reverse {
       background-color: transparent; }
+    
+    .button[disabled].oui-button--underline,
+    .button--disabled.oui-button--underline,
+    .button--disabled:visited.oui-button--underline,
+    .button--disabled:hover.oui-button--underline,
+    .button--disabled:active.oui-button--underline,
+    .button--disabled:focus.oui-button--underline,
+    .toolbar__button[disabled].oui-button--underline,
+    .oui-button[disabled].oui-button--underline,
+    .oui-button--disabled.oui-button--underline,
+    .oui-button--disabled:visited.oui-button--underline,
+    .oui-button--disabled:hover.oui-button--underline,
+    .oui-button--disabled:active.oui-button--underline,
+    .oui-button--disabled:focus.oui-button--underline {
+      background-color: transparent;
+      border-color: transparent;
+      border-bottom: 2px solid #d1d1d1; }
   
   .button--loading .oui-spinner,
   .oui-button--loading .oui-spinner {
