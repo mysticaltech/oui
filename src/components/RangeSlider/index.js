@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
-import { FILL_COLOR_MAP } from './constants';
+import { FILL_COLOR_MAP } from '../../utils/accessibility';
 
 const DEFAULT_FILL_COLOR_NAME = 'default';
 

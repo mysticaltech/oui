@@ -8,8 +8,14 @@ import ButtonIcon from './index.js';
 import Container from '../Layout/Container';
 import Row from '../Layout/Row';
 import Col from '../Layout/Col';
-
 import { smokeLight } from '../../tokens/forimport/index.es';
+import { FILL_COLOR_MAP } from '../../utils/accessibility';
+
+// build fillColorName options for a select/dropdown knob
+const fillColorOptions = { None: '' };
+Object.keys(FILL_COLOR_MAP).forEach(color => {
+  fillColorOptions[color] = color;
+});
 
 const stories = storiesOf('ButtonIcon', module);
 stories.addDecorator(withKnobs).addDecorator(story => (
@@ -134,6 +140,26 @@ stories
             title="More options"
           />
           <span className="push--left">Plain</span>
+        </Col>
+        <Col small="auto">
+          <ButtonIcon
+            iconFill={ select('iconFill', fillColorOptions, 'green') }
+            iconName="ellipsis"
+            isDisabled={ boolean('isDisabled', false) }
+            onClick={ action('I have been clicked') }
+            size={ select(
+              'size',
+              {
+                'small': 'small',
+                'medium': 'medium',
+                'large': 'large',
+              },
+              'small'
+            ) }
+            style="plain"
+            title="More options"
+          />
+          <span className="push--left">Plain with iconFill</span>
         </Col>
       </Row>
     );

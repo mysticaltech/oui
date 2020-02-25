@@ -3,7 +3,7 @@ import RangeSlider from '../index';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import { redBase } from '../../../tokens/forimport/index.es';
+import { FILL_COLOR_MAP } from '../../../utils/accessibility';
 
 describe('components/RangeSlider', () => {
   let component;
@@ -72,7 +72,7 @@ describe('components/RangeSlider', () => {
 
     it('should render the SVG with the fill color that corresponds to the provided fill color name', () => {
       const svgPath = component.find('path');
-      expect(svgPath.prop('fill')).toBe(redBase);
+      expect(svgPath.prop('fill')).toBe(`${FILL_COLOR_MAP['red']}`);
     });
 
     it('should use Off for the label when useOffForLabel is true', () => {

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, number, select, boolean } from '@storybook/addon-knobs';
 
 import RangeSlider from './index.js';
-import { FILL_COLOR_MAP } from './constants';
+import { FILL_COLOR_MAP } from '../../utils/accessibility';
 
 // build fillColorName options for a select/dropdown knob
 const fillColorOptions = { None: '' };

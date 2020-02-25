@@ -2,6 +2,18 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { noop } from 'lodash';
 
+import {
+  amberDark,
+  aquaDark,
+  brandBlueDark,
+  greenDark,
+  orangeDark,
+  pinkDark,
+  redDark,
+  magentaDark,
+  greyDark,
+} from '../tokens/forimport/index.es';
+
 /**
  * Map a color class to a human readable word that explains the context of when
  * the class is used. This is helpful for screen readers.
@@ -100,4 +112,21 @@ export const keyboardTracker = Component => {
     additionalItems: 0,
   };
   return wrappedComponent;
+};
+
+// map fillColorName prop values to OUI color tokens
+export const FILL_COLOR_MAP = {
+  aqua: aquaDark,
+  amber: amberDark,
+  default: brandBlueDark,
+  green: greenDark,
+  orange: orangeDark,
+  pink: pinkDark,
+  red: redDark,
+  magenta: magentaDark,
+  grey: greyDark,
+};
+
+export default {
+  FILL_COLOR_MAP,
 };
