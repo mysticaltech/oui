@@ -5,7 +5,7 @@ import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import ButtonRow from '../ButtonRow';
-import Button from './index.js';
+import Button from './index';
 import Link from '../Link';
 import ArrowsInline from '../ArrowsInline';
 

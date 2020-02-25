@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '../index';
 import { mount } from 'enzyme';
-import { mountToJson } from 'enzyme-to-json';
 
 describe('components/Loading Button', () => {
 
@@ -180,10 +179,11 @@ describe('components/Button', () => {
   });
 
   it('should render as a div if isLink is true', () => {
-    const output = mount(
-      <Button isLink={ true } >Faux Button</Button>
+    const component = mount(
+      <Button isLink={ true } testSection="test-button">Faux Button</Button>
     );
-    expect(output.find('button').exists()).toBe(false);
-    expect(mountToJson(output)).toMatchSnapshot();
+    expect(component.find('button').exists()).toBe(false);
+    const testComponent = component.find('[data-test-section="test-button"]');
+    expect(testComponent.type()).toEqual('div');
   });
 });

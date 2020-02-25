@@ -6,17 +6,8 @@ exports[`components/CopyButton should render children the icon button 1`] = `
 >
   <Button
     ariaLabel="Copy code snippet"
-    isDisabled={false}
-    isLink={false}
-    isLoading={false}
-    isSubmit={false}
-    loadingText=""
-    onBlur={[Function]}
-    onClick={[Function]}
-    onMouseDown={[Function]}
     style="plain"
     testSection="fake-test-section-copy-button"
-    width="default"
   >
     <Icon
       name="clipboard"

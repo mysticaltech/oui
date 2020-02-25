@@ -4,16 +4,7 @@ exports[`components/EmptyDashboard should render 1`] = `
 <EmptyDashboard
   button={
     <Button
-      isDisabled={false}
-      isLink={false}
-      isLoading={false}
-      isSubmit={false}
-      loadingText=""
-      onBlur={[Function]}
-      onClick={[Function]}
-      onMouseDown={[Function]}
       style="highlight"
-      width="default"
     >
       Highlight Button
     </Button>
@@ -41,25 +32,19 @@ exports[`components/EmptyDashboard should render 1`] = `
       className="flex push-quad--sides oui-empty-dashboard__button-row flex-justified--end"
     >
       <Button
-        isDisabled={false}
-        isLink={false}
-        isLoading={false}
-        isSubmit={false}
-        loadingText=""
-        onBlur={[Function]}
-        onClick={[Function]}
-        onMouseDown={[Function]}
         style="highlight"
-        width="default"
       >
         <button
+          aria-label=""
           aria-live="polite"
           className="oui-button oui-button--highlight oui-button--default"
           data-oui-component={true}
+          data-test-section=""
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
           onMouseDown={[Function]}
+          title=""
           type="button"
         >
           Highlight Button
@@ -130,16 +115,7 @@ exports[`components/EmptyDashboard should render with button below image when sh
 <EmptyDashboard
   button={
     <Button
-      isDisabled={false}
-      isLink={false}
-      isLoading={false}
-      isSubmit={false}
-      loadingText=""
-      onBlur={[Function]}
-      onClick={[Function]}
-      onMouseDown={[Function]}
       style="highlight"
-      width="default"
     >
       Highlight Button
     </Button>
@@ -222,25 +198,19 @@ exports[`components/EmptyDashboard should render with button below image when sh
           className="push-double--top"
         >
           <Button
-            isDisabled={false}
-            isLink={false}
-            isLoading={false}
-            isSubmit={false}
-            loadingText=""
-            onBlur={[Function]}
-            onClick={[Function]}
-            onMouseDown={[Function]}
             style="highlight"
-            width="default"
           >
             <button
+              aria-label=""
               aria-live="polite"
               className="oui-button oui-button--highlight oui-button--default"
               data-oui-component={true}
+              data-test-section=""
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
               onMouseDown={[Function]}
+              title=""
               type="button"
             >
               Highlight Button
@@ -257,16 +227,7 @@ exports[`components/EmptyDashboard should render with specified height and width
 <EmptyDashboard
   button={
     <Button
-      isDisabled={false}
-      isLink={false}
-      isLoading={false}
-      isSubmit={false}
-      loadingText=""
-      onBlur={[Function]}
-      onClick={[Function]}
-      onMouseDown={[Function]}
       style="highlight"
-      width="default"
     >
       Highlight Button
     </Button>
@@ -296,25 +257,19 @@ exports[`components/EmptyDashboard should render with specified height and width
       className="flex push-quad--sides oui-empty-dashboard__button-row flex-justified--end"
     >
       <Button
-        isDisabled={false}
-        isLink={false}
-        isLoading={false}
-        isSubmit={false}
-        loadingText=""
-        onBlur={[Function]}
-        onClick={[Function]}
-        onMouseDown={[Function]}
         style="highlight"
-        width="default"
       >
         <button
+          aria-label=""
           aria-live="polite"
           className="oui-button oui-button--highlight oui-button--default"
           data-oui-component={true}
+          data-test-section=""
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
           onMouseDown={[Function]}
+          title=""
           type="button"
         >
           Highlight Button

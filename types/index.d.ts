@@ -160,57 +160,115 @@ declare module "components/Spinner/index" {
     import PropTypes from "prop-types";
 }
 declare module "components/Button/index" {
-    export default Button;
-    function Button({ ariaLabel, isSubmit, isLink, children, isActive, isDisabled, isLoading, loadingText, onBlur, onClick, onMouseDown, size, style, testSection, width, buttonRef, title, }: any): any;
-    namespace Button {
-        export namespace propTypes {
-            export const ariaLabel: PropTypes.Requireable<string>;
-            export const buttonRef: PropTypes.Requireable<((...args: any[]) => any) | PropTypes.InferProps<{
-                current: PropTypes.Requireable<Element>;
-            }>>;
-            export const children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
-            export const isActive: PropTypes.Requireable<boolean>;
-            export const isDisabled: PropTypes.Requireable<boolean>;
-            export const isLink: PropTypes.Requireable<boolean>;
-            export const isLoading: PropTypes.Requireable<boolean>;
-            export const isSubmit: PropTypes.Requireable<boolean>;
-            export const loadingText: PropTypes.Requireable<string>;
-            export const onBlur: PropTypes.Requireable<(...args: any[]) => any>;
-            export const onClick: PropTypes.Requireable<(...args: any[]) => any>;
-            export const onMouseDown: PropTypes.Requireable<(...args: any[]) => any>;
-            export const size: PropTypes.Requireable<string>;
-            export const style: PropTypes.Requireable<string>;
-            export const testSection: PropTypes.Requireable<string>;
-            export const title: PropTypes.Requireable<string>;
-            export const width: PropTypes.Requireable<string>;
-        }
-        export namespace defaultProps {
-            const isLink_1: boolean;
-            export { isLink_1 as isLink };
-            const isLoading_1: boolean;
-            export { isLoading_1 as isLoading };
-            const isDisabled_1: boolean;
-            export { isDisabled_1 as isDisabled };
-            const isSubmit_1: boolean;
-            export { isSubmit_1 as isSubmit };
-            const loadingText_1: string;
-            export { loadingText_1 as loadingText };
-            export function onBlur_1(): void;
-            export { onBlur_1 as onBlur };
-            export function onClick_1(): void;
-            export { onClick_1 as onClick };
-            export function onMouseDown_1(): void;
-            export { onMouseDown_1 as onMouseDown };
-            const width_1: string;
-            export { width_1 as width };
-        }
-        export const displayName: string;
+    import React from 'react';
+    type AnyRef = React.Ref<any> | null;
+    export interface ButtonProps {
+        /** Describes buttons that have an icon but no text */
+        ariaLabel?: string;
+        /** React ref to the underlying button component */
+        buttonRef?: AnyRef;
+        /** Text within the button */
+        children: React.ReactNode;
+        /** Render button with active state */
+        isActive?: boolean;
+        /** Prevent users from interacting with the button */
+        isDisabled?: boolean;
+        /** Changes the button to a div for insertion within a Link component */
+        isLink?: boolean;
+        /** When true, adds a spinner to the button and disables the button */
+        isLoading?: boolean;
+        /** Make the button act as a submit button */
+        isSubmit?: boolean;
+        /** When the button adds a spinner, it displays this text */
+        loadingText?: string;
+        /** Function that fires when the button loses focus */
+        onBlur?: (e: React.FocusEvent<HTMLButtonElement | HTMLDivElement>) => void;
+        /** Function that fires when the button is clicked on */
+        onClick?: (e: React.MouseEvent) => void;
+        /** Function that fires when the button is mouse downed */
+        onMouseDown?: (e: React.MouseEvent) => void;
+        /** Various height and width options */
+        size?: 'tiny' | 'small' | 'large' | 'narrow' | 'tight' | null;
+        /** Various color options */
+        style?: 'highlight' | 'danger' | 'danger-outline' | 'outline' | 'outline-reverse' | 'plain' | 'toggle' | 'underline' | 'unstyled' | null;
+        /** Hook for automated JavaScript tests */
+        testSection?: string;
+        /** Title of the button shown as tooltip text when the button is hovered */
+        title?: string;
+        /** Various height and width options */
+        width?: 'default' | 'full';
     }
-    import PropTypes from "prop-types";
+    /**
+     * @param {Object} props - Properties passed to component
+     * @returns {ReactElement}
+     */
+    const Button: {
+        ({ ariaLabel, isSubmit, isLink, children, isActive, isDisabled, isLoading, loadingText, onBlur, onClick, onMouseDown, size, style, testSection, width, buttonRef, title, }: ButtonProps): JSX.Element;
+        displayName: string;
+    };
+    export default Button;
+}
+declare module "tokens/forimport/index.es" {
+    export var brandBlueLight: string;
+    export var brandBlueBase: string;
+    export var brandBlueDark: string;
+    export var brandPurpleLight: string;
+    export var brandPurpleBase: string;
+    export var brandPurpleDark: string;
+    export var smokeLight: string;
+    export var smokeBase: string;
+    export var smokeDark: string;
+    export var greyLight: string;
+    export var greyBase: string;
+    export var greyDark: string;
+    export var purpleLight: string;
+    export var purpleBase: string;
+    export var purpleDark: string;
+    export var magentaLight: string;
+    export var magentaBase: string;
+    export var magentaDark: string;
+    export var redLight: string;
+    export var redBase: string;
+    export var redDark: string;
+    export var pinkLight: string;
+    export var pinkBase: string;
+    export var pinkDark: string;
+    export var orangeLight: string;
+    export var orangeBase: string;
+    export var orangeDark: string;
+    export var amberLight: string;
+    export var amberBase: string;
+    export var amberDark: string;
+    export var greenLight: string;
+    export var greenBase: string;
+    export var greenDark: string;
+    export var aquaLight: string;
+    export var aquaBase: string;
+    export var aquaDark: string;
+    export var blueLight: string;
+    export var blueBase: string;
+    export var blueDark: string;
+    export var iconSmall: string;
+    export var iconLarge: string;
 }
 declare module "utils/accessibility" {
     export function getAssistiveTextFromColorClass(className: string): string;
     export function keyboardTracker(Component: React.Component<any, any, any>): React.Component<any, any, any>;
+    export const FILL_COLOR_MAP: {
+        aqua: string;
+        amber: string;
+        default: string;
+        green: string;
+        orange: string;
+        pink: string;
+        red: string;
+        magenta: string;
+        grey: string;
+    };
+    namespace _default {
+        export { FILL_COLOR_MAP };
+    }
+    export default _default;
     import React from "react";
 }
 declare module "components/Attention/index" {
@@ -547,6 +605,99 @@ declare module "components/Autocomplete/examples/index" {
     }[];
     export default _default;
 }
+declare module "components/Avatar/index" {
+    export default Avatar;
+    function Avatar({ size, imageUrl, isEmulating, testSection, }: {
+        size: any;
+        imageUrl: any;
+        isEmulating: any;
+        testSection: any;
+    }): JSX.Element;
+    namespace Avatar {
+        export namespace propTypes {
+            export const imageUrl: PropTypes.Requireable<string>;
+            export const isEmulating: PropTypes.Requireable<boolean>;
+            export const size: PropTypes.Requireable<string>;
+            export const testSection: PropTypes.Requireable<string>;
+        }
+    }
+    import PropTypes from "prop-types";
+}
+declare module "components/Layout/Container" {
+    import React from 'react';
+    type ContainerProps = {
+        /**
+         * Use a custom element for this component
+         */
+        as?: React.ElementType;
+        /**
+         * Allow the Container to fill available horizontal space.
+         */
+        fluid?: boolean;
+        /**
+         * For testing/debugging only -- show hotpink grid borders and backgrounds.
+         */
+        outlineDebug?: boolean;
+        /**
+         * Pad inner content.
+         */
+        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
+        /**
+         * Remove first and last child side padding.
+         */
+        pullRowPadding?: boolean;
+        /**
+         * Add top margin space between rows.
+         */
+        pushRowsTop?: boolean;
+    };
+    const Container: React.SFC<ContainerProps>;
+    export default Container;
+}
+declare module "components/Layout/Row" {
+    import React from 'react';
+    type RowProps = {
+        /**
+         * @default 'row'
+         */
+        as?: React.ElementType;
+        /**
+         * Add visible border to row
+         */
+        border?: 'top' | 'bottom' | 'left' | 'right' | 'sides' | 'ends' | 'all' | 'none';
+        /**
+         * Display layout as vertical column.
+         */
+        displayVertical?: boolean;
+        /**
+         * For testing/debugging only -- show grid hotpink borders and backgrounds.
+         */
+        outlineDebug?: boolean;
+        /**
+         * Force overflow scrolling
+         */
+        overflow?: 'overflow-y--scroll' | 'overflow-x--auto' | 'overflow-y--auto';
+        /**
+         * Pad inner content.
+         */
+        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
+        /**
+         * Removes gutters and negative margins.
+         */
+        removeGutters?: boolean;
+        /** Whether this row should wrap at small screen sizes */
+        shouldWrap?: boolean;
+        /**
+         * How to vertically align content
+         */
+        verticalAlignment?: 'start' | 'center' | 'end';
+    };
+    const Row: React.SFC<RowProps>;
+    export default Row;
+}
+declare module "components/Avatar/avatar.story" {
+    export {};
+}
 declare module "components/Badge/index" {
     export default Badge;
     function Badge(props: any): any;
@@ -736,7 +887,8 @@ declare module "components/Button/example/index" {
 }
 declare module "components/ButtonIcon/index" {
     export default ButtonIcon;
-    function ButtonIcon({ iconName, isDisabled, onClick, size, style, testSection, title, }: {
+    function ButtonIcon({ iconFill, iconName, isDisabled, onClick, size, style, testSection, title, }: {
+        iconFill: any;
         iconName: any;
         isDisabled: any;
         onClick: any;
@@ -747,6 +899,7 @@ declare module "components/ButtonIcon/index" {
     }): JSX.Element;
     namespace ButtonIcon {
         export namespace propTypes {
+            export const iconFill: PropTypes.Requireable<string>;
             export const iconName: PropTypes.Validator<string>;
             export const isDisabled: PropTypes.Requireable<boolean>;
             export const onClick: PropTypes.Validator<(...args: any[]) => any>;
@@ -767,78 +920,6 @@ declare module "components/ButtonIcon/index" {
         }
     }
     import PropTypes from "prop-types";
-}
-declare module "components/Layout/Container" {
-    import React from 'react';
-    type ContainerProps = {
-        /**
-         * Use a custom element for this component
-         */
-        as?: React.ElementType;
-        /**
-         * Allow the Container to fill available horizontal space.
-         */
-        fluid?: boolean;
-        /**
-         * For testing/debugging only -- show hotpink grid borders and backgrounds.
-         */
-        outlineDebug?: boolean;
-        /**
-         * Pad inner content.
-         */
-        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
-        /**
-         * Remove first and last child side padding.
-         */
-        pullRowPadding?: boolean;
-        /**
-         * Add top margin space between rows.
-         */
-        pushRowsTop?: boolean;
-    };
-    const Container: React.SFC<ContainerProps>;
-    export default Container;
-}
-declare module "components/Layout/Row" {
-    import React from 'react';
-    type RowProps = {
-        /**
-         * @default 'row'
-         */
-        as?: React.ElementType;
-        /**
-         * Add visible border to row
-         */
-        border?: 'top' | 'bottom' | 'left' | 'right' | 'sides' | 'ends' | 'all' | 'none';
-        /**
-         * Display layout as vertical column.
-         */
-        displayVertical?: boolean;
-        /**
-         * For testing/debugging only -- show grid hotpink borders and backgrounds.
-         */
-        outlineDebug?: boolean;
-        /**
-         * Force overflow scrolling
-         */
-        overflow?: 'overflow-y--scroll' | 'overflow-x--auto' | 'overflow-y--auto';
-        /**
-         * Pad inner content.
-         */
-        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
-        /**
-         * Removes gutters and negative margins.
-         */
-        removeGutters?: boolean;
-        /** Whether this row should wrap at small screen sizes */
-        shouldWrap?: boolean;
-        /**
-         * How to vertically align content
-         */
-        verticalAlignment?: 'start' | 'center' | 'end';
-    };
-    const Row: React.SFC<RowProps>;
-    export default Row;
 }
 declare module "components/Layout/Col" {
     import React from 'react';
@@ -890,49 +971,6 @@ declare module "components/Layout/Col" {
     };
     const Col: React.SFC<ColPropTypes>;
     export default Col;
-}
-declare module "tokens/forimport/index.es" {
-    export var brandBlueLight: string;
-    export var brandBlueBase: string;
-    export var brandBlueDark: string;
-    export var brandPurpleLight: string;
-    export var brandPurpleBase: string;
-    export var brandPurpleDark: string;
-    export var smokeLight: string;
-    export var smokeBase: string;
-    export var smokeDark: string;
-    export var greyLight: string;
-    export var greyBase: string;
-    export var greyDark: string;
-    export var purpleLight: string;
-    export var purpleBase: string;
-    export var purpleDark: string;
-    export var magentaLight: string;
-    export var magentaBase: string;
-    export var magentaDark: string;
-    export var redLight: string;
-    export var redBase: string;
-    export var redDark: string;
-    export var pinkLight: string;
-    export var pinkBase: string;
-    export var pinkDark: string;
-    export var orangeLight: string;
-    export var orangeBase: string;
-    export var orangeDark: string;
-    export var amberLight: string;
-    export var amberBase: string;
-    export var amberDark: string;
-    export var greenLight: string;
-    export var greenBase: string;
-    export var greenDark: string;
-    export var aquaLight: string;
-    export var aquaBase: string;
-    export var aquaDark: string;
-    export var blueLight: string;
-    export var blueBase: string;
-    export var blueDark: string;
-    export var iconSmall: string;
-    export var iconLarge: string;
 }
 declare module "components/ButtonIcon/ButtonIcon.story" {
     export {};
@@ -4814,6 +4852,15 @@ declare module "components/SelectDropdown/index" {
     class SelectDropdown extends React.Component<any, any, any> {
         static propTypes: {
             /**
+             * Button text object with label and content value
+             * When this prop is defined, value and initialPlaceholder
+             * are not used.
+             */
+            buttonContent: PropTypes.Requireable<PropTypes.InferProps<{
+                label: PropTypes.Requireable<string>;
+                content: PropTypes.Requireable<string>;
+            }>>;
+            /**
              * Style value that is passed to the OUI button that controls the dropdown.
              */
             buttonStyle: PropTypes.Requireable<string>;
@@ -4826,7 +4873,7 @@ declare module "components/SelectDropdown/index" {
              */
             dropdownDirection: PropTypes.Requireable<string>;
             /**
-             * Should activator be full width of container
+             * Should activator and dropdown be full width of container
              */
             fullWidth: PropTypes.Requireable<boolean>;
             /**
@@ -5385,23 +5432,6 @@ declare module "components/Radio/example/index" {
     var _default: {
         examples: JSX.Element[];
     }[];
-    export default _default;
-}
-declare module "components/RangeSlider/constants" {
-    export const FILL_COLOR_MAP: {
-        aqua: string;
-        amber: string;
-        default: string;
-        green: string;
-        orange: string;
-        pink: string;
-        red: string;
-        magenta: string;
-        grey: string;
-    };
-    namespace _default {
-        export { FILL_COLOR_MAP };
-    }
     export default _default;
 }
 declare module "components/RangeSlider/index" {

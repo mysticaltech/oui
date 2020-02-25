@@ -56,19 +56,12 @@ exports[`components/ExampleComponent should match the Jest Snapshot 1`] = `
       data-test-section="inputNameValue"
     />
     <Button
-      isDisabled={false}
-      isLink={false}
-      isLoading={false}
-      isSubmit={false}
-      loadingText=""
-      onBlur={[Function]}
       onClick={[Function]}
-      onMouseDown={[Function]}
       style="outline"
       testSection="pressMe"
-      width="default"
     >
       <button
+        aria-label=""
         aria-live="polite"
         className="oui-button oui-button--outline oui-button--default"
         data-oui-component={true}
@@ -77,6 +70,7 @@ exports[`components/ExampleComponent should match the Jest Snapshot 1`] = `
         onBlur={[Function]}
         onClick={[Function]}
         onMouseDown={[Function]}
+        title=""
         type="button"
       >
         Press Me!
