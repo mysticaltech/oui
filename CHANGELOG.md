@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Feature] Add ability in **SelectDropdown** to supply a label and content object for `buttonContent` prop ([#1293](https://github.com/optimizely/oui/pull/1293))
+- [Patch] Adjust max-height of time **Input** ([#1293](https://github.com/optimizely/oui/pull/1293))
 - [Patch] Update **Button** styles for `plain`, `toggle`, and `underline` focus and hover states ([#1300](https://github.com/optimizely/oui/pull/1300))
 
 ## 45.3.1 - 2020-02-19

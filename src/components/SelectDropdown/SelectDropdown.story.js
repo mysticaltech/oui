@@ -160,7 +160,7 @@ stories.add('Default', (() => {
       />
     </Container>
   );
-})).add('ActivatorLabel', (() => {
+})).add('Activator Label differs from Value', (() => {
   const itemsWithActivatorLabel = [
     {
       activatorLabel: 'Production',
@@ -201,6 +201,21 @@ stories.add('Default', (() => {
         items={ [{label: 'Elephant', description: 'Very loud', value: 'elephant', linkText: 'I am a link, click me!', linkURL: 'https://www.google.com', linkNewWindow: true}].concat(items) }
         initialPlaceholder="Select a value..."
         onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
+})).add('With label in the button', (() => {
+  return (
+    <Container>
+      <SelectDropdown
+        buttonContent={{
+          label: 'Favorite Animal',
+          content: 'Dog',
+        }}
+        items={ items }
+        minDropdownWidth={ '400px ' }
+        onChange={ action('SelectDropdown value changed') }
+        value={ 'dog' }
       />
     </Container>
   );

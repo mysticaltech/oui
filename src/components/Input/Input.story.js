@@ -89,6 +89,12 @@ stories
             displayError={ true }
           />
         </fieldset>
+        <fieldset>
+          <Input
+            id="input-07"
+            type="time"
+          />
+        </fieldset>
       </div>);
   }).add('Error states', () => {
     return (
