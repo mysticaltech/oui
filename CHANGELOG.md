@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+
+## 45.4.0 - 2020-02-25
 - [Feature] Add ability in **SelectDropdown** to supply a label and content object for `buttonContent` prop ([#1293](https://github.com/optimizely/oui/pull/1293))
 - [Patch] Add `iconFill` prop to the **ButtonIcon** component ([#1199](https://github.com/optimizely/oui/pull/1199))
 - [Patch] Adjust max-height of time **Input** ([#1293](https://github.com/optimizely/oui/pull/1293))
@@ -15,7 +17,7 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 - [Patch] Update travis.yml to resolve npm deploy failures
 
 ## 45.3.0 - 2020-02-19
-- [Patch] If `SelectDropdown` is `fullWidth`, set `Dropdown` width to 100% ([#1295](https://github.com/optimizely/oui/pull/1295))
+- [Patch] If **SelectDropdown** is `fullWidth`, set **Dropdown** width to 100% ([#1295](https://github.com/optimizely/oui/pull/1295))
 - [Feature] Add new **Avatar** component to use in NavBar and elsewhere ([#1291](https://github.com/optimizely/oui/pull/1291))
 - [Patch] **Code** no longer wraps child text unless a newline is present in the source ([#1294](https://github.com/optimizely/oui/pull/1294))
 
