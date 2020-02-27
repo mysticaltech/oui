@@ -1,6 +1,6 @@
 {
   "name": "optimizely-oui",
-  "version": "45.2.1",
+  "version": "45.4.0",
   "description": "Optimizely's Component Library.",
   "private": false,
   "main": "dist/js/main.js",
@@ -75,7 +75,7 @@
     "babel-plugin-react-docgen": "^2.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-typescript-to-proptypes": "^1.1.0",
-    "codecov": "^1.0.1",
+    "codecov": "^3.6.5",
     "css-loader": "^0.25.0",
     "csswhat": "optimizely/csswhat",
     "del": "^2.2.2",

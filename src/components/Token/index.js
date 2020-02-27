@@ -19,6 +19,7 @@ const getStylingInfo = style =>
  */
 const Token = ({
   description,
+  dragHandleProps,
   hasSnugWrap,
   hasWrap,
   isDismissible,
@@ -40,7 +41,7 @@ const Token = ({
   });
   const tokenToolsClasses = classNames({
     'oui-token-tool': isDraggable || order,
-    'cursor--move': isDraggable,
+    'cursor--grab': isDraggable,
   });
   const { fontClass, fillColor } = getStylingInfo(style);
 
@@ -56,7 +57,7 @@ const Token = ({
             <div className={ tokenToolsClasses } data-token-handle>
               {order && <span className="oui-token__number">{order}</span>}
               {isDraggable && (
-                <div className="oui-icon oui-token__move push-half--right oui-token__move--drag-handle">
+                <div className="oui-icon oui-token__move push--right oui-token__move--drag-handle" { ...dragHandleProps }>
                   <Icon name="hamburger" fill="#ffffff" />
                 </div>
               )}
@@ -127,6 +128,12 @@ Token.propTypes = {
   /** Description explaining the token */
   description: PropTypes.string,
 
+  /**
+   * Set of props provided by react-beautiful-dnd to configure
+   * this token's drag handle
+   */
+  dragHandleProps: PropTypes.object,
+
   /** Whether or not the token should have a tighter wrap */
   hasSnugWrap: PropTypes.bool,
 
@@ -171,6 +178,7 @@ Token.propTypes = {
 };
 
 Token.defaultProps = {
+  dragHandleProps: {},
   hasWrap: true,
   isDismissible: false,
   style: 'secondary',

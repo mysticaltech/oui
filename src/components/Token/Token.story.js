@@ -22,7 +22,7 @@ stories
   ));
 
 stories
-  .add('default', (() => (<div>
+  .add('Default', (() => (<div>
     <Token
       isDismissible={ true }
       name="Hello"
@@ -35,7 +35,7 @@ stories
       hasSnugWrap={ boolean('hasSnugWrap', false) }
     />
   </div>)))
-  .add('no well', (() => (<div>
+  .add('No well', (() => (<div>
     <Token
       name="Hello"
       style="primary"
@@ -49,7 +49,7 @@ stories
       hasSnugWrap={ boolean('hasSnugWrap', false) }
     />
   </div>)))
-  .add('draggable', () => {
+  .add('Draggable with Order specified', () => {
     return (
       <React.Fragment>
         <div className="push--bottom">
@@ -88,7 +88,7 @@ stories
       </React.Fragment>
     );
   })
-  .add('dismissible', () => {
+  .add('Dismissible', () => {
     return (
       <Token
         isDismissible={ true }
@@ -98,10 +98,9 @@ stories
         hasSnugWrap={ boolean('hasSnugWrap', false) }
       />);
   })
-  .add('full width', () => {
+  .add('Full width', () => {
     return (
       <Token
-        hasSnugWrap={ boolean('hasSnugWrap', false) }
         isDismissible={ boolean('isDismissible', true) }
         isFullWidth={ boolean('isFullWidth', true) }
         name="I'm full width!"
@@ -109,4 +108,20 @@ stories
         showWell={ boolean('showWell', false) }
         style="primary"
       />);
+  })
+  .add('With new drag handle', () => {
+    return (
+      <div>
+        <Token
+          isDraggable={ true }
+          usesDragHandle={ true }
+          name="Move me!"
+          style="secondary"
+          showWell={ boolean('showWell', false) }
+        />
+        <p>See this <a href="/?path=/story/draganddrop--with-custom-drag-handle">
+          Drag and Drop story</a> for an example implementation
+        </p>
+      </div>
+    );
   });

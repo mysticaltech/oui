@@ -76,7 +76,7 @@ stories.add('Default', (() => {
       />
     </Container>
   );
-})).add('Full Width Activator', (() => {
+})).add('Full Width Activator with Full Width items', (() => {
   return (
     <Container>
       <div style={{'width': '400px', 'border': '1px solid', 'height': '100px' }}>
@@ -85,6 +85,20 @@ stories.add('Default', (() => {
           value={ 'dog' }
           onChange={ action('SelectDropdown value changed') }
           fullWidth={ true }
+        />
+      </div>
+    </Container>
+  );
+})).add('Full Width Activator with items with a different min width', (() => {
+  return (
+    <Container>
+      <div style={{'width': '400px', 'border': '1px solid', 'height': '100px' }}>
+        <SelectDropdown
+          items={ items }
+          value={ 'dog' }
+          onChange={ action('SelectDropdown value changed') }
+          fullWidth={ true }
+          minDropdownWidth={ 500 }
         />
       </div>
     </Container>
@@ -146,7 +160,7 @@ stories.add('Default', (() => {
       />
     </Container>
   );
-})).add('ActivatorLabel', (() => {
+})).add('Activator Label differs from Value', (() => {
   const itemsWithActivatorLabel = [
     {
       activatorLabel: 'Production',
@@ -187,6 +201,21 @@ stories.add('Default', (() => {
         items={ [{label: 'Elephant', description: 'Very loud', value: 'elephant', linkText: 'I am a link, click me!', linkURL: 'https://www.google.com', linkNewWindow: true}].concat(items) }
         initialPlaceholder="Select a value..."
         onChange={ action('SelectDropdown value changed') }
+      />
+    </Container>
+  );
+})).add('With label in the button', (() => {
+  return (
+    <Container>
+      <SelectDropdown
+        buttonContent={{
+          label: 'Favorite Animal',
+          content: 'Dog',
+        }}
+        items={ items }
+        minDropdownWidth={ '400px ' }
+        onChange={ action('SelectDropdown value changed') }
+        value={ 'dog' }
       />
     </Container>
   );

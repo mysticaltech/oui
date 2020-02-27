@@ -24,6 +24,18 @@ const renderTokenItem = ({ item, index, snapshot }) => (
   </div>
 );
 
+const renderTokenItemWithAdjustedDragging = ({ item, index, snapshot, dragHandleProps }) => (
+  <div>
+    <Token
+      isDraggable={ true }
+      name={ item['text'] + '- isDragging? ' + snapshot.isDragging }
+      showWell={ false }
+      usesDragHandle={ true }
+      dragHandleProps={ dragHandleProps }
+    />
+  </div>
+);
+
 describe('components/DragAndDrop', function() {
   it('renders multiple draggable items', () => {
     const component = mount(
@@ -35,6 +47,20 @@ describe('components/DragAndDrop', function() {
     );
     expect(component.find('li').length).toBe(5);
     expect(component.find('.oui-token').length).toBe(5);
+  });
+
+  it('passes drag handle props into child when needed', () => {
+    const component = mount(
+      <DragAndDrop
+        idForDroppableRegion={ 'droppable-test-demo' }
+        items={ itemsWithoutGroups }
+        useCustomDragHandle={ true }
+        renderItem={ renderTokenItemWithAdjustedDragging }
+      />
+    );
+    expect(
+      component.find('.oui-token__move [data-rbd-drag-handle-draggable-id="5"]').length
+    ).toBe(1);
   });
 
 });

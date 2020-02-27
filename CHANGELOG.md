@@ -6,6 +6,21 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Feature] Update **Token** to support custom drag handling with `dragHandleProps` prop from react-beautiful-dnd through use in the **DragAndDrop** component ([#1301](https://github.com/optimizely/oui/pull/1301))
+
+## 45.4.0 - 2020-02-25
+- [Feature] Add ability in **SelectDropdown** to supply a label and content object for `buttonContent` prop ([#1293](https://github.com/optimizely/oui/pull/1293))
+- [Patch] Add `iconFill` prop to the **ButtonIcon** component ([#1199](https://github.com/optimizely/oui/pull/1199))
+- [Patch] Adjust max-height of time **Input** ([#1293](https://github.com/optimizely/oui/pull/1293))
+- [Patch] Update **Button** styles for `plain`, `toggle`, and `underline` focus and hover states ([#1300](https://github.com/optimizely/oui/pull/1300))
+
+## 45.3.1 - 2020-02-19
+- [Patch] Update travis.yml to resolve npm deploy failures
+
+## 45.3.0 - 2020-02-19
+- [Patch] If **SelectDropdown** is `fullWidth`, set **Dropdown** width to 100% ([#1295](https://github.com/optimizely/oui/pull/1295))
+- [Feature] Add new **Avatar** component to use in NavBar and elsewhere ([#1291](https://github.com/optimizely/oui/pull/1291))
+- [Patch] **Code** no longer wraps child text unless a newline is present in the source ([#1294](https://github.com/optimizely/oui/pull/1294))
 
 ## 45.2.1 - 2020-01-30
 - [Patch] Add `linkURL` and `linkText` to items on **SelectDropdown** component to allow optional links ([#1286](https://github.com/optimizely/oui/pull/1286))

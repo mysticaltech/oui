@@ -23,12 +23,15 @@
 .#{$namespace}text-input,
 .oui-text-input {
   @include text-input;
-  height: spacer(3.5);
 }
 
 .#{$namespace}text-input[type="number"],
 .oui-text-input[type="number"] {
   text-align: right;
+}
+
+.oui-text-input[type="time"] {
+  max-height: map-fetch($button, size, base, height);
 }
 
 .#{$namespace}text-input--small,

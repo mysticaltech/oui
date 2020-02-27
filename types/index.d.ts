@@ -71,6 +71,7 @@ declare module 'optimizely-oui' {
 // SEE yarn generate-types
 //
 /// <reference types="react" />
+/// <reference types="lodash" />
 declare module "components/Accordion/index" {
     export function AccordionSection({ _isSelected, _onClickHandler, children, testSection, title, }: {
         _isSelected: any;
@@ -1870,29 +1871,81 @@ declare module "components/DockedFooter/index" {
         constructor(props: any);
         state: {
             isDocked: boolean;
+            listenersSet: boolean;
+            dockedFooterNode: null;
+            parentNode: null;
+            atBottom: boolean;
+            shouldDockByHeight: boolean;
         };
-        shouldDock(): void;
-        onScroll(): void;
+        dockedFooterRef: React.RefObject<any>;
+        storeThisNode(): void;
+        domNodesInState(): boolean;
+        setShouldDockByHeight(): void;
+        setAtBottom(): void;
         setEventListeners(): void;
         throttle(delay: any, fn: any): (...args: any[]) => any;
         componentDidMount(): void;
         componentDidUpdate(prevProps: any, prevState: any): void;
+        componentWillUnmount(): void;
         render(): JSX.Element;
     }
     namespace DockedFooter {
         export namespace propTypes {
-            export const children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+            export const centerGroup: PropTypes.Requireable<(PropTypes.ReactElementLike | null | undefined)[]>;
             export const includesMargin: PropTypes.Requireable<boolean>;
-            export const parentTestSection: PropTypes.Validator<string>;
+            export const leftGroup: PropTypes.Requireable<(PropTypes.ReactElementLike | null | undefined)[]>;
+            export const rightGroup: PropTypes.Requireable<(PropTypes.ReactElementLike | null | undefined)[]>;
+            export const scrollRef: PropTypes.Requireable<PropTypes.ReactNodeLike>;
             export const testSection: PropTypes.Validator<string>;
         }
         export namespace defaultProps {
+            const scrollRef_1: null;
+            export { scrollRef_1 as scrollRef };
             const includesMargin_1: boolean;
             export { includesMargin_1 as includesMargin };
             const testSection_1: string;
             export { testSection_1 as testSection };
-            const parentTestSection_1: string;
-            export { parentTestSection_1 as parentTestSection };
+        }
+    }
+    import React from "react";
+    import PropTypes from "prop-types";
+}
+declare module "utils/custom-prop-types" {
+    export function checkPropIsGreaterThanOrEqualTo(numberToCheck: any, isRequired: any): (props: any, propName: any, componentName: any, ...rest: any[]) => any;
+}
+declare module "components/PaginationControls/index" {
+    export default PaginationControls;
+    class PaginationControls extends React.Component<any, any, any> {
+        constructor(props: Readonly<any>);
+        constructor(props: any, context?: any);
+        handlePageChange: (newPage: any) => () => void;
+        getCoercedInputs(): {
+            totalPages: number;
+            totalSlots: number;
+            buffer: number;
+            remainingSlotsToFill: number;
+            currentPage: number;
+        };
+        fillPageSlots(): any[];
+        renderPageNumbers(): JSX.Element[];
+        render(): JSX.Element;
+    }
+    namespace PaginationControls {
+        export namespace propTypes {
+            export const currentPage: PropTypes.Validator<number>;
+            export const goToPage: PropTypes.Validator<(...args: any[]) => any>;
+            export const isLoading: PropTypes.Requireable<boolean>;
+            export const testSection: PropTypes.Requireable<string>;
+            export const totalPages: (props: any, propName: any, componentName: any, ...rest: any[]) => any;
+            export const totalSlots: (props: any, propName: any, componentName: any, ...rest: any[]) => any;
+        }
+        export namespace defaultProps {
+            export function goToPage_1(): void;
+            export { goToPage_1 as goToPage };
+            const testSection_1: string;
+            export { testSection_1 as testSection };
+            const totalSlots_1: number;
+            export { totalSlots_1 as totalSlots };
         }
     }
     import React from "react";
@@ -4798,6 +4851,9 @@ declare module "components/SelectDropdown/index" {
                 isSelected: PropTypes.Requireable<boolean>;
                 label: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
                 value: PropTypes.Validator<string | number | boolean>;
+                linkNewWindow: PropTypes.Requireable<boolean>;
+                linkText: PropTypes.Requireable<string>;
+                linkURL: PropTypes.Requireable<string>;
             }> | null | undefined)[]>;
             /**
              * Max width of the activator container.
@@ -4851,6 +4907,7 @@ declare module "components/SelectDropdown/index" {
             onClick: any;
             onBlur: any;
         }) => JSX.Element;
+        handleLinkClick: (e: any) => void;
         renderContents: () => JSX.Element;
         render(): JSX.Element;
     }
@@ -5234,47 +5291,6 @@ declare module "components/Pagination/examples/index" {
     }[];
     export default _default;
 }
-declare module "utils/custom-prop-types" {
-    export function checkPropIsGreaterThanOrEqualTo(numberToCheck: any, isRequired: any): (props: any, propName: any, componentName: any, ...rest: any[]) => any;
-}
-declare module "components/PaginationControls/index" {
-    export default PaginationControls;
-    class PaginationControls extends React.Component<any, any, any> {
-        constructor(props: Readonly<any>);
-        constructor(props: any, context?: any);
-        handlePageChange: (newPage: any) => () => void;
-        getCoercedInputs(): {
-            totalPages: number;
-            totalSlots: number;
-            buffer: number;
-            remainingSlotsToFill: number;
-            currentPage: number;
-        };
-        fillPageSlots(): any;
-        renderPageNumbers(): any;
-        render(): JSX.Element;
-    }
-    namespace PaginationControls {
-        export namespace propTypes {
-            export const currentPage: PropTypes.Validator<number>;
-            export const goToPage: PropTypes.Validator<(...args: any[]) => any>;
-            export const isLoading: PropTypes.Requireable<boolean>;
-            export const testSection: PropTypes.Requireable<string>;
-            export const totalPages: (props: any, propName: any, componentName: any, ...rest: any[]) => any;
-            export const totalSlots: (props: any, propName: any, componentName: any, ...rest: any[]) => any;
-        }
-        export namespace defaultProps {
-            export function goToPage_1(): void;
-            export { goToPage_1 as goToPage };
-            const testSection_1: string;
-            export { testSection_1 as testSection };
-            const totalSlots_1: number;
-            export { totalSlots_1 as totalSlots };
-        }
-    }
-    import React from "react";
-    import PropTypes from "prop-types";
-}
 declare module "components/PaginationControls/PaginationControls.story" {
     export {};
 }
@@ -5494,8 +5510,8 @@ declare module "components/SearchPicker/index" {
         static defaultProps: {
             searchOptions: {};
             selectedEntityIds: never[];
-            setItemCount: any;
-            setOnItemSelect: any;
+            setItemCount: (...args: any[]) => void;
+            setOnItemSelect: (...args: any[]) => void;
         };
         constructor(props: Readonly<any>);
         constructor(props: any, context?: any);
@@ -5537,7 +5553,7 @@ declare module "components/SearchPicker/index" {
          * A debounced method to invoke the search and store the result in state.
          * @param {string} query - The term to search for.
          */
-        handleOnInputDebounced: any;
+        handleOnInputDebounced: ((query: any) => void) & import("lodash").Cancelable;
         /**
          * Filter the current result set to exclude selected entities.
          * @returns {Array<Object>}

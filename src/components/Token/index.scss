@@ -77,7 +77,6 @@
   flex: none;
   min-width: 0;
   min-height: 0;
-  padding-left: map-fetch($token, padding) * 2;
 }
 
 .#{$namespace}token__number,

@@ -9,6 +9,12 @@ import Link from '../Link';
 class SelectDropdown extends React.Component {
   static propTypes = {
     /**
+     * Button text object with label and content value
+     * When this prop is defined, value and initialPlaceholder
+     * are not used.
+     */
+    buttonContent: PropTypes.shape({label: PropTypes.string, content: PropTypes.string}),
+    /**
      * Style value that is passed to the OUI button that controls the dropdown.
      */
     buttonStyle: PropTypes.string,
@@ -21,7 +27,7 @@ class SelectDropdown extends React.Component {
      */
     dropdownDirection: PropTypes.oneOf(['right', 'left']),
     /**
-     * Should activator be full width of container
+     * Should activator and dropdown be full width of container
      */
     fullWidth: PropTypes.bool,
     /**
@@ -115,7 +121,17 @@ class SelectDropdown extends React.Component {
   };
 
   renderActivator = ({ buttonRef, onClick, onBlur }) => {
-    const { buttonStyle, value, width, maxWidth, isDisabled, initialPlaceholder, trackId, testSection } = this.props;
+    const {
+      buttonContent,
+      buttonStyle,
+      value,
+      width,
+      maxWidth,
+      isDisabled,
+      initialPlaceholder,
+      trackId,
+      testSection,
+    } = this.props;
     let selectedItem;
     this.props.items.forEach(item => {
       if (item.value === value) {
@@ -135,6 +151,12 @@ class SelectDropdown extends React.Component {
       activatorLabel = initialPlaceholder;
     }
 
+    let adjustedButtonStyle = buttonStyle;
+
+    if (buttonContent) {
+      adjustedButtonStyle = 'plain';
+    }
+
     return (
       <div
         style={{ width: width, maxWidth: maxWidth}}
@@ -142,7 +164,7 @@ class SelectDropdown extends React.Component {
         <Button
           title={ activatorLabel }
           isDisabled={ isDisabled }
-          style={ buttonStyle }
+          style={ adjustedButtonStyle }
           size="narrow"
           testSection={ testSection }
           width="full"
@@ -150,7 +172,19 @@ class SelectDropdown extends React.Component {
           onClick={ onClick }
           onBlur={ onBlur }>
           <div className="flex flex-align--center" data-track-id={ trackId }>
-            <span className="oui-dropdown-group__activator-label flex--1">{ activatorLabel }</span>
+            <span className="oui-dropdown-group__activator-label flex--1">
+              {buttonContent && buttonContent.label ? (
+                <div className="line--tight text--left push--right">
+                  <div className="micro muted">
+                    {buttonContent.label}
+                    <span className="oui-assistive-text">:</span>
+                  </div>
+                  <div>{buttonContent.content}</div>
+                </div>
+              ) : (
+                activatorLabel
+              )}
+            </span>
             <span className="push--left oui-arrow-inline--down" />
           </div>
         </Button>

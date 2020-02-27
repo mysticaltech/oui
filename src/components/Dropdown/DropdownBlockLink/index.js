@@ -61,9 +61,13 @@ DropdownBlockLink.propTypes = {
   hasFauxFocus: PropTypes.bool,
   /** Whether or not this item's checkbox is checked' */
   isItemSelected: PropTypes.bool,
-  /** Whether or not this item should include a checkbox */
+  /**
+   * Should this be a link or non-clickable text?
+   * To indicate item is selected (in single select),
+   * isLink should be false.
+   */
   isLink: PropTypes.bool.isRequired,
-  /** Should this be a link or nonclickable text */
+  /** Whether or not this item should include a checkbox */
   isMultiSelect: PropTypes.bool,
   /** Minimum width of the list item, useful if
     * you need to have a block of description text */

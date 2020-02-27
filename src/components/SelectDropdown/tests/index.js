@@ -204,6 +204,19 @@ describe('components/SelectDropdown', function() {
     expect(component.find('Checkbox').length).toBe(2);
     expect(component.find('Checkbox').last().prop('defaultChecked')).toBe(true);
   });
+
+  it('should add a label when the buttonContent specifies one', () => {
+    component = mount(
+      <SelectDropdown
+        buttonContent={{label: 'date', content: 'test'}}
+        items={ items }
+        initialPlaceholder="Select a value..."
+        onChange={ onChange }
+      />);
+
+    expect(component.find('.oui-assistive-text').length).toBe(1);
+  });
+
   describe('links', function() {
     describe('if linkURL and linkText are provided', function() {
       beforeEach(function() {

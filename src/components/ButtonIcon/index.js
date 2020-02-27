@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from 'react-oui-icons';
 import classNames from 'classnames';
+import { FILL_COLOR_MAP } from '../../utils/accessibility';
 
 const ButtonIcon = ({
+  iconFill,
   iconName,
   isDisabled,
   onClick,
@@ -12,6 +14,9 @@ const ButtonIcon = ({
   testSection,
   title,
 }) => {
+
+  // ensure valid fillColor name (in the case that propType errors are ignored)
+  const fillColor = iconFill && Object.keys(FILL_COLOR_MAP).includes(iconFill) ? FILL_COLOR_MAP[iconFill] : null;
 
   function handleOnClick(event) {
     if (isDisabled) {
@@ -28,12 +33,16 @@ const ButtonIcon = ({
       disabled={ isDisabled }
       onClick={ handleOnClick }
       title={ title }>
-      <Icon name={ iconName } size={ size } />
+      <Icon name={ iconName } size={ size } fill={ fillColor }/>
     </button>
   );
 };
 
 ButtonIcon.propTypes = {
+  /**
+   *  Color to use for the fill of the icon
+   */
+  iconFill: PropTypes.oneOf(Object.keys(FILL_COLOR_MAP)),
   /**
    *  Name of the icon to use
    */

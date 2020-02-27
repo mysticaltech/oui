@@ -2,6 +2,8 @@ import React from 'react';
 import ButtonIcon from '../index';
 import { mount } from 'enzyme';
 
+import { FILL_COLOR_MAP } from '../../../utils/accessibility';
+
 describe('ButtonIcon component', () => {
 
   it('should render a medium size icon by default', () => {
@@ -34,6 +36,18 @@ describe('ButtonIcon component', () => {
       <ButtonIcon iconName="add" style="danger"/>
     );
     expect(component.find('.oui-button--danger').length).toBe(1);
+  });
+  it('should fill the icon when iconFill is supplied', () => {
+    const component = mount(
+      <ButtonIcon iconName="add" iconFill="red"/>
+    );
+    expect(
+      component
+        .find('.oui-icon')
+        .getDOMNode().attributes
+        .getNamedItem('style').value
+    ).toContain(`fill: ${FILL_COLOR_MAP['red']}`
+    );
   });
   it('should call function that is passed in as `onClick` after click', () => {
     const onClickSpy = jest.fn();
