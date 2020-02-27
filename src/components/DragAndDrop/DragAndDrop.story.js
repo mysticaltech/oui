@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
@@ -15,7 +16,6 @@ const itemsWithoutGroups = [
   { id: 5, type: 'item', text: 'Item E' },
 ];
 
-// eslint-disable-next-line react/prop-types
 const renderTokenItem = ({ item, index, snapshot }) => (
   <div>
     <Token
@@ -23,6 +23,18 @@ const renderTokenItem = ({ item, index, snapshot }) => (
       name={ item['text'] + '- isDragging? ' + snapshot.isDragging }
       order={ index + 1 }
       showWell={ false }
+    />
+  </div>
+);
+
+const renderTokenItemWithAdjustedDragging = ({ item, index, snapshot, dragHandleProps }) => (
+  <div>
+    <Token
+      isDraggable={ true }
+      name={ item['text'] + '- isDragging? ' + snapshot.isDragging }
+      showWell={ false }
+      usesDragHandle={ true }
+      dragHandleProps={ dragHandleProps }
     />
   </div>
 );
@@ -39,7 +51,7 @@ class DragAndDrop extends React.Component {
   };
 
   render() {
-    const { renderItem, idForDroppableRegion, onBeforeCapture } = this.props;
+    const { renderItem, idForDroppableRegion, onBeforeCapture, useCustomDragHandle } = this.props;
     return (
       <DragAndDropStateless
         idForDroppableRegion={ idForDroppableRegion }
@@ -47,6 +59,7 @@ class DragAndDrop extends React.Component {
         onBeforeCapture={ onBeforeCapture }
         onDragEnd={ this.updateItemOrder }
         renderItem={ renderItem }
+        useCustomDragHandle={ useCustomDragHandle }
       />
     );
   }
@@ -60,14 +73,27 @@ stories
   .addDecorator(withKnobs)
   .addDecorator(story => <div id="root-preview">{story()}</div>);
 
-stories.add('Reordering flat list', () => {
-  return (
-    <DragAndDrop
-      idForDroppableRegion={ 'droppable-story-demo' }
-      items={ itemsWithoutGroups }
-      onBeforeCapture={ action('do something before dragging begins') }
-      onDragEnd={ action('get new order of items') }
-      renderItem={ renderTokenItem }
-    />
-  );
-});
+stories
+  .add('Reordering flat list', () => {
+    return (
+      <DragAndDrop
+        idForDroppableRegion={ 'droppable-story-demo' }
+        items={ itemsWithoutGroups }
+        onBeforeCapture={ action('do something before dragging begins') }
+        onDragEnd={ action('get new order of items') }
+        renderItem={ renderTokenItem }
+      />
+    );
+  })
+  .add('With custom drag handle', () => {
+    return (
+      <DragAndDrop
+        idForDroppableRegion={ 'droppable-story-demo' }
+        items={ itemsWithoutGroups }
+        onBeforeCapture={ action('do something before dragging begins') }
+        onDragEnd={ action('get new order of items') }
+        useCustomDragHandle={ true }
+        renderItem={ renderTokenItemWithAdjustedDragging }
+      />
+    );
+  });

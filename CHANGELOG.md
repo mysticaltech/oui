@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Feature] Update **Token** to support custom drag handling with `dragHandleProps` prop from react-beautiful-dnd through use in the **DragAndDrop** component ([#1301](https://github.com/optimizely/oui/pull/1301))
 
 ## 45.4.0 - 2020-02-25
 - [Feature] Add ability in **SelectDropdown** to supply a label and content object for `buttonContent` prop ([#1293](https://github.com/optimizely/oui/pull/1293))
