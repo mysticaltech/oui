@@ -85,8 +85,12 @@ stories
     return (
       <div>
         <p>
-          <span className="push--right"><Icon fill="red" name="exclamation"/></span>
-          Be sure to set the <code className="underline"><strong>isLink</strong></code> prop to `true` on the inner button when using this implementation
+          <span className="push--right">
+            <Icon fill="red" name="exclamation"/>
+          </span>
+          Be sure to set the
+          <code className="underline"><strong>isLink</strong></code>
+          prop to `true` on the inner button when using this implementation
         </p>
         <Link
           newWindow={ true }
