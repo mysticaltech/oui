@@ -6,7 +6,6 @@ before_install:
 - ssh-add <( echo "$csswhat_dk" | base64 --decode )
 after_script:
 - npm run codecov
-- npm run chromatic $CHROMATIC_APP_CODE
 sudo: false
 addons:
   ssh_known_hosts: design.optimizely.com
@@ -49,3 +48,8 @@ deploy:
 notifications:
   slack:
     secure: FIA2Sujap77bqerxvU1PQrTbmdoJ4Lt3zisa+nO7jiQE/QqVfS+ZSHTYIqvi03Vj58YcTss+I6KUqntEEyVdECuXx4mkpdzLSET7FDkp5Uyixni/x4v+DaWHrXxkfdUS1AecQEXKRgHtKOkUBq32p25VLTHVA+ysR80N/f1XaVg=
+if:
+  [[ $TRAVIS_EVENT_TYPE != 'pull_request' ||  $TRAVIS_PULL_REQUEST_SLUG != $TRAVIS_REPO_SLUG ]];
+then:
+  npm run chromatic
+fi:
