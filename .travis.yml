@@ -6,7 +6,7 @@ before_install:
 - ssh-add <( echo "$csswhat_dk" | base64 --decode )
 after_script:
 - npm run codecov
-- npm run chromatic
+- npm run chromatic $CHROMATIC_APP_CODE
 sudo: false
 addons:
   ssh_known_hosts: design.optimizely.com
