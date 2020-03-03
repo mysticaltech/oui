@@ -62,9 +62,7 @@ class IconLink extends React.PureComponent {
     return (
       <React.Fragment>
         { hasSeparator &&
-          <li className="push-double--sides hard--ends">
-            <hr className="oui-rule"/>
-          </li>
+          <hr className="oui-rule push-double--sides"/>
         }
         <Poptip
           content={ linkLabel }

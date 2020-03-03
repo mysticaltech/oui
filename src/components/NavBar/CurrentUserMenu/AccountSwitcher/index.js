@@ -34,7 +34,7 @@ const AccountSwitcher = (props) => {
         testSection="switch-account-row">
         <BlockList.Item
           href={ `${!account.isCurrent ? account.url : ''}` }
-          onClick={ !account.isCurrent && onAccountSelect }>
+          onClick={ !account.isCurrent ? onAccountSelect : undefined }>
           <div
             data-test-section="switch-account-row-name"
             className={ classNames({

@@ -53,6 +53,6 @@ describe('components/NavBar/CurrentUserMenu/AccountSwitcher', function() {
   });
 
   it('should not call accountSwitcherHandler callback when active account item is clicked', function() {
-    expect(component.find('Item').at(1).props().onClick).toBe(false);
+    expect(component.find('Item').at(1).props().onClick).toBeUndefined();
   });
 });

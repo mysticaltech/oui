@@ -128,6 +128,9 @@ NavBar.propTypes = {
     const prop = props[propName];
     let error = null;
     React.Children.forEach(prop, (child) => {
+      if (child === null) { // Skip checking empty child nodes
+        return;
+      }
       if (![SecondaryLink, PrimaryLink, CurrentUserMenu].includes(child.type)) {
         error = new Error('Children should be of type PrimaryLink, SecondaryLink, or CurrentUserMenu.');
       }
