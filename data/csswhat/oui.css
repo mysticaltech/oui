@@ -6412,8 +6412,7 @@ code {
   align-items: center;
   flex: none;
   min-width: 0;
-  min-height: 0;
-  padding-left: 8px; }
+  min-height: 0; }
 
 .token__number,
 .oui-token__number {
@@ -6899,6 +6898,9 @@ body:target *[data-oui-component],
 
 .cursor--move {
   cursor: move !important; }
+
+.cursor--grab {
+  cursor: grab !important; }
 
 .cursor--pointer, .root-nav .click-area {
   cursor: pointer !important; }
