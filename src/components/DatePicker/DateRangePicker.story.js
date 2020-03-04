@@ -122,11 +122,15 @@ stories
   )))
   .add('With custom range checker', (() => (
     <Container>
+      <p>Custom function for
+        <code>  isOutsideRange  </code> prop may look something like
+        <code>  {'{ (day) => {return day.day() % 2 === 0; } }'}</code>
+      </p>
       <DateRangePicker
         endDateInputId='end-date-id-0'
         focusedInput='endDate'
         initialStartDate={ moment() }
-        isOutsideRange={ action('isOutsideRange') }
+        isOutsideRange={ (day) => {return day.day() % 2 === 0; } }
         onDatesChange={ action('onDatesChange') }
         startDateInputId='start-date-id-0'
       />
@@ -348,4 +352,5 @@ stories
 
 const Container = styled.div`
   height: 100vh;
+  width: 100vh;
 `;

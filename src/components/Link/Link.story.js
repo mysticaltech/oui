@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
-
+import Icon from 'react-oui-icons';
 import Link from './index.js';
 import Button from '../Button';
 
@@ -83,11 +83,21 @@ stories
   })
   .add('Link that looks like a Button', () => {
     return (
-      <Link
-        newWindow={ true }
-        href={ text('href', 'http://google.com') }>
-        <Button onClick={ null }>Go To Google</Button>
-      </Link>
+      <div>
+        <p>
+          <span className="push--right">
+            <Icon fill="red" name="exclamation"/>
+          </span>
+          Be sure to set the &nbsp;
+          <code className="underline"><strong>isLink</strong></code>
+          &nbsp; prop to `true` on the inner button when using this implementation
+        </p>
+        <Link
+          newWindow={ true }
+          href={ text('href', 'http://google.com') }>
+          <Button isLink={ boolean('isLink', true) }>Go To Google</Button>
+        </Link>
+      </div>
     );
   });
 
