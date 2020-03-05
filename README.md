@@ -61,6 +61,10 @@ import { Button } from 'optimizely-oui';
 return ( <Button size="tiny">Click Me</Button> );
 ```
 
+## 🧪 Testing
+
+Thanks to [Chromatic](https://www.chromaticqa.com/), OUI runs visual regression tests on every pull request and merge. These tests are snapshots of each [Storybook](https://storybook.js.org/) story within the repository. For implementation details, see the [Chromatic section](https://github.com/optimizely/oui/blob/devel/CONTRIBUTING.md#-using-chromatic-visual-regression-testing-vrt) of the contributing guidelines
+
 ## 💅 Sass
 
 To use OUI Sass variables and mixins in your project read [how to use OUI sass](readme-sass.md).

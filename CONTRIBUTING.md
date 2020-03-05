@@ -22,10 +22,9 @@ Storybook is the best way to learn about, play with, prototype, and build OUI co
 Every component should contain prop definitions and a robust set of Storybook examples (stories). This will allow for quicker adoption and help Storybook to serve as the best hub for OUI technical documentation. **If you create or update a component, it shouldn't be considered finished until you've completed the following:**
 
 1. Run Storybook and watch assets via `yarn storybook`
-2. Copy or reference the Story format of this [ExampleComponent](./data/components/ExampleComponent)
+2. Copy or reference the Story format of the [DatePicker](./src/components/DatePicker) component
 3. Include accurate `propType` configurations and comments, as well as `defaultProps` if applicable (these details are pulled into the _show info_ section)
-4. Create a README.md for you component with usage and implementation information
-   > Note: until Storybook Issues [#3458](https://github.com/storybooks/storybook/issues/3458) and [#4499](https://github.com/storybooks/storybook/issues/4499) are resolved, each component README should be added in your **\_\*.story.js** file. Additionally using double-spaces at the end of each line and a period + double-space for line breaks will help make the files more readable.
+4. Create multiple stories to accurately showcase your new/updated component and its various states. When applicable, include [knobs](https://github.com/storybookjs/storybook/blob/master/addons/knobs/README.md) in your story to help others understand the different configurations of props.
 
 ## ʦ Typescript
 
@@ -57,7 +56,7 @@ When it comes to React components, typing can get a little tricky, but fortunate
 
 ### //@ts-ignore and `:any`
 
-Don't let Typescript errors slow down your development if you dont want them to. Use `//@ts-ignore` to tell the Typescript compiler to ignore the next line, or specify a type as `:any` if you can't figure out why the compiler is complaining to you. Typescript is fun once you get a hang of it, but sometimes you just wanna see if your code works and come back to typing it later.
+Don't let Typescript errors slow down your development if you don't want them to. Use `//@ts-ignore` to tell the Typescript compiler to ignore the next line, or specify a type as `:any` if you can't figure out why the compiler is complaining to you. Typescript is fun once you get a hang of it, but sometimes you just wanna see if your code works and come back to typing it later.
 
 ## :pencil: Develop
 
@@ -79,7 +78,7 @@ Don't let Typescript errors slow down your development if you dont want them to.
 
    ```sh
    cd ~/projects/optimizely-oui          # go into package directory
-   nvm use                               # ensure you are using the correct version specificed in .nvmrc
+   nvm use                               # ensure you are using the correct version specified in .nvmrc
    yarn watch                            # build your oui folder so that your latest changes are included in the linked module
    yarn link                             # in a new shell, create global link to OUI
    cd ./node_modules/react && yarn link  # create global link for OUI's React
@@ -93,7 +92,24 @@ Don't let Typescript errors slow down your development if you dont want them to.
 6. Regenerate Typescript definitions by running `yarn generate-types` (for React component changes)
 7. `git push` your changes to GitHub
 8. [Open a pull request](https://github.com/optimizely/oui/compare) of your branch, add at least one reviewer
-9. Once you've merged your PR, please follow the instructions to [Release a New Version](https://github.com/optimizely/oui/blob/devel/CONTRIBUTING.md#ship-release-a-new-version), including updating the version in the monolith.
+9. Review the results of Chromatic's visual regression tests. See below for [more info about VRT](#-using-chromatic-visual-regression-testing-vrt)
+10. Once you've merged your PR, please follow the instructions to [Release a New Version](https://github.com/optimizely/oui/blob/devel/CONTRIBUTING.md#ship-release-a-new-version), including updating the version in the monolith.
+
+### ✅ Using Chromatic Visual Regression Testing (VRT)
+
+Each pull request will automatically trigger a build in Chromatic to visually test every Storybook story. After the checks finish running on your PR, be sure to address any discrepancies in Chromatic, either by accepting the new snapshot (thus making it the new baseline) or denying the change and fixing any issues in your PR. For more information, refer to the [Chromatic documentation](https://docs.chromaticqa.com/).
+
+#### Disabling Chromatic for a Story
+
+Sometimes you don't want Chromatic to run on a particular story, either because you are expecting changes or the story is repetitive. In this case, you can use a parameter on the story to disable chromatic:
+
+```
+stories.addParameters({ chromatic: { disable: true } });
+```
+
+#### VRT for Dates
+
+OUI includes [mockdate](https://github.com/boblauer/MockDate), a library that allows you to override the current system date temporarily, ensuring VRT doesn't fail due to using date changes. See the [Storybook config](https://github.com/optimizely/oui/blob/b331684d50206a8a979dffc23d3081b7c34333c0/.storybook/config.js) for the implementation.
 
 ## :ship: Release a New Version
 
@@ -113,7 +129,7 @@ Both UI Engineers and the Frontend team have permission to release OUI via `yarn
    ```
 
 5. Commit to master: `git add . && git commit -a -m 'Prep for new release version x.y.z'`
-   - You'll be commiting the CHANGELOG file and the new Storybook iframe.html and bundle
+   - You'll be committing the CHANGELOG file and the new Storybook iframe.html and bundle
 6. Run one of these depending on the highest importance issue this release:
    - `[Patch]` changes: `yarn version --patch`
    - `[Feature]` changes: `yarn version --minor`
@@ -125,7 +141,7 @@ Both UI Engineers and the Frontend team have permission to release OUI via `yarn
    - Click Publish Release
 8. Check for updated package on NPM
    - Check [NPM](https://www.npmjs.com/package/optimizely-oui) for the updated release
-   - If it seems to stall, check [travis](https://travis-ci.org/optimizely/oui/builds) and make sure no errors occured
+   - If it seems to stall, check [travis](https://travis-ci.org/optimizely/oui/builds) and make sure no errors occurred
 9. Bump the OUI version number in Optimizely's [`package.json`](https://github.com/optimizely/optimizely/blob/devel/src/www/frontend/package.json).
    - Within the Optimizely repo run `yarn upgrade optimizely-oui@99.xx.xx` (note to include the major version number e.g. `99.`, leaving the minor and patch numbers as `xx.xx`) which updates `yarn.lock` and `package.json`
      - If you notice that your yarn commands are removing the integrity shas inside the yarn.lock file, your yarn version needs an upgrade
