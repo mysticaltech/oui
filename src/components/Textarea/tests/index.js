@@ -133,6 +133,12 @@ describe('components/Textarea', () => {
     expect(console.error.calls.all()[0].args[0]).toContain('Must include a value for the label prop to use the isOptional prop'); // eslint-disable-line
   });
 
+  it('should render a label with required mark if label and isRequired is passed', () => {
+    const component = mount(
+      <Textarea testSection="foo" label="Input Label" isRequired={ true } />
+    );
+    expect(component.find('.oui-label--required').length).toBe(1);
+  });
 
   it('should not render a label by default', () => {
     const component = mount(

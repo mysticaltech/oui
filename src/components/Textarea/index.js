@@ -75,6 +75,7 @@ class Textarea extends React.Component {
       displayError,
       testSection,
       isOptional,
+      isRequired,
       note,
     } = this.props;
 
@@ -87,6 +88,7 @@ class Textarea extends React.Component {
             <div className="oui-label">
               { label }
               { isOptional && <span className="oui-label__optional">(Optional)</span> }
+              { isRequired && <span className="oui-label--required"></span> }
             </div>
             { this.renderTextarea(this.props) }
           </Label>
@@ -122,6 +124,9 @@ Textarea.propTypes = {
   isOptional: function verifyIsOptionalProp(props) {
     if (props.isOptional && !props.label) {
       return new Error('Must include a value for the label prop to use the isOptional prop');
+    }
+    if (props.isOptional && props.isRequired) {
+      return new Error('Textarea cannot be both optional and required, please pick one ');
     }
     return null;
   },

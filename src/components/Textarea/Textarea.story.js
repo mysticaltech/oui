@@ -21,7 +21,10 @@ stories
       <div>
         <Textarea
           isDisabled={ boolean('isDisabled', false) }
+          isOptional={ boolean('isOptional', false) }
+          isRequired={ boolean('isRequired', false) }
           defaultValue='Delete this default value and see the placeholder'
+          label={ text('label text', '') }
           maxLength={ number('maxLength', 250) }
           numRows={ number('numRows', 25) }
           placeholder={ text('placeHolder', 'Enter a comment') }
@@ -36,6 +39,15 @@ stories
     return (
       <Textarea
         label="Field label"
+        note="A short description or note about this field."
+        placeholder="Just a placeholder"
+        type="text"
+      />);
+  }).add('With a required label', () => {
+    return (
+      <Textarea
+        label="Field label"
+        isRequired={ true }
         note="A short description or note about this field."
         placeholder="Just a placeholder"
         type="text"
