@@ -137,7 +137,7 @@ $color: (
     white                    : $base-white,
     faint                    : map-fetch($root-color, grey-12),
     light                    : map-fetch($root-color, grey-25),
-    muted                    : map-fetch($brand-color, dark-blue-50),
+    muted                    : $grey-dark,
     medium                   : map-fetch($root-color, grey-50),
     charcoal                 : map-fetch($root-color, grey-78),
     dark                     : map-fetch($root-color, grey-85),
@@ -151,7 +151,7 @@ $color: (
 );
 
 /// Font Sizes
-/// @description These defaults can be overriden by custom variables.
+/// @description These defaults can be overridden by custom variables.
 
 $font: (
 
