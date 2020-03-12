@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+
+## 45.6.0 - 2020-03-11
 - [Feature] Add [Chromatic](https://www.chromaticqa.com/) Visual Regression Testing to OUI ([#1303](https://github.com/optimizely/oui/pull/1303))
 - [Patch] Add required asterisk when **Textarea** is required with `isRequired` and `label` props ([#1274](https://github.com/optimizely/oui/pull/1274))
 - [Patch] Fix prop-type errors in **NavBar** ([#1305](https://github.com/optimizely/oui/pull/1305))
