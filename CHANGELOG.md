@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Patch] Update Chromatic to be devDependency ([#1309](https://github.com/optimizely/oui/pull/1309))
 
 ## 45.6.0 - 2020-03-11
 - [Feature] Add [Chromatic](https://www.chromaticqa.com/) Visual Regression Testing to OUI ([#1303](https://github.com/optimizely/oui/pull/1303))
