@@ -9,6 +9,7 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 - [Feature] Add [Chromatic](https://www.chromaticqa.com/) Visual Regression Testing to OUI ([#1303](https://github.com/optimizely/oui/pull/1303))
 - [Patch] Add required asterisk when **Textarea** is required with `isRequired` and `label` props ([#1274](https://github.com/optimizely/oui/pull/1274))
 - [Patch] Fix prop-type errors in **NavBar** ([#1305](https://github.com/optimizely/oui/pull/1305))
+- [Patch] Adjust height of **NavBar** ([#1308](https://github.com/optimizely/oui/pull/1308))
 - [Patch] Update `muted` class color to have enough contrast against white backgrounds ([#1307](https://github.com/optimizely/oui/pull/1307))
 
 ## 45.5.0 - 2020-03-02
