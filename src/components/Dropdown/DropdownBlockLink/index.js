@@ -43,7 +43,7 @@ export const DropdownBlockLink = (props) => {
             defaultChecked={ props.isItemSelected }
             label={ props.children }
             isDisabled={ false }
-            onChange={ onClick}
+            onChange={ onClick }
           /> :
           props.children
       }
