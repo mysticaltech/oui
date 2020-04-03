@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`components/Select should render correctly when a label is supplied 1`] = `
+<div
+  className=""
+  data-oui-component={true}
+>
+  <Label>
+    Test Select
+  </Label>
+  <select
+    className="oui-select"
+    data-oui-component={true}
+    disabled={false}
+  >
+    <option
+      value="one"
+    >
+      This is option one
+    </option>
+    <option
+      value="two"
+    >
+      And this is option two
+    </option>
+  </select>
+</div>
+`;
+
 exports[`components/Select should render correctly when declared with no properties 1`] = `
 <select
   className="oui-select"
@@ -18,7 +45,39 @@ exports[`components/Select should render correctly when declared with no propert
 </select>
 `;
 
-exports[`components/Select should render correctly when isDisabled prop is declare 1`] = `
+exports[`components/Select should render correctly when displayError is declared and a note is present 1`] = `
+<div
+  className="oui-form-bad-news"
+  data-oui-component={true}
+>
+  <Label>
+    Test Select
+  </Label>
+  <select
+    className="oui-select"
+    data-oui-component={true}
+    disabled={false}
+  >
+    <option
+      value="one"
+    >
+      This is option one
+    </option>
+    <option
+      value="two"
+    >
+      And this is option two
+    </option>
+  </select>
+  <div
+    className="oui-form-note"
+  >
+    This field is required
+  </div>
+</div>
+`;
+
+exports[`components/Select should render correctly when isDisabled prop is declared 1`] = `
 <select
   className="oui-select"
   data-oui-component={true}
@@ -35,4 +94,31 @@ exports[`components/Select should render correctly when isDisabled prop is decla
     And this is option two
   </option>
 </select>
+`;
+
+exports[`components/Select should render correctly when isFullWidth is declared 1`] = `
+<div
+  className=""
+  data-oui-component={true}
+>
+  <Label>
+    Test Select
+  </Label>
+  <select
+    className="oui-select width--1-1"
+    data-oui-component={true}
+    disabled={false}
+  >
+    <option
+      value="one"
+    >
+      This is option one
+    </option>
+    <option
+      value="two"
+    >
+      And this is option two
+    </option>
+  </select>
+</div>
 `;

@@ -49,3 +49,12 @@
     height: map-fetch($button, size, large, height);
   }
 }
+
+.oui-form-bad-news {
+  .oui-select {
+    &:hover:not([disabled]) {
+      box-shadow: map-fetch($button, type, base, hover, box-shadow);
+      border-color: shade(map-fetch($color, ui, bad-news), 40%);
+    }
+  }
+}

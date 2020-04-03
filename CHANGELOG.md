@@ -6,6 +6,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Feature] Multiple enhancements to **Select** ([#1313](https://github.com/optimizely/oui/pull/1313))
+    - Add `displayError` and `note` to show an error state and message
+    - Add `isFullWidth` to make **Select** take 100% width of container
+    - Add `onChange` to detect a selection made
+    - For accessibility, add `label`, `isOptional`, and `isRequired` to specify a label for the **Select**
 
 ## 45.6.1 - 2020-03-12
 - [Patch] Update Chromatic to be a devDependency ([#1309](https://github.com/optimizely/oui/pull/1309))
