@@ -2572,6 +2572,7 @@ fieldset {
 .form-bad-news .oui-button--outline,
 .form-bad-news.oui-dropdown-group .oui-button,
 .form-bad-news .select,
+.form-bad-news .oui-select,
 .form-bad-news .textarea,
 .form-bad-news .oui-textarea,
 .oui-form-bad-news .text-input,
@@ -2580,6 +2581,7 @@ fieldset {
 .oui-form-bad-news .oui-button--outline,
 .oui-form-bad-news.oui-dropdown-group .oui-button,
 .oui-form-bad-news .select,
+.oui-form-bad-news .oui-select,
 .oui-form-bad-news .textarea,
 .oui-form-bad-news .oui-textarea {
   border-color: #FF5B5B; }
@@ -2588,6 +2590,7 @@ fieldset {
   .form-bad-news .oui-button--outline:hover,
   .form-bad-news.oui-dropdown-group .oui-button:hover,
   .form-bad-news .select:hover,
+  .form-bad-news .oui-select:hover,
   .form-bad-news .textarea:hover,
   .form-bad-news .oui-textarea:hover,
   .oui-form-bad-news .text-input:hover,
@@ -2596,6 +2599,7 @@ fieldset {
   .oui-form-bad-news .oui-button--outline:hover,
   .oui-form-bad-news.oui-dropdown-group .oui-button:hover,
   .oui-form-bad-news .select:hover,
+  .oui-form-bad-news .oui-select:hover,
   .oui-form-bad-news .textarea:hover,
   .oui-form-bad-news .oui-textarea:hover {
     border-color: #993737; }
@@ -2604,6 +2608,7 @@ fieldset {
   .form-bad-news .oui-button--outline:focus,
   .form-bad-news.oui-dropdown-group .oui-button:focus,
   .form-bad-news .select:focus,
+  .form-bad-news .oui-select:focus,
   .form-bad-news .textarea:focus,
   .form-bad-news .oui-textarea:focus,
   .oui-form-bad-news .text-input:focus,
@@ -2612,6 +2617,7 @@ fieldset {
   .oui-form-bad-news .oui-button--outline:focus,
   .oui-form-bad-news.oui-dropdown-group .oui-button:focus,
   .oui-form-bad-news .select:focus,
+  .oui-form-bad-news .oui-select:focus,
   .oui-form-bad-news .textarea:focus,
   .oui-form-bad-news .oui-textarea:focus {
     border-color: #FF5B5B;
@@ -2847,6 +2853,10 @@ li > ol {
   .oui-select--large {
     font-size: 15px;
     height: 42px; }
+
+.oui-form-bad-news .oui-select:hover:not([disabled]) {
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.16);
+  border-color: #993737; }
 
 
 .table,
