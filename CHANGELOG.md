@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Patch] Indicate **Accordion** and **ArrowsInline** as deprecated ([#1314](https://github.com/optimizely/oui/pull/1314))
+- [Patch] Update stories for **LayoutKit** and create Storybook folders for **Container**, **Row**, and **Col**, as well as app specific examples ([#1314](https://github.com/optimizely/oui/pull/1314))
 
 ## 45.7.0 - 2020-04-06
 - [Feature] Multiple enhancements to **Select** ([#1313](https://github.com/optimizely/oui/pull/1313))
