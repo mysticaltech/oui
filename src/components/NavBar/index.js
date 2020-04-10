@@ -23,7 +23,10 @@ const linkPropTypes = {
   /** Condition in which this link is visible. */
   isVisible: PropTypes.bool,
   /** Description of url. */
-  linkLabel: PropTypes.string,
+  linkLabel: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   /** Handler called when link is clicked. */
   onClick: PropTypes.func,
   /** Name of test data section. */

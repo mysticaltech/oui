@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 
 import NavBar from './index';
+import Badge from '../Badge';
 
 // TODO[1]: Do this with CSS only.
 const openLogoUrl = 'https://app.optimizely.com/dist/static/img/rebrand/logo-f64d2aed989db744b609666199d7d2a2.svg';
@@ -45,7 +46,7 @@ stories
         <NavBar.PrimaryLink
           iconName="experiment"
           type="link"
-          linkLabel="Experiment"
+          linkLabel={ <div>Experiments&nbsp;<Badge color="primary">New</Badge></div> }
           testSection="experiment"
           isActive={ true }
           onClick={ action('PrimaryLink onClick') }
@@ -150,7 +151,7 @@ stories
         <NavBar.PrimaryLink
           iconName="experiment"
           type="link"
-          linkLabel="Experiment"
+          linkLabel={ <div>Experiments&nbsp;<Badge color="primary">New</Badge></div> }
           testSection="experiment"
           isActive={ true }
           onClick={ action('PrimaryLink onClick') }
