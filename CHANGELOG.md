@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+
+## 45.8.0 - 2020-04-10
 - [Feature] Add ability to pass a node or string for the `linkLabel` in **NavBar** ([#1315](https://github.com/optimizely/oui/pull/1315))
 - [Patch] Indicate **Accordion** and **ArrowsInline** as deprecated ([#1314](https://github.com/optimizely/oui/pull/1314))
 - [Patch] Update stories for **LayoutKit** and create Storybook folders for **Container**, **Row**, and **Col**, as well as app specific examples ([#1314](https://github.com/optimizely/oui/pull/1314))

@@ -5306,7 +5306,9 @@ code {
   .root-nav--open .root-nav__logo--mark {
     opacity: 0; }
   .root-nav--open .root-nav__link__text {
-    display: block; }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
   .root-nav--open .root-nav__link {
     transition: width 150ms ease-in;
     width: 226px;
