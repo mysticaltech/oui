@@ -479,6 +479,7 @@ fieldset {
   .oui-button--outline,
   &.oui-dropdown-group .oui-button,
   .#{$namespace}select,
+  .oui-select,
   .#{$namespace}textarea,
   .oui-textarea {
     border-color: map-fetch($color, ui, bad-news);

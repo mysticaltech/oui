@@ -1,7 +1,14 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, number, select } from '@storybook/addon-knobs';
+import { storiesOf, addParameters } from '@storybook/react';
+import {
+  withKnobs,
+  boolean,
+  number,
+  select,
+  text,
+} from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import noop from 'lodash.noop';
 
 import Col from './Col';
@@ -16,7 +23,9 @@ import Input from '../Input';
 import ButtonRow from '../ButtonRow';
 import Icon from 'react-oui-icons';
 
-import { addParameters } from '@storybook/react';
+import NavBar from '../NavBar';
+const openLogoUrl =
+  'https://app.optimizely.com/dist/static/img/rebrand/logo-f64d2aed989db744b609666199d7d2a2.svg';
 
 const viewports = {
   iphone5: {
@@ -76,13 +85,13 @@ const borderOptions = {
   none: 'none',
 };
 
-const stories = storiesOf('Layout', module);
-stories
+const storiesForContainer = storiesOf('LayoutKit/Container', module);
+storiesForContainer
   .addDecorator(withKnobs)
   .addDecorator(story => <div id="root-preview">{story()}</div>);
 
-stories
-  .add('Default', () => {
+storiesForContainer
+  .add('Default Overview', () => {
     return (
       <div>
         <h1>Default (Equal Widths)</h1>
@@ -257,7 +266,7 @@ stories
       </div>
     );
   })
-  .add('Container vs None', () => {
+  .add('Container vs No Container', () => {
     return (
       <div>
         <h1>With Container</h1>
@@ -281,6 +290,178 @@ stories
           </Col>
         </Row>
       </div>
+    );
+  })
+
+  .add('Pull Row Padding', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        pullRowPadding={ boolean('pullRowPadding', true) }
+        paddedContent={ select('paddedContent', paddingOptions, 'around') }
+        fluid={ boolean('fluid', false) }>
+        <Row>
+          <Col>pullRowPadding on the Container removes left padding here</Col>
+          <Col>pullRowPadding does nothing here</Col>
+          <Col>pullRowPadding does nothing here</Col>
+          <Col>pullRowPadding does nothing here</Col>
+          <Col>pullRowPadding removes right padding here</Col>
+        </Row>
+      </Container>
+    );
+  });
+
+const storiesForRow = storiesOf('LayoutKit/Row', module);
+storiesForRow
+  .addDecorator(withKnobs)
+  .addDecorator(story => <div id="root-preview">{story()}</div>);
+
+storiesForRow
+  .add('Vertical Columns', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        pushRowsTop={ boolean('pushRowsTop', true) }
+        paddedContent={ select('paddedContent', paddingOptions, 'sides') }
+        fluid={ boolean('fluid', false) }>
+        <p>Here displayVertical is true on the {'<Row/>'}</p>
+        <Row
+          removeGutters={ boolean('Row removeGutters', false) }
+          displayVertical={ boolean('displayVertical', true) }>
+          <Col>1 of 6</Col>
+          <Col>2 of 6</Col>
+          <Col>3 of 6</Col>
+          <Col>4 of 6</Col>
+          <Col>5 of 6</Col>
+          <Col>6 of 6</Col>
+        </Row>
+        <Row
+          removeGutters={ boolean('Row removeGutters', false) }
+          displayVertical={ boolean('displayVertical', true) }>
+          <Col>1 of 4</Col>
+          <Col>2 of 4</Col>
+          <Col>3 of 4</Col>
+          <Col>4 of 4</Col>
+        </Row>
+        <p className="push--top">
+          Here displayVertical is false on the {'<Row/>'}
+        </p>
+        <Row
+          removeGutters={ boolean('Row removeGutters', false) }
+          displayVertical={ false }>
+          <Col>1 of 2</Col>
+          <Col>2 of 2</Col>
+        </Row>
+      </Container>
+    );
+  })
+  .add('Preventing Wrapping', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        pushRowsTop={ true }
+        paddedContent={ 'sides' }>
+        <Row removeGutters={ false } shouldWrap={ false }>
+          <Col small={ 8 }>
+            <p>
+              Super long content here that will take up a good amount of this
+              column - shrink the display width to see the difference
+            </p>
+          </Col>
+          <Col small={ 4 }>
+            <p>
+              Other long content that takes up lots of space in this column but
+              will not wrap to a second line because shouldWrap is <b>false</b>{' '}
+              on the Row
+            </p>
+          </Col>
+        </Row>
+        <Row removeGutters={ false } shouldWrap={ true }>
+          <Col small={ 8 }>
+            <p>
+              Super long content here that will take up a good amount of this
+              column - shrink the display width to see the difference
+            </p>
+          </Col>
+          <Col small={ 4 }>
+            <p>
+              Other long content that takes up lots of space in this column but{' '}
+              <b>will</b> wrap to a second row because shouldWrap is <b>true</b>{' '}
+              on the Row
+            </p>
+          </Col>
+        </Row>
+      </Container>
+    );
+  })
+  .add('Vertical Alignment', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        pushRowsTop={ true }
+        paddedContent={ 'sides' }>
+        <Row
+          removeGutters={ false }
+          shouldWrap={ false }
+          verticalAlignment={ 'start' }>
+          <Col small={ 8 }>
+            <p>All this content</p>
+          </Col>
+          <Col small={ 4 }>
+            <p>will align to the start of the Row with
+              <code> verticalAlignment = {'start'} </code>
+            </p>
+          </Col>
+        </Row>
+        <Row
+          removeGutters={ false }
+          shouldWrap={ true }
+          verticalAlignment={ 'center' }>
+          <Col small={ 8 }>
+            <p>But this content</p>
+          </Col>
+          <Col small={ 4 }>
+            <p>
+              will align to the center of the Row with
+              <code> verticalAlignment = {'center'} </code>
+            </p>
+          </Col>
+        </Row>
+        <Row
+          removeGutters={ false }
+          shouldWrap={ true }
+          verticalAlignment={ 'end' }>
+          <Col small={ 8 }>
+            <p>And this content</p>
+          </Col>
+          <Col small={ 4 }>
+            <p>
+              will align to the end of the Row with
+              <code> verticalAlignment = {'end'} </code>
+            </p>
+          </Col>
+        </Row>
+      </Container>
+    );
+  });
+
+const storiesForCol = storiesOf('LayoutKit/Col', module);
+storiesForCol
+  .addDecorator(withKnobs)
+  .addDecorator(story => <div id="root-preview">{story()}</div>);
+
+storiesForCol
+  .add('Changing Order', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        fluid={ boolean('fluid', false) }>
+        <Row removeGutters={ boolean('Row removeGutters', false) }>
+          <Col small={ true }>First, but unordered</Col>
+          <Col small={{ order: 12 }}>Second, but last</Col>
+          <Col small={{ order: 1 }}>Third, but second</Col>
+        </Row>
+      </Container>
     );
   })
   .add('Column Padding', () => {
@@ -308,7 +489,7 @@ stories
       </Container>
     );
   })
-  .add('Borders', () => {
+  .add('Borders on Columns', () => {
     return (
       <Container
         outlineDebug={ boolean('outlineDebug', false) }
@@ -323,89 +504,27 @@ stories
           <Col paddedContent={ 'around' }>
             <div>
               <h2 className="push--bottom">Some Title</h2>
-              <p>Col with border sides</p>
+              <p>Col with no border</p>
             </div>
           </Col>
-          <Col paddedContent={ 'around' } border={ 'left' }>
+          <Col paddedContent={ 'around' } border={ 'sides' }>
             <div>
               <h2 className="push--bottom">A Longer Page Title</h2>
-              <p>Col with border sides and long-ish content that will definitely run
-              to multiple lines.</p>
+              <p>
+                Col with border sides and long-ish content that will definitely
+                run to multiple lines.
+              </p>
             </div>
           </Col>
-          <Col paddedContent={ 'around' } border={ 'left' }>
-            Col with border sides
+          <Col paddedContent={ 'around' } border={ 'none' }>
+            Col with border none
           </Col>
           <Col paddedContent={ 'around' } border={ 'left' }>
-            Col with border sides
+            Col with border left
           </Col>
-          <Col paddedContent={ 'around' } border={ 'left' }>
+          <Col paddedContent={ 'around' } border={ 'right' }>
             Col with border right
           </Col>
-        </Row>
-      </Container>
-    );
-  })
-  .add('Pull Row Padding', () => {
-    return (
-      <Container
-        outlineDebug={ boolean('outlineDebug', true) }
-        pullRowPadding={ boolean('pullRowPadding', true) }
-        paddedContent={ select('paddedContent', paddingOptions, 'around') }
-        fluid={ boolean('fluid', false) }>
-        <Row>
-          <Col>pullRowPadding removes left padding here</Col>
-          <Col>pullRowPadding does nothing here</Col>
-          <Col>pullRowPadding does nothing here</Col>
-          <Col>pullRowPadding does nothing here</Col>
-          <Col>pullRowPadding removes right padding here</Col>
-        </Row>
-      </Container>
-    );
-  })
-  .add('Vertical Columns', () => {
-    return (
-      <Container
-        outlineDebug={ boolean('outlineDebug', true) }
-        pushRowsTop={ boolean('pushRowsTop', true) }
-        paddedContent={ select('paddedContent', paddingOptions, 'none') }
-        fluid={ boolean('fluid', false) }>
-        <Row
-          removeGutters={ boolean('Row removeGutters', false) }
-          displayVertical={ boolean('displayVertical', true) }>
-          <Col>1 of 6</Col>
-          <Col>2 of 6</Col>
-          <Col>3 of 6</Col>
-          <Col>4 of 6</Col>
-          <Col>5 of 6</Col>
-          <Col>6 of 6</Col>
-        </Row>
-        <Row
-          removeGutters={ boolean('Row removeGutters', false) }
-          displayVertical={ boolean('displayVertical', true) }>
-          <Col>1 of 4</Col>
-          <Col>2 of 4</Col>
-          <Col>3 of 4</Col>
-          <Col>4 of 4</Col>
-        </Row>
-        <Row
-          removeGutters={ boolean('Row removeGutters', false) }
-          displayVertical={ boolean('displayVertical', true) }>
-          <Col>1 of 2</Col>
-          <Col>2 of 2</Col>
-        </Row>
-      </Container>
-    );
-  })
-  .add('Changing Order', () => {
-    return (
-      <Container
-        outlineDebug={ boolean('outlineDebug', true) }
-        fluid={ boolean('fluid', false) }>
-        <Row removeGutters={ boolean('Row removeGutters', false) }>
-          <Col small={ true }>First, but unordered</Col>
-          <Col small={{ order: 12 }}>Second, but last</Col>
-          <Col small={{ order: 1 }}>Third, but second</Col>
         </Row>
       </Container>
     );
@@ -427,154 +546,7 @@ stories
       </Container>
     );
   })
-  .add('Rows example: URL Match', () => {
-    return (
-      <Container
-        outlineDebug={ boolean('outlineDebug', true) }
-        paddedContent={ 'around' }
-        fluid={ boolean('fluid', true) }>
-        <Row border={ 'all' } paddedContent={ 'ends' }>
-          <Col>
-            <h6>URL Match</h6>
-          </Col>
-          <Col small={ 'auto' }>
-            <Icon name="close" />
-          </Col>
-        </Row>
-        <Row border={ 'all' } paddedContent={ 'ends' }>
-          <Container
-            pushRowsTop={ true }
-            paddedContent={ 'none' }
-            fluid={ boolean('fluid', true) }>
-            <Row verticalAlignment={ 'center' }>
-              <Col small={ 'auto' }>URL</Col>
-              <Col small={ 'fitContent' }>
-                <SelectDropdown items={ items } onChange={ noop } value={ 'does' } />
-              </Col>
-              <Col small={ 'auto' }>
-                these <strong>URLs</strong>:
-              </Col>
-            </Row>
-            <Row>
-              <Col small={ 'fillSpace' }>
-                <Input id="input-01" type="text" />
-              </Col>
-              <Col small={ 'fitContent' }>
-                <SelectDropdown
-                  items={ items }
-                  onChange={ noop }
-                  value={ 'simple' }
-                  width={ '200px' }
-                />
-              </Col>
-              <Col small={ 'fitContent' } paddedContent={ 'sides' }>
-                <ButtonRow
-                  centerGroup={ [
-                    <ButtonIcon
-                      key={ 1 }
-                      iconName="add"
-                      isDisabled={ false }
-                      size="large"
-                      title="Add Row"
-                    />,
-                    <ButtonIcon
-                      key={ 2 }
-                      iconName="close"
-                      isDisabled={ false }
-                      size="large"
-                      title="Remove Row"
-                    />,
-                  ] }
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col small={ 'fillSpace' }>
-                <Input id="input-02" type="text" />
-              </Col>
-              <Col small={ 'fitContent' }>
-                <SelectDropdown
-                  items={ items }
-                  onChange={ noop }
-                  value={ 'simple' }
-                  width={ '200px' }
-                />
-              </Col>
-              <Col small={ 'fitContent' } paddedContent={ 'sides' }>
-                <ButtonRow
-                  centerGroup={ [
-                    <ButtonIcon
-                      key={ 3 }
-                      iconName="add"
-                      isDisabled={ false }
-                      size="large"
-                      title="Add Row"
-                    />,
-                    <ButtonIcon
-                      key={ 4 }
-                      iconName="close"
-                      isDisabled={ false }
-                      size="large"
-                      title="Remove Row"
-                    />,
-                  ] }
-                />
-              </Col>
-            </Row>
-          </Container>
-        </Row>
-      </Container>
-    );
-  })
-  .add('With Cards Inside', () => {
-    return (
-      <Container
-        outlineDebug={ boolean('outlineDebug', true) }
-        paddedContent={ select('paddedContent', paddingOptions, 'none') }
-        fluid={ boolean('fluid', false) }>
-        <h1>fillSpace</h1>
-        <Row>
-          <Col large={ 'fillSpace' }>
-            <Card title="Hello Card" shadow={ false } testSection="card">
-              I am the short card example. Bye.
-            </Card>
-          </Col>
-          <Col large={ 'fillSpace' }>
-            <Card title="Hello Card" shadow={ false } testSection="card">
-              I am the short card example. Bye.
-            </Card>
-          </Col>
-        </Row>
-        <h1 className="push-triple--top">fitContent</h1>
-        <Row>
-          <Col large={ 'fitContent' }>
-            <Card title="Hello Card" shadow={ false } testSection="card">
-              I am the short card example. Bye.
-            </Card>
-          </Col>
-          <Col large={ 'fitContent' }>
-            <Card title="Hello Card" shadow={ false } testSection="card">
-              I am the short card example. Bye.
-            </Card>
-          </Col>
-        </Row>
-        <h1 className="push-triple--top">4/8</h1>
-        <Row>
-          <Col large={ 4 }>
-            <Card title="Hello Card" shadow={ false } testSection="card">
-              I am the short card example. Bye.
-            </Card>
-          </Col>
-          <Col large={ 8 }>
-            <Card title="Hello Card" shadow={ false } testSection="card">
-              I am the short card example. Bye.
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    );
-  })
-  .add('Special: Responsive Tests', () => {
+  .add('Example: Responsive Tests', () => {
     return (
       <div>
         <h1>Simple</h1>
@@ -646,14 +618,170 @@ stories
       </div>
     );
   })
-  .add('Special: Responsive Layout', () => {
+  .add('Example: With Cards Inside', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        paddedContent={ select('paddedContent', paddingOptions, 'none') }
+        fluid={ boolean('fluid', false) }>
+        <h1>fillSpace</h1>
+        <Row>
+          <Col large={ 'fillSpace' }>
+            <Card title="Hello Card" shadow={ false } testSection="card">
+              I am the short card example. Bye.
+            </Card>
+          </Col>
+          <Col large={ 'fillSpace' }>
+            <Card title="Hello Card" shadow={ false } testSection="card">
+              I am the short card example. Bye.
+            </Card>
+          </Col>
+        </Row>
+        <h1 className="push-triple--top">fitContent</h1>
+        <Row>
+          <Col large={ 'fitContent' }>
+            <Card title="Hello Card" shadow={ false } testSection="card">
+              I am the short card example. Bye.
+            </Card>
+          </Col>
+          <Col large={ 'fitContent' }>
+            <Card title="Hello Card" shadow={ false } testSection="card">
+              I am the short card example. Bye.
+            </Card>
+          </Col>
+        </Row>
+        <h1 className="push-triple--top">4/8</h1>
+        <Row>
+          <Col large={ 4 }>
+            <Card title="Hello Card" shadow={ false } testSection="card">
+              I am the short card example. Bye.
+            </Card>
+          </Col>
+          <Col large={ 8 }>
+            <Card title="Hello Card" shadow={ false } testSection="card">
+              I am the short card example. Bye.
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    );
+  });
+
+const storiesForExamples = storiesOf('LayoutKit/Usage Examples', module);
+storiesForExamples
+  .addDecorator(withKnobs)
+  .addDecorator(story => <div id="root-preview">{story()}</div>);
+
+storiesForExamples
+  .add('URL Rows Match', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        paddedContent={ 'around' }
+        fluid={ boolean('fluid', true) }>
+        <Row border={ 'all' } paddedContent={ 'ends' } shouldWrap={ false }>
+          <Col>
+            <h6>URL Match</h6>
+          </Col>
+          <Col small={ 'auto' }>
+            <Icon name="close" />
+          </Col>
+        </Row>
+        <Row border={ 'all' } paddedContent={ 'ends' } shouldWrap={ false }>
+          <Container
+            pushRowsTop={ true }
+            paddedContent={ 'none' }
+            fluid={ boolean('fluid', true) }>
+            <Row verticalAlignment={ 'center' } shouldWrap={ false }>
+              <Col small={ 'auto' }>URL</Col>
+              <Col small={ 'fitContent' }>
+                <SelectDropdown items={ items } onChange={ noop } value={ 'does' } />
+              </Col>
+              <Col small={ 'auto' }>
+                these <strong>URLs</strong>:
+              </Col>
+            </Row>
+            <Row shouldWrap={ false }>
+              <Col small={ 'fillSpace' }>
+                <Input id="input-01" type="text" />
+              </Col>
+              <Col small={ 'fitContent' }>
+                <SelectDropdown
+                  items={ items }
+                  onChange={ noop }
+                  value={ 'simple' }
+                  width={ '200px' }
+                />
+              </Col>
+              <Col small={ 'fitContent' } paddedContent={ 'sides' }>
+                <ButtonRow
+                  centerGroup={ [
+                    <ButtonIcon
+                      key={ 1 }
+                      iconName="add"
+                      isDisabled={ false }
+                      size="large"
+                      title="Add Row"
+                    />,
+                    <ButtonIcon
+                      key={ 2 }
+                      iconName="close"
+                      isDisabled={ false }
+                      size="large"
+                      title="Remove Row"
+                    />,
+                  ] }
+                />
+              </Col>
+            </Row>
+            <Row shouldWrap={ false }>
+              <Col small={ 'fillSpace' }>
+                <Input id="input-02" type="text" />
+              </Col>
+              <Col small={ 'fitContent' }>
+                <SelectDropdown
+                  items={ items }
+                  onChange={ noop }
+                  value={ 'simple' }
+                  width={ '200px' }
+                />
+              </Col>
+              <Col small={ 'fitContent' } paddedContent={ 'sides' }>
+                <ButtonRow
+                  centerGroup={ [
+                    <ButtonIcon
+                      key={ 3 }
+                      iconName="add"
+                      isDisabled={ false }
+                      size="large"
+                      title="Add Row"
+                    />,
+                    <ButtonIcon
+                      key={ 4 }
+                      iconName="close"
+                      isDisabled={ false }
+                      size="large"
+                      title="Remove Row"
+                    />,
+                  ] }
+                />
+              </Col>
+            </Row>
+          </Container>
+        </Row>
+      </Container>
+    );
+  })
+  .add('Responsive Layout Showcase', () => {
     return (
       <Container
         outlineDebug={ boolean('outlineDebug', true) }
         pushRowsTop={ boolean('pushRowsTop', false) }
         paddedContent={ select('paddedContent', paddingOptions, 'none') }
         fluid={ boolean('fluid', false) }>
-        <Row removeGutters={ boolean('Row removeGutters', false) } paddedContent={ 'around' }>
+        <Row
+          removeGutters={ boolean('Row removeGutters', false) }
+          paddedContent={ 'around' }>
           <div>
             <h2>Features</h2>
             <p className="lead">Manage your app’s feature flags</p>
@@ -678,8 +806,8 @@ stories
             <h6>Try it for yourself</h6>
             <Code type="block">
               {'var enabled = optimizely.isFeatureEnabled(”chat_window”, userId);' +
-              '\nif(enabled)\n{\n  // Feature is enabled\n}' +
-              '\nelse {\n  // Feature is disabled\n}'}
+                '\nif(enabled)\n{\n  // Feature is enabled\n}' +
+                '\nelse {\n  // Feature is disabled\n}'}
             </Code>
             <Row>
               <Col large={ 6 }>
@@ -689,6 +817,134 @@ stories
                 <Button width={ 'full' }>Create Feature</Button>
               </Col>
             </Row>
+          </Col>
+        </Row>
+      </Container>
+    );
+  })
+  .add('Entire App Frame Template', () => {
+    return (
+      <Container
+        outlineDebug={ boolean('outlineDebug', true) }
+        pushRowsTop={ boolean('pushRowsTop', true) }
+        paddedContent={ text('paddedContent', 'none') }
+        fluid={ boolean('fluid', true) }>
+        <Row removeGutters={ boolean('gutters', false) } shouldWrap={ false }>
+          <Col small={ 'fitContent' }>
+            <NavBar
+              isOpen={ true }
+              logoUrl={ openLogoUrl }
+              title="Test Project"
+              badgeText="WEB"
+              badgeColor="draft"
+              homeUrl="http://optimizely.com"
+              trialContent={
+                <div className="push-double--bottom push-double--left truncate">
+                  {boolean('isOpen', true) && '5 days left in your trial'}
+                </div>
+              }>
+              <NavBar.PrimaryLink
+                iconName="projects"
+                type="pushstate"
+                linkLabel="Projects"
+                testSection="projects"
+              />
+              <NavBar.PrimaryLink
+                iconName="experiment"
+                type="link"
+                linkLabel="Experiment"
+                testSection="experiment"
+                isActive={ true }
+              />
+              <NavBar.PrimaryLink
+                iconName="rollouts"
+                type="link"
+                linkLabel="Features"
+                testSection="features"
+              />
+              <NavBar.PrimaryLink
+                iconName="audiences"
+                type="link"
+                linkLabel="Audiences"
+                testSection="audiences"
+              />
+              <NavBar.PrimaryLink
+                iconName="events"
+                type="button"
+                linkLabel="Events"
+                testSection="events"
+              />
+              <NavBar.PrimaryLink
+                iconName="settings"
+                type="link"
+                linkLabel="Settings"
+                testSection="settings"
+              />
+              <NavBar.PrimaryLink
+                iconName="getting-started"
+                type="pushstate"
+                linkLabel="Getting Started"
+                testSection="getting-started"
+                hasSeparator={ true }
+              />
+              <NavBar.SecondaryLink
+                iconName="program-management"
+                type="button"
+                linkLabel="Program Management"
+                testSection="program-management"
+              />
+              <NavBar.SecondaryLink
+                iconName="help"
+                type="link"
+                linkLabel="Help"
+                testSection="help"
+              />
+              <NavBar.SecondaryLink
+                iconName="feedback"
+                type="link"
+                linkLabel="Feedback"
+                testSection="feedback"
+              />
+              <NavBar.CurrentUserMenu
+                showEmulate={ boolean('showEmulate', true) }
+                onEmulateClick={ action('onEmulateClick') }
+                accountSwitcherItems={ [
+                  {
+                    text: 'Account 1',
+                    url: '#',
+                    description: 'Account 1 Description',
+                    isCurrent: false,
+                  },
+                  {
+                    text: 'Account 3',
+                    url: '#',
+                    description: 'Account 3 Description',
+                    isCurrent: false,
+                  },
+                  {
+                    text: 'Account 2',
+                    url: '#',
+                    description: 'Account 2 Description',
+                    isCurrent: true,
+                  },
+                ] }
+                accountSwitcherHandler={ action('accountSwitcherHandler') }
+                userName="Hassan Khalid"
+                accountSettingsUrl="#"
+                profileUrl="#"
+                logoutUrl="#"
+                profileAvatarUrl={ text(
+                  'profileAvatarUrl',
+                  'https://optimizely-profile-images-devel.s3.amazonaws.com/img/user/hassan.khalid%40optimizely.com/c57517e7ee4941d0a5e71f3d89df0c0d.jpg'
+                ) }
+              />
+            </NavBar>
+          </Col>
+          <Col small={ 'fitContent' }>
+            <div style={{ width: '285px' }}>Tabs/Header</div>
+          </Col>
+          <Col small={ 'fillSpace' } isReadingColumn={ true }>
+            <div>Stage (using isReadingColumn on the Col)</div>
           </Col>
         </Row>
       </Container>

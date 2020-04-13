@@ -125,7 +125,9 @@ $root-shadow: inset -1px 0 3px 0 rgba(0, 0, 0, 0.1);
   }
 
   .root-nav__link__text {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .root-nav__link {

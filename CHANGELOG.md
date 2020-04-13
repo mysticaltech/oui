@@ -8,6 +8,18 @@ This file is similar to the format suggested by [Keep a CHANGELOG](https://githu
 ## Unreleased
 - [Patch] Prevent multi select **SelectDropdown** and **Dropdown** from calling `onClick` twice when item is checked ([#1310](https://github.com/optimizely/oui/pull/1310))
 
+## 45.8.0 - 2020-04-10
+- [Feature] Add ability to pass a node or string for the `linkLabel` in **NavBar** ([#1315](https://github.com/optimizely/oui/pull/1315))
+- [Patch] Indicate **Accordion** and **ArrowsInline** as deprecated ([#1314](https://github.com/optimizely/oui/pull/1314))
+- [Patch] Update stories for **LayoutKit** and create Storybook folders for **Container**, **Row**, and **Col**, as well as app specific examples ([#1314](https://github.com/optimizely/oui/pull/1314))
+
+## 45.7.0 - 2020-04-06
+- [Feature] Multiple enhancements to **Select** ([#1313](https://github.com/optimizely/oui/pull/1313))
+    - Add `displayError` and `note` to show an error state and message
+    - Add `isFullWidth` to make **Select** take 100% width of container
+    - Add `onChange` to detect a selection made
+    - For accessibility, add `label`, `isOptional`, and `isRequired` to specify a label for the **Select**
+
 ## 45.6.1 - 2020-03-12
 - [Patch] Update Chromatic to be a devDependency ([#1309](https://github.com/optimizely/oui/pull/1309))
 

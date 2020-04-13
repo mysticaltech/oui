@@ -35,7 +35,6 @@ function loadStories() {
   require('./css.story.js');
   require('./borderradius.story.js');
   req.keys().forEach(req);
-  require('./AppFrame.story.js');
 }
 const currYear = moment().get('year');
 mockDate.set(moment(`${currYear}-1-15`));

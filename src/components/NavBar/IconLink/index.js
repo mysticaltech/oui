@@ -26,8 +26,11 @@ class IconLink extends React.PureComponent {
     isOpen: PropTypes.bool,
     /* Boolean, whether link is primary or secondary */
     isSecondaryLink: PropTypes.bool,
-    /* String, description of url */
-    linkLabel: PropTypes.string.isRequired,
+    /* String or Node, description of url */
+    linkLabel: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.node,
+    ]).isRequired,
     /* Function called when IconLink is clicked */
     onClick: PropTypes.func,
     /* String, name of test data section */
@@ -84,9 +87,9 @@ class IconLink extends React.PureComponent {
                 size={ iconSize }
               />
             </div>
-            <span className={ classNames('root-nav__link__text', ' truncate', { 'root-nav-fader': !isOpen }) }>
+            <div className={ classNames('root-nav__link__text', ' truncate', { 'root-nav-fader': !isOpen }) }>
               { linkLabel }
-            </span>
+            </div>
           </div>
         </Poptip>
       </React.Fragment>
@@ -155,7 +158,7 @@ class IconLink extends React.PureComponent {
     }
 
     return (
-      <li data-test-section={ testSection }>
+      <li className="display--inline-block" data-test-section={ testSection }>
         { linkToRender }
       </li>
     );
