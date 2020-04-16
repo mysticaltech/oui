@@ -92,6 +92,14 @@ stories
         <fieldset>
           <Input
             id="input-07"
+            placeholder="This input is disabled"
+            type="text"
+            isDisabled={ true }
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            id="input-08"
             type="time"
           />
         </fieldset>

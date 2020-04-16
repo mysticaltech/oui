@@ -45,6 +45,7 @@ stories.add('Default', () => {
       <Dropdown
         buttonContent={ text('buttonContent', 'Default Dropdown') }
         width={ number('width', 300) }
+        isDisabled={ boolean('isDisabled', false) }
         arrowIcon={ select('arrowIcon', { up: 'up', down: 'down', left: 'left', right: 'right', none: 'none' }, 'down') }>
         <Dropdown.Contents>
           {data.map((item, index) => {
