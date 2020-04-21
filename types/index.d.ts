@@ -3,7 +3,6 @@
 // Definitions by: ui-engineering <https://github.com/optimizely/oui>
 
 declare module 'optimizely-oui' {
-  export { default as Autocomplete } from 'components/Autocomplete/index';
   export { default as Accordion } from 'components/Accordion/index';
   export { default as ArrowsInline } from 'components/ArrowsInline/index';
   export { default as Attention } from 'components/Attention/index';
@@ -27,7 +26,6 @@ declare module 'optimizely-oui' {
   export { default as DiscloseTable } from 'components/DiscloseTable/index';
   export { default as DockedFooter } from 'components/DockedFooter/index';
   export { default as Dropdown } from 'components/Dropdown/index';
-  export { default as EditableInput } from 'components/EditableInput/index';
   export { default as EmptyDashboard } from 'components/EmptyDashboard/index';
   export { default as Fieldset } from 'components/Fieldset/index';
   export { default as FilterPicker } from 'components/FilterPicker/index';
@@ -119,33 +117,6 @@ declare module "components/Accordion/index" {
     import PropTypes from "prop-types";
     import React from "react";
 }
-declare module "components/Accordion/Accordion.story" {
-    export {};
-}
-declare module "components/ArrowsInline/index" {
-    export default ArrowsInline;
-    function ArrowsInline({ direction, testSection, }: any): any;
-    namespace ArrowsInline {
-        export namespace defaultProps {
-            export const direction: string;
-        }
-        export namespace propTypes {
-            const direction_1: PropTypes.Requireable<string>;
-            export { direction_1 as direction };
-            export const testSection: PropTypes.Requireable<string>;
-        }
-    }
-    import PropTypes from "prop-types";
-}
-declare module "components/ArrowsInline/ArrowInline.story" {
-    export {};
-}
-declare module "components/ArrowsInline/example/index" {
-    var _default: {
-        examples: JSX.Element[];
-    }[];
-    export default _default;
-}
 declare module "components/Spinner/index" {
     export default Spinner;
     function Spinner({ size, hasOverlay, testSection, }: any): any;
@@ -208,9 +179,67 @@ declare module "components/Button/index" {
     }
     import PropTypes from "prop-types";
 }
+declare module "tokens/forimport/index.es" {
+    export var brandBlueLight: string;
+    export var brandBlueBase: string;
+    export var brandBlueDark: string;
+    export var brandPurpleLight: string;
+    export var brandPurpleBase: string;
+    export var brandPurpleDark: string;
+    export var smokeLight: string;
+    export var smokeBase: string;
+    export var smokeDark: string;
+    export var greyLight: string;
+    export var greyBase: string;
+    export var greyDark: string;
+    export var purpleLight: string;
+    export var purpleBase: string;
+    export var purpleDark: string;
+    export var magentaLight: string;
+    export var magentaBase: string;
+    export var magentaDark: string;
+    export var redLight: string;
+    export var redBase: string;
+    export var redDark: string;
+    export var pinkLight: string;
+    export var pinkBase: string;
+    export var pinkDark: string;
+    export var orangeLight: string;
+    export var orangeBase: string;
+    export var orangeDark: string;
+    export var amberLight: string;
+    export var amberBase: string;
+    export var amberDark: string;
+    export var greenLight: string;
+    export var greenBase: string;
+    export var greenDark: string;
+    export var aquaLight: string;
+    export var aquaBase: string;
+    export var aquaDark: string;
+    export var blueLight: string;
+    export var blueBase: string;
+    export var blueDark: string;
+    export var iconSmall: string;
+    export var iconLarge: string;
+}
 declare module "utils/accessibility" {
     export function getAssistiveTextFromColorClass(className: string): string;
     export function keyboardTracker(Component: React.Component<any, any, any>): React.Component<any, any, any>;
+    export const FILL_COLOR_MAP: {
+        aqua: string;
+        amber: string;
+        default: string;
+        green: string;
+        orange: string;
+        pink: string;
+        red: string;
+        magenta: string;
+        grey: string;
+    };
+    namespace _default {
+        export { FILL_COLOR_MAP };
+    }
+    export default _default;
     import React from "react";
 }
 declare module "components/Attention/index" {
@@ -224,6 +253,33 @@ declare module "components/Attention/index" {
     const Attention: ({ alignment, children, isDismissible, testSection, type }: AttentionProps) => JSX.Element;
     export default Attention;
 }
+declare module "components/Accordion/Accordion.story" {
+    export {};
+}
+declare module "components/ArrowsInline/index" {
+    export default ArrowsInline;
+    function ArrowsInline({ direction, testSection, }: any): any;
+    namespace ArrowsInline {
+        export namespace defaultProps {
+            export const direction: string;
+        }
+        export namespace propTypes {
+            const direction_1: PropTypes.Requireable<string>;
+            export { direction_1 as direction };
+            export const testSection: PropTypes.Requireable<string>;
+        }
+    }
+    import PropTypes from "prop-types";
+}
+declare module "components/ArrowsInline/ArrowInline.story" {
+    export {};
+}
+declare module "components/ArrowsInline/example/index" {
+    var _default: {
+        examples: JSX.Element[];
+    }[];
+    export default _default;
+}
 declare module "components/Attention/Attention.story" {
     export {};
 }
@@ -233,102 +289,123 @@ declare module "components/Attention/example/index" {
     }[];
     export default _default;
 }
-declare module "utils/filter" {
-    /**
-     * Searches a string for an occurrence of a filtering string (case insensitive)
-     *  - Filtering a complex object? Consider implementing a filter with an
-     *    approach similar to FilterPicker, where item key values are joined
-     *    in a string and passed in as contentToSearch
-     * @param {string} stringToFind
-     * - The term to find, split into separate search terms by spaces
-     * @param {string} contentToSearch
-     * - The content to search for the filter term
-     * @returns {boolean}
-     */
-    export function isFilterTermInItem(stringToFind: string, contentToSearch: string): boolean;
-}
-declare module "components/Label/index" {
-    export default Label;
-    function Label({ isOptional, isRequired, children, testSection, inputId, }: any): any;
-    namespace Label {
+declare module "components/Avatar/index" {
+    export default Avatar;
+    function Avatar({ size, imageUrl, isEmulating, testSection, }: {
+        size: any;
+        imageUrl: any;
+        isEmulating: any;
+        testSection: any;
+    }): JSX.Element;
+    namespace Avatar {
         export namespace propTypes {
-            export const children: PropTypes.Requireable<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
-            export const inputId: PropTypes.Requireable<string>;
-            export const isOptional: PropTypes.Requireable<boolean>;
-            export const isRequired: PropTypes.Requireable<boolean>;
+            export const imageUrl: PropTypes.Requireable<string>;
+            export const isEmulating: PropTypes.Requireable<boolean>;
+            export const size: PropTypes.Requireable<string>;
             export const testSection: PropTypes.Requireable<string>;
         }
     }
     import PropTypes from "prop-types";
 }
-declare module "components/Input/index" {
+declare module "components/Layout/Container" {
     import React from 'react';
-    type InputProps = {
-        /** The default value of the input used on initial render */
-        defaultValue?: string;
-        /** Includes search icon if true */
-        displayError?: boolean;
-        /** Whether or not to automatically focus this input */
-        focus?: boolean;
-        /** Id of the input to properly associate with the input's label */
-        id?: string;
-        /** Prevents input from being modified and appears disabled */
-        isDisabled?: boolean;
-        /** Includes error if true */
-        isFilter?: boolean;
-        /** Adds an optional label if there is a label provided */
-        isOptional?: any;
-        /** Prevents input from being modified but doesn't appear disabled */
-        isReadOnly?: boolean;
-        /** Includes required asterisk label if true */
-        isRequired?: any;
-        /** Text that describes the input */
-        label?: string;
+    type ContainerProps = {
         /**
-         * Max value for the `input`. Should be used only when `type` is `number`.
+         * Use a custom element for this component
          */
-        max?: number;
+        as?: React.ElementType;
         /**
-         * Max length of the input value. Should be used only when type is 'text',
-         * 'email', 'search', 'password', 'tel', or 'url'.
+         * Allow the Container to fill available horizontal space.
          */
-        maxLength?: number;
+        fluid?: boolean;
         /**
-         * Min value for the `input`. Should be used only when `type` is `number`.
+         * For testing/debugging only -- show hotpink grid borders and backgrounds.
          */
-        min?: number;
-        /** Form note for the input */
-        note?: string | null;
+        outlineDebug?: boolean;
         /**
-         * Function that fires when the input loses focus. It fires regardless of
-         * whether the value has changed.
+         * Pad inner content.
          */
-        onBlur?: (...args: any[]) => any;
-        /** Function that fires when the input loses focus after the value changes */
-        onChange?: (...args: any[]) => any;
-        /** Function that fires when the input is clicked */
-        onClick?: (...args: any[]) => any;
-        /** Function that fires when the input gains focus */
-        onFocus?: (...args: any[]) => any;
-        /** Function that fires anytime the input value changes */
-        onInput?: (...args: any[]) => any;
-        /** Function that fires when a key is pressed down */
-        onKeyDown?: (...args: any[]) => any;
-        /** Input placeholder text */
-        placeholder?: string;
-        /** Input step value */
-        step?: string;
-        /** Hook for automated JavaScript tests */
-        testSection?: string;
-        /** Align text inside input. Default is left. */
-        textAlign?: 'left' | 'right';
-        /** Supported input types */
-        type: 'text' | 'password' | 'date' | 'number' | 'email' | 'url' | 'search' | 'tel' | 'time';
-        /** Text within the input */
-        value?: string | number;
+        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
+        /**
+         * Remove first and last child side padding.
+         */
+        pullRowPadding?: boolean;
+        /**
+         * Add top margin space between rows.
+         */
+        pushRowsTop?: boolean;
     };
-    const Input: React.SFC<InputProps>;
-    export default Input;
+    const Container: React.SFC<ContainerProps>;
+    export default Container;
+}
+declare module "components/Layout/Row" {
+    import React from 'react';
+    type RowProps = {
+        /**
+         * @default 'row'
+         */
+        as?: React.ElementType;
+        /**
+         * Add visible border to row
+         */
+        border?: 'top' | 'bottom' | 'left' | 'right' | 'sides' | 'ends' | 'all' | 'none';
+        /**
+         * Display layout as vertical column.
+         */
+        displayVertical?: boolean;
+        /**
+         * For testing/debugging only -- show grid hotpink borders and backgrounds.
+         */
+        outlineDebug?: boolean;
+        /**
+         * Force overflow scrolling
+         */
+        overflow?: 'overflow-y--scroll' | 'overflow-x--auto' | 'overflow-y--auto';
+        /**
+         * Pad inner content.
+         */
+        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
+        /**
+         * Removes gutters and negative margins.
+         */
+        removeGutters?: boolean;
+        /** Whether this row should wrap at small screen sizes */
+        shouldWrap?: boolean;
+        /**
+         * How to vertically align content
+         */
+        verticalAlignment?: 'start' | 'center' | 'end';
+    };
+    const Row: React.SFC<RowProps>;
+    export default Row;
+}
+declare module "components/Avatar/avatar.story" {
+    export {};
+}
+declare module "components/Badge/index" {
+    export default Badge;
+    function Badge(props: any): any;
+    namespace Badge {
+        export namespace propTypes {
+            export const children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
+            export const color: PropTypes.Requireable<string>;
+            export const testSection: PropTypes.Requireable<string>;
+        }
+        export namespace defaultProps {
+            const color_1: string;
+            export { color_1 as color };
+        }
+    }
+    import PropTypes from "prop-types";
+}
+declare module "components/Badge/Badge.story" {
+    export {};
+}
+declare module "components/Badge/example/index" {
+    var _default: {
+        examples: JSX.Element[];
+    }[];
+    export default _default;
 }
 declare module "components/BlockList/Category/index" {
     export default Category;
@@ -392,186 +469,6 @@ declare module "components/BlockList/index" {
     import Category from "components/BlockList/Category";
     import Item from "components/BlockList/Item";
 }
-declare module "components/Link/index" {
-    export default Link;
-    function Link({ ariaLabel, children, href, onClick, isDisabled, newWindow, style, testSection, }: any): any;
-    namespace Link {
-        export namespace propTypes {
-            export const ariaLabel: PropTypes.Requireable<string>;
-            export const children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
-            export const href: PropTypes.Requireable<string>;
-            export const isDisabled: PropTypes.Requireable<boolean>;
-            export const newWindow: PropTypes.Requireable<boolean>;
-            export const onClick: PropTypes.Requireable<(...args: any[]) => any>;
-            export const style: PropTypes.Requireable<string>;
-            export const testSection: PropTypes.Requireable<string>;
-        }
-    }
-    import PropTypes from "prop-types";
-}
-declare module "components/Autocomplete/Suggestion/Suggestion" {
-    export default Suggestion;
-    function Suggestion(props: any): JSX.Element;
-    namespace Suggestion {
-        export namespace defaultProps {
-            export const suggestion: string;
-            export const testSection: string;
-        }
-        export namespace propTypes {
-            const suggestion_1: PropTypes.Requireable<string>;
-            export { suggestion_1 as suggestion };
-            const testSection_1: PropTypes.Requireable<string>;
-            export { testSection_1 as testSection };
-        }
-    }
-    import PropTypes from "prop-types";
-}
-declare module "components/Autocomplete/Suggestion/index" {
-    export default Suggestion;
-    import Suggestion from "components/Autocomplete/Suggestion/Suggestion";
-}
-declare module "components/Autocomplete/Autocomplete" {
-    export default Autocomplete;
-    /**
-     * Autocomplete
-     * This render an input with typeahead functionality
-     *
-     * Example:
-     *  <Autocomplete
-     *    placeholder='typehead...'
-     *    suggestions={['foo', 'bar']}
-     *    onSuggestionClick={ this.handleSuggestionClick }
-     *    ActionField={ CustomActionField }
-     *  />
-     */
-    class Autocomplete extends React.Component<any, any, any> {
-        constructor(props: any);
-        state: {
-            isFocused: boolean;
-            suggestions: any;
-            inputValue: any;
-        };
-        debouncedOnInputChange: any;
-        /**
-         * If stateful query internal suggestions state,
-         * else call input change handler
-         * @param {String} event - on-change input event
-         * @returns {undefined}
-         */
-        inputChange: (event: string) => undefined;
-        /**
-         * Updates suggestion state with new query results
-         * @param {String} query - suggestion query
-         * @param {Function} callback - function that is called have state is set
-         * @returns {undefined}
-         */
-        querySuggestions: (query: string, callback: Function) => undefined;
-        /**
-         * Creates an event handler for setting the focus state
-         * @param {Boolean} isFocused - set the isFocus state to true or false
-         * @returns {Function} focus/blur event handler
-         */
-        createFocusHandler: (isFocused: boolean) => Function;
-        /**
-         * Creates an event handler that is called when a suggestion is clicked
-         * @param {*} suggestion - a single suggestion item
-         * @returns {Function} mousedown event handler
-         */
-        createSuggestionClickHandler: (suggestion: any) => Function;
-        render(): JSX.Element;
-    }
-    namespace Autocomplete {
-        export namespace defaultProps {
-            export const autoFillInputValue: boolean;
-            export function ActionField(props: any): JSX.Element;
-            export { Input as InputField };
-            export { Suggestion as SuggestionField };
-            export const debounce: number;
-            export function filterBy(x: any): any;
-            export const maxHeight: number;
-            export function onActionClick(): void;
-            export function onInputChange(): void;
-            export function onSuggestionClick(): void;
-            export const placeholder: string;
-            export const stateful: boolean;
-            export const suggestions: never[];
-            export const testSection: string;
-            export const value: string;
-        }
-        export namespace propTypes {
-            const ActionField_1: PropTypes.Requireable<(...args: any[]) => any>;
-            export { ActionField_1 as ActionField };
-            export const InputField: PropTypes.Requireable<(...args: any[]) => any>;
-            export const SuggestionField: PropTypes.Requireable<(...args: any[]) => any>;
-            const autoFillInputValue_1: PropTypes.Requireable<boolean>;
-            export { autoFillInputValue_1 as autoFillInputValue };
-            const debounce_1: PropTypes.Requireable<number>;
-            export { debounce_1 as debounce };
-            const filterBy_1: PropTypes.Requireable<(...args: any[]) => any>;
-            export { filterBy_1 as filterBy };
-            const maxHeight_1: PropTypes.Requireable<number>;
-            export { maxHeight_1 as maxHeight };
-            const onActionClick_1: PropTypes.Requireable<(...args: any[]) => any>;
-            export { onActionClick_1 as onActionClick };
-            const onInputChange_1: PropTypes.Requireable<(...args: any[]) => any>;
-            export { onInputChange_1 as onInputChange };
-            const onSuggestionClick_1: PropTypes.Requireable<(...args: any[]) => any>;
-            export { onSuggestionClick_1 as onSuggestionClick };
-            const placeholder_1: PropTypes.Requireable<string>;
-            export { placeholder_1 as placeholder };
-            const stateful_1: PropTypes.Requireable<boolean>;
-            export { stateful_1 as stateful };
-            const suggestions_1: PropTypes.Requireable<any[]>;
-            export { suggestions_1 as suggestions };
-            const testSection_1: PropTypes.Requireable<string>;
-            export { testSection_1 as testSection };
-            const value_1: PropTypes.Requireable<string>;
-            export { value_1 as value };
-        }
-    }
-    import React from "react";
-    import Input from "components/Input";
-    import Suggestion from "components/Autocomplete/Suggestion";
-    import PropTypes from "prop-types";
-}
-declare module "components/Autocomplete/index" {
-    export default Autocomplete;
-    import Autocomplete from "components/Autocomplete/Autocomplete";
-}
-declare module "components/Autocomplete/Autocomplete.story" {
-    export {};
-}
-declare module "components/Autocomplete/examples/index" {
-    var _default: {
-        examples: JSX.Element[];
-    }[];
-    export default _default;
-}
-declare module "components/Badge/index" {
-    export default Badge;
-    function Badge(props: any): any;
-    namespace Badge {
-        export namespace propTypes {
-            export const children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
-            export const color: PropTypes.Requireable<string>;
-            export const testSection: PropTypes.Requireable<string>;
-        }
-        export namespace defaultProps {
-            const color_1: string;
-            export { color_1 as color };
-        }
-    }
-    import PropTypes from "prop-types";
-}
-declare module "components/Badge/Badge.story" {
-    export {};
-}
-declare module "components/Badge/example/index" {
-    var _default: {
-        examples: JSX.Element[];
-    }[];
-    export default _default;
-}
 declare module "components/Token/DismissButton/index" {
     export default DismissButton;
     function DismissButton(props: any): any;
@@ -591,10 +488,11 @@ declare module "components/Token/DismissButton/index" {
 }
 declare module "components/Token/index" {
     export default Token;
-    function Token({ description, hasSnugWrap, hasWrap, isDismissible, isDraggable, isFullWidth, name, onDismiss, order, style, showWell, testSection, usesDragHandle, }: any): any;
+    function Token({ description, dragHandleProps, hasSnugWrap, hasWrap, isDismissible, isDraggable, isFullWidth, name, onDismiss, order, style, showWell, testSection, usesDragHandle, }: any): any;
     namespace Token {
         export namespace propTypes {
             export const description: PropTypes.Requireable<string>;
+            export const dragHandleProps: PropTypes.Requireable<object>;
             export const hasSnugWrap: PropTypes.Requireable<boolean>;
             export const hasWrap: PropTypes.Requireable<boolean>;
             export const isDismissible: PropTypes.Requireable<boolean>;
@@ -609,6 +507,8 @@ declare module "components/Token/index" {
             export const usesDragHandle: PropTypes.Requireable<boolean>;
         }
         export namespace defaultProps {
+            const dragHandleProps_1: {};
+            export { dragHandleProps_1 as dragHandleProps };
             const hasWrap_1: boolean;
             export { hasWrap_1 as hasWrap };
             const isDismissible_1: boolean;
@@ -719,6 +619,23 @@ declare module "components/ButtonRow/index" {
     }
     import PropTypes from "prop-types";
 }
+declare module "components/Link/index" {
+    export default Link;
+    function Link({ ariaLabel, children, href, onClick, isDisabled, newWindow, style, testSection, }: any): any;
+    namespace Link {
+        export namespace propTypes {
+            export const ariaLabel: PropTypes.Requireable<string>;
+            export const children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
+            export const href: PropTypes.Requireable<string>;
+            export const isDisabled: PropTypes.Requireable<boolean>;
+            export const newWindow: PropTypes.Requireable<boolean>;
+            export const onClick: PropTypes.Requireable<(...args: any[]) => any>;
+            export const style: PropTypes.Requireable<string>;
+            export const testSection: PropTypes.Requireable<string>;
+        }
+    }
+    import PropTypes from "prop-types";
+}
 declare module "components/Button/Button.story" {
     export {};
 }
@@ -736,7 +653,8 @@ declare module "components/Button/example/index" {
 }
 declare module "components/ButtonIcon/index" {
     export default ButtonIcon;
-    function ButtonIcon({ iconName, isDisabled, onClick, size, style, testSection, title, }: {
+    function ButtonIcon({ iconFill, iconName, isDisabled, onClick, size, style, testSection, title, }: {
+        iconFill: any;
         iconName: any;
         isDisabled: any;
         onClick: any;
@@ -747,6 +665,7 @@ declare module "components/ButtonIcon/index" {
     }): JSX.Element;
     namespace ButtonIcon {
         export namespace propTypes {
+            export const iconFill: PropTypes.Requireable<string>;
             export const iconName: PropTypes.Validator<string>;
             export const isDisabled: PropTypes.Requireable<boolean>;
             export const onClick: PropTypes.Validator<(...args: any[]) => any>;
@@ -767,78 +686,6 @@ declare module "components/ButtonIcon/index" {
         }
     }
     import PropTypes from "prop-types";
-}
-declare module "components/Layout/Container" {
-    import React from 'react';
-    type ContainerProps = {
-        /**
-         * Use a custom element for this component
-         */
-        as?: React.ElementType;
-        /**
-         * Allow the Container to fill available horizontal space.
-         */
-        fluid?: boolean;
-        /**
-         * For testing/debugging only -- show hotpink grid borders and backgrounds.
-         */
-        outlineDebug?: boolean;
-        /**
-         * Pad inner content.
-         */
-        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
-        /**
-         * Remove first and last child side padding.
-         */
-        pullRowPadding?: boolean;
-        /**
-         * Add top margin space between rows.
-         */
-        pushRowsTop?: boolean;
-    };
-    const Container: React.SFC<ContainerProps>;
-    export default Container;
-}
-declare module "components/Layout/Row" {
-    import React from 'react';
-    type RowProps = {
-        /**
-         * @default 'row'
-         */
-        as?: React.ElementType;
-        /**
-         * Add visible border to row
-         */
-        border?: 'top' | 'bottom' | 'left' | 'right' | 'sides' | 'ends' | 'all' | 'none';
-        /**
-         * Display layout as vertical column.
-         */
-        displayVertical?: boolean;
-        /**
-         * For testing/debugging only -- show grid hotpink borders and backgrounds.
-         */
-        outlineDebug?: boolean;
-        /**
-         * Force overflow scrolling
-         */
-        overflow?: 'overflow-y--scroll' | 'overflow-x--auto' | 'overflow-y--auto';
-        /**
-         * Pad inner content.
-         */
-        paddedContent?: 'none' | 'around' | 'sides' | 'ends' | 'remove';
-        /**
-         * Removes gutters and negative margins.
-         */
-        removeGutters?: boolean;
-        /** Whether this row should wrap at small screen sizes */
-        shouldWrap?: boolean;
-        /**
-         * How to vertically align content
-         */
-        verticalAlignment?: 'start' | 'center' | 'end';
-    };
-    const Row: React.SFC<RowProps>;
-    export default Row;
 }
 declare module "components/Layout/Col" {
     import React from 'react';
@@ -891,49 +738,6 @@ declare module "components/Layout/Col" {
     const Col: React.SFC<ColPropTypes>;
     export default Col;
 }
-declare module "tokens/forimport/index.es" {
-    export var brandBlueLight: string;
-    export var brandBlueBase: string;
-    export var brandBlueDark: string;
-    export var brandPurpleLight: string;
-    export var brandPurpleBase: string;
-    export var brandPurpleDark: string;
-    export var smokeLight: string;
-    export var smokeBase: string;
-    export var smokeDark: string;
-    export var greyLight: string;
-    export var greyBase: string;
-    export var greyDark: string;
-    export var purpleLight: string;
-    export var purpleBase: string;
-    export var purpleDark: string;
-    export var magentaLight: string;
-    export var magentaBase: string;
-    export var magentaDark: string;
-    export var redLight: string;
-    export var redBase: string;
-    export var redDark: string;
-    export var pinkLight: string;
-    export var pinkBase: string;
-    export var pinkDark: string;
-    export var orangeLight: string;
-    export var orangeBase: string;
-    export var orangeDark: string;
-    export var amberLight: string;
-    export var amberBase: string;
-    export var amberDark: string;
-    export var greenLight: string;
-    export var greenBase: string;
-    export var greenDark: string;
-    export var aquaLight: string;
-    export var aquaBase: string;
-    export var aquaDark: string;
-    export var blueLight: string;
-    export var blueBase: string;
-    export var blueDark: string;
-    export var iconSmall: string;
-    export var iconLarge: string;
-}
 declare module "components/ButtonIcon/ButtonIcon.story" {
     export {};
 }
@@ -968,6 +772,20 @@ declare module "components/Card/example/index" {
         examples: JSX.Element[];
     }[];
     export default _default;
+}
+declare module "components/Label/index" {
+    export default Label;
+    function Label({ isOptional, isRequired, children, testSection, inputId, }: any): any;
+    namespace Label {
+        export namespace propTypes {
+            export const children: PropTypes.Requireable<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
+            export const inputId: PropTypes.Requireable<string>;
+            export const isOptional: PropTypes.Requireable<boolean>;
+            export const isRequired: PropTypes.Requireable<boolean>;
+            export const testSection: PropTypes.Requireable<string>;
+        }
+    }
+    import PropTypes from "prop-types";
 }
 declare module "components/Checkbox/index" {
     export default Checkbox;
@@ -1151,6 +969,75 @@ declare module "components/DatePicker/CalendarNavButton" {
         };
     }
     import PropTypes from "prop-types";
+}
+declare module "components/Input/index" {
+    import React from 'react';
+    type InputProps = {
+        /** The default value of the input used on initial render */
+        defaultValue?: string;
+        /** Includes search icon if true */
+        displayError?: boolean;
+        /** Whether or not to automatically focus this input */
+        focus?: boolean;
+        /** Id of the input to properly associate with the input's label */
+        id?: string;
+        /** Prevents input from being modified and appears disabled */
+        isDisabled?: boolean;
+        /** Includes error if true */
+        isFilter?: boolean;
+        /** Adds an optional label if there is a label provided */
+        isOptional?: any;
+        /** Prevents input from being modified but doesn't appear disabled */
+        isReadOnly?: boolean;
+        /** Includes required asterisk label if true */
+        isRequired?: any;
+        /** Text that describes the input */
+        label?: string;
+        /**
+         * Max value for the `input`. Should be used only when `type` is `number`.
+         */
+        max?: number;
+        /**
+         * Max length of the input value. Should be used only when type is 'text',
+         * 'email', 'search', 'password', 'tel', or 'url'.
+         */
+        maxLength?: number;
+        /**
+         * Min value for the `input`. Should be used only when `type` is `number`.
+         */
+        min?: number;
+        /** Form note for the input */
+        note?: string | null;
+        /**
+         * Function that fires when the input loses focus. It fires regardless of
+         * whether the value has changed.
+         */
+        onBlur?: (...args: any[]) => any;
+        /** Function that fires when the input loses focus after the value changes */
+        onChange?: (...args: any[]) => any;
+        /** Function that fires when the input is clicked */
+        onClick?: (...args: any[]) => any;
+        /** Function that fires when the input gains focus */
+        onFocus?: (...args: any[]) => any;
+        /** Function that fires anytime the input value changes */
+        onInput?: (...args: any[]) => any;
+        /** Function that fires when a key is pressed down */
+        onKeyDown?: (...args: any[]) => any;
+        /** Input placeholder text */
+        placeholder?: string;
+        /** Input step value */
+        step?: string;
+        /** Hook for automated JavaScript tests */
+        testSection?: string;
+        /** Align text inside input. Default is left. */
+        textAlign?: 'left' | 'right';
+        /** Supported input types */
+        type: 'text' | 'password' | 'date' | 'number' | 'email' | 'url' | 'search' | 'tel' | 'time';
+        /** Text within the input */
+        value?: string | number;
+    };
+    const Input: React.SFC<InputProps>;
+    export default Input;
 }
 declare module "components/DatePicker/fns" {
     export function getDateString(date: any): string;
@@ -2020,69 +1907,6 @@ declare module "components/Dropdown/example/index" {
     }[];
     export default _default;
 }
-declare module "components/EditableInput/EditableInput" {
-    export default EditableInput;
-    class EditableInput extends React.Component<any, any, any> {
-        constructor(props: any);
-        state: {
-            isEditing: any;
-        };
-        blur: () => void;
-        focus: () => void;
-        render(): JSX.Element;
-    }
-    namespace EditableInput {
-        export namespace defaultProps {
-            export const displayError: boolean;
-            export const isEditing: boolean;
-            export const label: string;
-            export { noop as onBlur };
-            export { noop as onChange };
-            export { noop as onFocus };
-            export const placeholder: string;
-            export const value: string;
-        }
-        export const propTypes: {
-            /** Toggle error state styles  */
-            displayError: PropTypes.Requireable<boolean>;
-            /** Determines if the component is in edit mode */
-            isEditing: PropTypes.Requireable<boolean>;
-            /** Text that describes the input */
-            label: PropTypes.Requireable<string>;
-            /** Append note near form input. */
-            note: PropTypes.Requireable<string>;
-            /** Function that fires when the input goes out of focus */
-            onBlur: PropTypes.Requireable<(...args: any[]) => any>;
-            /** Function that fires when the input loses focus after the value changes */
-            onChange: PropTypes.Requireable<(...args: any[]) => any>;
-            /** Function that fires when the input is focused */
-            onFocus: PropTypes.Requireable<(...args: any[]) => any>;
-            /** Placeholder for input */
-            placeholder: PropTypes.Requireable<string>;
-            /** Used for data-test-section attribute on the link */
-            testSection: PropTypes.Requireable<string>;
-            /** Supported input types */
-            type: PropTypes.Validator<string>;
-            /** Text within the input */
-            value: PropTypes.Requireable<string | number>;
-        };
-    }
-    import React from "react";
-    import PropTypes from "prop-types";
-}
-declare module "components/EditableInput/index" {
-    export default EditableInput;
-    import EditableInput from "components/EditableInput/EditableInput";
-}
-declare module "components/EditableInput/EditableInput.story" {
-    export {};
-}
-declare module "components/EditableInput/example/index" {
-    var _default: {
-        examples: JSX.Element[];
-    }[];
-    export default _default;
-}
 declare module "components/EmptyDashboard/index" {
     export default EmptyDashboard;
     function EmptyDashboard({ button, imageHeight, imagePath, imageWidth, headline, description, descriptionMaxWidth, showButtonBelow, testSection, }: {
@@ -2177,6 +2001,20 @@ declare module "components/ExampleComponent/index" {
 }
 declare module "components/ExampleComponent/ExampleComponent.story" {
     export {};
+}
+declare module "utils/filter" {
+    /**
+     * Searches a string for an occurrence of a filtering string (case insensitive)
+     *  - Filtering a complex object? Consider implementing a filter with an
+     *    approach similar to FilterPicker, where item key values are joined
+     *    in a string and passed in as contentToSearch
+     * @param {string} stringToFind
+     * - The term to find, split into separate search terms by spaces
+     * @param {string} contentToSearch
+     * - The content to search for the filter term
+     * @returns {boolean}
+     */
+    export function isFilterTermInItem(stringToFind: string, contentToSearch: string): boolean;
 }
 declare module "components/FilterPicker/FilterPickerListItem/index" {
     export default ListItem;
@@ -4814,6 +4652,15 @@ declare module "components/SelectDropdown/index" {
     class SelectDropdown extends React.Component<any, any, any> {
         static propTypes: {
             /**
+             * Button text object with label and content value
+             * When this prop is defined, value and initialPlaceholder
+             * are not used.
+             */
+            buttonContent: PropTypes.Requireable<PropTypes.InferProps<{
+                label: PropTypes.Requireable<string>;
+                content: PropTypes.Requireable<string>;
+            }>>;
+            /**
              * Style value that is passed to the OUI button that controls the dropdown.
              */
             buttonStyle: PropTypes.Requireable<string>;
@@ -4826,7 +4673,7 @@ declare module "components/SelectDropdown/index" {
              */
             dropdownDirection: PropTypes.Requireable<string>;
             /**
-             * Should activator be full width of container
+             * Should activator and dropdown be full width of container
              */
             fullWidth: PropTypes.Requireable<boolean>;
             /**
@@ -4914,80 +4761,6 @@ declare module "components/SelectDropdown/index" {
     import React from "react";
     import PropTypes from "prop-types";
 }
-declare module "components/Layout/Layout.story" {
-    export {};
-}
-declare module "components/Layout/ThemeProvider" {
-    export function useBootstrapPrefix(prefix: any, defaultPrefix: any): any;
-    export default ThemeProvider;
-    export function createBootstrapComponent(Component: any, opts: any): React.ForwardRefExoticComponent<any>;
-    const Consumer: React.Consumer<Map<any, any>>;
-    class ThemeProvider extends React.Component<any, any, any> {
-        static propTypes: {
-            children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
-            prefixes: PropTypes.Validator<object>;
-        };
-        constructor(...args: any[]);
-        prefixes: Map<any, any>;
-        render(): JSX.Element;
-    }
-    import React from "react";
-    import PropTypes from "prop-types";
-    export { Consumer as ThemeConsumer };
-}
-declare module "components/Link/Link.story" {
-    export {};
-}
-declare module "components/ListGroup/index" {
-    export function ListGroup({ children, subtitle, testSection, title, }: {
-        children: any;
-        subtitle: any;
-        testSection: any;
-        title: any;
-    }): JSX.Element;
-    export namespace ListGroup {
-        export namespace propTypes {
-            export const children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
-            export const subtitle: PropTypes.Requireable<string>;
-            export const testSection: PropTypes.Requireable<string>;
-            export const title: PropTypes.Requireable<string>;
-        }
-        export namespace defaultProps {
-            const subtitle_1: string;
-            export { subtitle_1 as subtitle };
-            const testSection_1: string;
-            export { testSection_1 as testSection };
-            const title_1: string;
-            export { title_1 as title };
-        }
-        export { ListGroupItem as Item };
-    }
-    export function ListGroupItem({ children, testSection, density, }: {
-        children: any;
-        testSection: any;
-        density: any;
-    }): JSX.Element;
-    export namespace ListGroupItem {
-        export namespace propTypes_1 {
-            const children_1: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
-            export { children_1 as children };
-            export const density: PropTypes.Requireable<string>;
-            const testSection_2: PropTypes.Requireable<string>;
-            export { testSection_2 as testSection };
-        }
-        export { propTypes_1 as propTypes };
-        export namespace defaultProps_1 {
-            const density_1: string;
-            export { density_1 as density };
-        }
-        export { defaultProps_1 as defaultProps };
-    }
-    export default ListGroup;
-    import PropTypes from "prop-types";
-}
-declare module "components/ListGroup/ListGroup.story" {
-    export {};
-}
 declare module "utils/poll" {
     /**
      * Method to detect when a given selector appears in the DOM
@@ -5060,7 +4833,7 @@ declare module "components/NavBar/IconLink/index" {
             isActive: PropTypes.Requireable<boolean>;
             isOpen: PropTypes.Requireable<boolean>;
             isSecondaryLink: PropTypes.Requireable<boolean>;
-            linkLabel: PropTypes.Validator<string>;
+            linkLabel: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
             onClick: PropTypes.Requireable<(...args: any[]) => any>;
             testSection: PropTypes.Validator<string>;
             type: PropTypes.Requireable<string>;
@@ -5212,7 +4985,7 @@ declare module "components/NavBar/index" {
         /** Condition in which this link is visible. */
         isVisible: PropTypes.Requireable<boolean>;
         /** Description of url. */
-        linkLabel: PropTypes.Requireable<string>;
+        linkLabel: PropTypes.Requireable<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
         /** Handler called when link is clicked. */
         onClick: PropTypes.Requireable<(...args: any[]) => any>;
         /** Name of test data section. */
@@ -5230,6 +5003,80 @@ declare module "components/NavBar/index" {
         onClick: () => void;
         type: string;
     };
+}
+declare module "components/Layout/Layout.story" {
+    export {};
+}
+declare module "components/Layout/ThemeProvider" {
+    export function useBootstrapPrefix(prefix: any, defaultPrefix: any): any;
+    export default ThemeProvider;
+    export function createBootstrapComponent(Component: any, opts: any): React.ForwardRefExoticComponent<any>;
+    const Consumer: React.Consumer<Map<any, any>>;
+    class ThemeProvider extends React.Component<any, any, any> {
+        static propTypes: {
+            children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+            prefixes: PropTypes.Validator<object>;
+        };
+        constructor(...args: any[]);
+        prefixes: Map<any, any>;
+        render(): JSX.Element;
+    }
+    import React from "react";
+    import PropTypes from "prop-types";
+    export { Consumer as ThemeConsumer };
+}
+declare module "components/Link/Link.story" {
+    export {};
+}
+declare module "components/ListGroup/index" {
+    export function ListGroup({ children, subtitle, testSection, title, }: {
+        children: any;
+        subtitle: any;
+        testSection: any;
+        title: any;
+    }): JSX.Element;
+    export namespace ListGroup {
+        export namespace propTypes {
+            export const children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
+            export const subtitle: PropTypes.Requireable<string>;
+            export const testSection: PropTypes.Requireable<string>;
+            export const title: PropTypes.Requireable<string>;
+        }
+        export namespace defaultProps {
+            const subtitle_1: string;
+            export { subtitle_1 as subtitle };
+            const testSection_1: string;
+            export { testSection_1 as testSection };
+            const title_1: string;
+            export { title_1 as title };
+        }
+        export { ListGroupItem as Item };
+    }
+    export function ListGroupItem({ children, testSection, density, }: {
+        children: any;
+        testSection: any;
+        density: any;
+    }): JSX.Element;
+    export namespace ListGroupItem {
+        export namespace propTypes_1 {
+            const children_1: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
+            export { children_1 as children };
+            export const density: PropTypes.Requireable<string>;
+            const testSection_2: PropTypes.Requireable<string>;
+            export { testSection_2 as testSection };
+        }
+        export { propTypes_1 as propTypes };
+        export namespace defaultProps_1 {
+            const density_1: string;
+            export { density_1 as density };
+        }
+        export { defaultProps_1 as defaultProps };
+    }
+    export default ListGroup;
+    import PropTypes from "prop-types";
+}
+declare module "components/ListGroup/ListGroup.story" {
+    export {};
 }
 declare module "components/NavBar/NavBar.story" {
     export {};
@@ -5385,23 +5232,6 @@ declare module "components/Radio/example/index" {
     var _default: {
         examples: JSX.Element[];
     }[];
-    export default _default;
-}
-declare module "components/RangeSlider/constants" {
-    export const FILL_COLOR_MAP: {
-        aqua: string;
-        amber: string;
-        default: string;
-        green: string;
-        orange: string;
-        pink: string;
-        red: string;
-        magenta: string;
-        grey: string;
-    };
-    namespace _default {
-        export { FILL_COLOR_MAP };
-    }
     export default _default;
 }
 declare module "components/RangeSlider/index" {
@@ -5622,13 +5452,21 @@ declare module "components/SearchPicker/SearchPicker.story" {
 }
 declare module "components/Select/index" {
     export default Select;
-    function Select({ children, id, isDisabled, name, }: any): any;
+    function Select({ children, displayError, id, isDisabled, isFullWidth, isOptional, isRequired, label, onChange, name, note, testSection, }: any): any;
     namespace Select {
         export namespace propTypes {
             export const children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+            export const displayError: PropTypes.Requireable<boolean>;
             export const id: PropTypes.Requireable<string>;
             export const isDisabled: PropTypes.Requireable<boolean>;
+            export const isFullWidth: PropTypes.Requireable<boolean>;
+            export const isOptional: PropTypes.Requireable<boolean>;
+            export const isRequired: PropTypes.Requireable<boolean>;
+            export const label: PropTypes.Requireable<string>;
             export const name: PropTypes.Requireable<string>;
+            export const note: PropTypes.Requireable<string>;
+            export const onChange: PropTypes.Requireable<(...args: any[]) => any>;
+            export const testSection: PropTypes.Requireable<string>;
         }
         export const displayName: string;
     }
