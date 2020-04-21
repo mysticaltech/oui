@@ -26,7 +26,6 @@ declare module 'optimizely-oui' {
   export { default as DiscloseTable } from 'components/DiscloseTable/index';
   export { default as DockedFooter } from 'components/DockedFooter/index';
   export { default as Dropdown } from 'components/Dropdown/index';
-  export { default as EditableInput } from 'components/EditableInput/index';
   export { default as EmptyDashboard } from 'components/EmptyDashboard/index';
   export { default as Fieldset } from 'components/Fieldset/index';
   export { default as FilterPicker } from 'components/FilterPicker/index';

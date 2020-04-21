@@ -26,7 +26,6 @@ declare module 'optimizely-oui' {
   export { default as DiscloseTable } from 'components/DiscloseTable/index';
   export { default as DockedFooter } from 'components/DockedFooter/index';
   export { default as Dropdown } from 'components/Dropdown/index';
-  export { default as EditableInput } from 'components/EditableInput/index';
   export { default as EmptyDashboard } from 'components/EmptyDashboard/index';
   export { default as Fieldset } from 'components/Fieldset/index';
   export { default as FilterPicker } from 'components/FilterPicker/index';
@@ -1903,69 +1902,6 @@ declare module "components/Dropdown/Dropdown.story" {
     export {};
 }
 declare module "components/Dropdown/example/index" {
-    var _default: {
-        examples: JSX.Element[];
-    }[];
-    export default _default;
-}
-declare module "components/EditableInput/EditableInput" {
-    export default EditableInput;
-    class EditableInput extends React.Component<any, any, any> {
-        constructor(props: any);
-        state: {
-            isEditing: any;
-        };
-        blur: () => void;
-        focus: () => void;
-        render(): JSX.Element;
-    }
-    namespace EditableInput {
-        export namespace defaultProps {
-            export const displayError: boolean;
-            export const isEditing: boolean;
-            export const label: string;
-            export { noop as onBlur };
-            export { noop as onChange };
-            export { noop as onFocus };
-            export const placeholder: string;
-            export const value: string;
-        }
-        export const propTypes: {
-            /** Toggle error state styles  */
-            displayError: PropTypes.Requireable<boolean>;
-            /** Determines if the component is in edit mode */
-            isEditing: PropTypes.Requireable<boolean>;
-            /** Text that describes the input */
-            label: PropTypes.Requireable<string>;
-            /** Append note near form input. */
-            note: PropTypes.Requireable<string>;
-            /** Function that fires when the input goes out of focus */
-            onBlur: PropTypes.Requireable<(...args: any[]) => any>;
-            /** Function that fires when the input loses focus after the value changes */
-            onChange: PropTypes.Requireable<(...args: any[]) => any>;
-            /** Function that fires when the input is focused */
-            onFocus: PropTypes.Requireable<(...args: any[]) => any>;
-            /** Placeholder for input */
-            placeholder: PropTypes.Requireable<string>;
-            /** Used for data-test-section attribute on the link */
-            testSection: PropTypes.Requireable<string>;
-            /** Supported input types */
-            type: PropTypes.Validator<string>;
-            /** Text within the input */
-            value: PropTypes.Requireable<string | number>;
-        };
-    }
-    import React from "react";
-    import PropTypes from "prop-types";
-}
-declare module "components/EditableInput/index" {
-    export default EditableInput;
-    import EditableInput from "components/EditableInput/EditableInput";
-}
-declare module "components/EditableInput/EditableInput.story" {
-    export {};
-}
-declare module "components/EditableInput/example/index" {
     var _default: {
         examples: JSX.Element[];
     }[];
