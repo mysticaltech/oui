@@ -6,8 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
-- [Feature] Remove `AutoComplete` component
-- [Feature] Remove `EditableInput` component
+- [Feature] Remove **AutoComplete** component
+- [Feature] Remove **EditableInput** component
 
 ## 45.8.0 - 2020-04-10
 - [Feature] Add ability to pass a node or string for the `linkLabel` in **NavBar** ([#1315](https://github.com/optimizely/oui/pull/1315))
