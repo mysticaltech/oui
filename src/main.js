@@ -11,6 +11,7 @@ export { default as Card } from './components/Card';
 export { default as Checkbox } from './components/Checkbox';
 export { default as Code } from './components/Code';
 export { default as CodeDiff } from './components/CodeDiff';
+export { default as ConfigPanelTemplate } from './components/ConfigPanelTemplate';
 export { default as Col } from './components/Layout/Col';
 export { default as Container } from './components/Layout/Container';
 export { default as CopyButton } from './components/CopyButton';

@@ -1,0 +1,15 @@
+.oui-config-panel__nubbin {
+  position: absolute;
+  transform: rotate(45deg);
+  margin-left: -21px; //padding plus 1px border
+}
+
+.oui-config-panel__nubbin::before {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  content: "";
+  border-left: 1px solid map-fetch($border, color, base);
+  border-bottom: 1px solid map-fetch($border, color, base);
+  background-color: map-fetch($color, background, light);
+}

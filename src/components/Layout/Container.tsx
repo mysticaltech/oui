@@ -13,6 +13,11 @@ type ContainerProps = {
   fluid?: boolean;
 
   /**
+   * Allow the Container to fill available vertical space.
+   */
+  isFullHeight?: boolean;
+
+  /**
    * For testing/debugging only -- show hotpink grid borders and backgrounds.
    */
   outlineDebug?: boolean;
@@ -34,7 +39,7 @@ type ContainerProps = {
 };
 
 const Container: React.SFC<ContainerProps> = React.forwardRef(
-  ({ as: Component = 'div', fluid, outlineDebug, paddedContent, pullRowPadding, pushRowsTop, ...props }, ref) => {
+  ({ as: Component = 'div', fluid, isFullHeight, outlineDebug, paddedContent, pullRowPadding, pushRowsTop, ...props }, ref) => {
     const prefix = 'container';
     return (
       <Component
@@ -42,6 +47,7 @@ const Container: React.SFC<ContainerProps> = React.forwardRef(
         {...props}
         className={classNames(
           fluid ? `${prefix}-fluid` : prefix,
+          isFullHeight && 'height--1-1',
           outlineDebug && 'outline--debug',
           paddedContent && `padded-content--${paddedContent}`,
           pullRowPadding && 'container--pull',
@@ -56,6 +62,7 @@ Container.displayName = 'Container';
 
 Container.defaultProps = {
   fluid: false,
+  isFullHeight: false,
 };
 
 export default Container;
