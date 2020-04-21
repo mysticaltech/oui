@@ -3,7 +3,6 @@
 // Definitions by: ui-engineering <https://github.com/optimizely/oui>
 
 declare module 'optimizely-oui' {
-  export { default as Autocomplete } from 'components/Autocomplete/index';
   export { default as Accordion } from 'components/Accordion/index';
   export { default as ArrowsInline } from 'components/ArrowsInline/index';
   export { default as Attention } from 'components/Attention/index';
