@@ -3363,6 +3363,20 @@ div[class*="fitContent"] {
   width: auto;
   padding: 0; }
 
+.oui-config-panel__nubbin {
+  position: absolute;
+  transform: rotate(45deg);
+  margin-left: -21px; }
+
+.oui-config-panel__nubbin::before {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  content: "";
+  border-left: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f0f0f0; }
+
 .order-first {
   order: -1; }
 
@@ -4470,20 +4484,6 @@ code {
 
 .oui-codediff table > tbody > tr[class$="code-fold"] > td {
   vertical-align: middle; }
-
-.oui-config-panel__nubbin {
-  position: absolute;
-  transform: rotate(45deg);
-  margin-left: -21px; }
-
-.oui-config-panel__nubbin::before {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  content: "";
-  border-left: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
-  background-color: #f0f0f0; }
 
 .oui-close-button {
   display: flex;

@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file is similar to the format suggested by [Keep a CHANGELOG](https://github.com/olivierlacan/keep-a-changelog).
 
 ## Unreleased
+- [Feature] Add **ColWithNubbin** as a wrapper to create a **Col** with a nubbin that points to content in another section ([#1317](https://github.com/optimizely/oui/pull/1317))
 
 ## 45.8.0 - 2020-04-10
 - [Feature] Add ability to pass a node or string for the `linkLabel` in **NavBar** ([#1315](https://github.com/optimizely/oui/pull/1315))
