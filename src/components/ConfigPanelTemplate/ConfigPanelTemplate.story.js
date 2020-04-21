@@ -1,15 +1,10 @@
 import React from 'react';
 
-import { storiesOf, addParameters } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import {
   withKnobs,
-  boolean,
-  number,
-  select,
-  text,
 } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import noop from 'lodash.noop';
+
 import ConfigPanel from '.';
 import Token from '../Token';
 
