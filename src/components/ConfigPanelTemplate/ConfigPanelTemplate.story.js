@@ -28,7 +28,7 @@ class ConfigExampleContainer extends React.Component {
           <ConfigPanel.MainContent mainTitle="Rules for Production">
             <p>Hi There</p>
             <div style={{ height: '100px' }}></div>
-            <div className="border--all" ref={ this.pointingRef }>
+            <div className=" flex flex--column border--all" ref={ this.pointingRef }>
               The nubbin should point in the middle of this area
               <Token
                 isDraggable={ true }
