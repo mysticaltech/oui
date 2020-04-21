@@ -3,7 +3,6 @@
 // Definitions by: ui-engineering <https://github.com/optimizely/oui>
 
 declare module 'optimizely-oui' {
-  export { default as Autocomplete } from 'components/Autocomplete/index';
   export { default as Accordion } from 'components/Accordion/index';
   export { default as ArrowsInline } from 'components/ArrowsInline/index';
   export { default as Attention } from 'components/Attention/index';
@@ -27,7 +26,6 @@ declare module 'optimizely-oui' {
   export { default as DiscloseTable } from 'components/DiscloseTable/index';
   export { default as DockedFooter } from 'components/DockedFooter/index';
   export { default as Dropdown } from 'components/Dropdown/index';
-  export { default as EditableInput } from 'components/EditableInput/index';
   export { default as EmptyDashboard } from 'components/EmptyDashboard/index';
   export { default as Fieldset } from 'components/Fieldset/index';
   export { default as FilterPicker } from 'components/FilterPicker/index';

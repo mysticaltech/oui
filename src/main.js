@@ -1,4 +1,3 @@
-export { default as Autocomplete } from './components/Autocomplete';
 export { default as Accordion } from './components/Accordion';
 export { default as ArrowsInline } from './components/ArrowsInline';
 export { default as Attention } from './components/Attention';
@@ -25,7 +24,6 @@ export { default as DiscloseTable } from './components/DiscloseTable';
 export { default as DockedFooter } from './components/DockedFooter';
 export { default as DragAndDrop } from './components/DragAndDrop';
 export { default as Dropdown } from './components/Dropdown';
-export { default as EditableInput } from './components/EditableInput';
 export { default as EmptyDashboard } from './components/EmptyDashboard';
 export { default as Fieldset } from './components/Fieldset';
 export { default as FilterPicker } from './components/FilterPicker';
