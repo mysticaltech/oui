@@ -48,3 +48,15 @@
 .oui-text-input--read-only {
   @include text-input--read-only;
 }
+
+.oui-text-input-with-icon--left {
+  .oui-text-input {
+    padding-left: spacer(3) + 6;
+  }
+}
+
+.oui-text-input-with-icon--right {
+  .oui-text-input {
+    padding-right: spacer(3) + 6;
+  }
+}

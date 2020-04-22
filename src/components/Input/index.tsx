@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
 import Label from '../Label';
+import Icon from 'react-oui-icons';
+import { render } from 'enzyme';
 
 type InputProps = {
   /** The default value of the input used on initial render */
@@ -87,112 +89,157 @@ type InputProps = {
   textAlign?: 'left' | 'right';
 
   /** Supported input types */
-  type: 'text' | 'password' | 'date' | 'number' | 'email' | 'url' | 'search' | 'tel' | 'time';
+  type:
+    | 'text'
+    | 'password'
+    | 'date'
+    | 'number'
+    | 'email'
+    | 'url'
+    | 'search'
+    | 'tel'
+    | 'time';
 
   /** Text within the input */
   value?: string | number;
 };
 
-const Input: React.SFC<InputProps> = React.forwardRef((props, ref?: React.Ref<HTMLInputElement>) => {
-  const {
-    defaultValue,
-    displayError,
-    focus,
-    id,
-    isDisabled,
-    isFilter,
-    isOptional,
-    isRequired,
-    isReadOnly,
-    label,
-    max,
-    maxLength,
-    min,
-    note,
-    onBlur,
-    onChange,
-    onClick,
-    onFocus,
-    onInput,
-    onKeyDown,
-    placeholder,
-    step,
-    testSection,
-    textAlign,
-    type,
-    value,
-  } = props;
-  const renderNote = useCallback(
-    () => (
-      <div className="oui-form-note" data-test-section={testSection && testSection + '-note'}>
-        {note}
-      </div>
-    ),
-    [note, testSection]
-  );
-  const renderInput = () => {
-    let hasAlignStyle = false;
-    if (textAlign) {
-      hasAlignStyle = true;
-    }
-    let classes = classNames(
-      'oui-text-input',
-      { 'oui-text-input--read-only': isReadOnly },
-      { 'oui-text-input--search': isFilter },
-      { 'oui-form-bad-news': displayError },
-      { [`text--${textAlign}`]: hasAlignStyle }
-    );
-    return (
-      <input
-        data-oui-component={true}
-        className={classes}
-        id={id}
-        ref={ref}
-        type={type}
-        value={value}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        required={isRequired}
-        readOnly={isReadOnly}
-        disabled={isDisabled}
-        onInput={onInput}
-        onChange={onChange}
-        onClick={onClick}
-        onBlur={onBlur}
-        onKeyDown={onKeyDown}
-        onFocus={onFocus}
-        min={min}
-        max={max}
-        step={step}
-        {...(typeof maxLength === 'undefined' ? {} : { maxLength })}
-        data-test-section={testSection}
-        autoFocus={focus}
-      />
-    );
-  };
-  if (label) {
-    return (
-      <div data-oui-component={true} className={classNames({ 'oui-form-bad-news': displayError })}>
-        <Label
-          testSection={testSection && testSection + '-label'}
-          isRequired={isRequired}
-          isOptional={isOptional}
-          inputId={id}
+const Input: React.SFC<InputProps> = React.forwardRef(
+  (props, ref?: React.Ref<HTMLInputElement>) => {
+    const {
+      defaultValue,
+      displayError,
+      focus,
+      leftIconName,
+      rightIconName,
+      iconPosition,
+      id,
+      isDisabled,
+      isFilter,
+      isOptional,
+      isRequired,
+      isReadOnly,
+      label,
+      max,
+      maxLength,
+      min,
+      note,
+      onBlur,
+      onChange,
+      onClick,
+      onFocus,
+      onInput,
+      onKeyDown,
+      placeholder,
+      step,
+      testSection,
+      textAlign,
+      type,
+      value,
+    } = props;
+    const renderNote = useCallback(
+      () => (
+        <div
+          className="oui-form-note"
+          data-test-section={testSection && testSection + '-note'}
         >
-          {label}
-        </Label>
+          {note}
+        </div>
+      ),
+      [note, testSection]
+    );
+    const renderInput = () => {
+      let hasAlignStyle = false;
+      if (textAlign) {
+        hasAlignStyle = true;
+      }
+      let classes = classNames(
+        'oui-text-input',
+        { 'oui-text-input--read-only': isReadOnly },
+        { 'oui-text-input--search': isFilter },
+        { 'oui-form-bad-news': displayError },
+        { [`text--${textAlign}`]: hasAlignStyle }
+      );
+
+      let input = (
+        <input
+          data-oui-component={true}
+          className={classes}
+          id={id}
+          ref={ref}
+          type={type}
+          value={value}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          required={isRequired}
+          readOnly={isReadOnly}
+          disabled={isDisabled}
+          onInput={onInput}
+          onChange={onChange}
+          onClick={onClick}
+          onBlur={onBlur}
+          onKeyDown={onKeyDown}
+          onFocus={onFocus}
+          min={min}
+          max={max}
+          step={step}
+          {...(typeof maxLength === 'undefined' ? {} : { maxLength })}
+          data-test-section={testSection}
+          autoFocus={focus}
+        />
+      );
+
+      if (leftIconName || rightIconName) {
+        let containerClasses = classNames('position--relative', {
+          [`oui-text-input-with-icon--left`]: leftIconName,
+          [`oui-text-input-with-icon--right`]: rightIconName,
+        });
+        return (
+          <div className={containerClasses}>
+            {leftIconName && <span className='flex oui-input-icon__left'>
+              {renderIcon(leftIconName)}
+            </span>}
+            {input}
+            {rightIconName && <span className='flex oui-input-icon__right'>
+              {renderIcon(rightIconName)}
+            </span>}
+          </div>
+        );
+      }
+      return input;
+    };
+
+    const renderIcon = (iconName) => {
+      return <Icon name={iconName} size="medium" />;
+    };
+
+    if (label) {
+      return (
+        <div
+          data-oui-component={true}
+          className={classNames({ 'oui-form-bad-news': displayError })}
+        >
+          <Label
+            testSection={testSection && testSection + '-label'}
+            isRequired={isRequired}
+            isOptional={isOptional}
+            inputId={id}
+          >
+            {label}
+          </Label>
+          {renderInput()}
+          {note && renderNote()}
+        </div>
+      );
+    }
+    return (
+      <React.Fragment>
         {renderInput()}
         {note && renderNote()}
-      </div>
+      </React.Fragment>
     );
   }
-  return (
-    <React.Fragment>
-      {renderInput()}
-      {note && renderNote()}
-    </React.Fragment>
-  );
-});
+);
 
 Input.propTypes = {
   /** Adds an optional label if there is a label provided
@@ -201,7 +248,9 @@ Input.propTypes = {
    */
   isOptional: function verifyIsOptionalProp(props) {
     if (props.isOptional && !props.label) {
-      return new Error('Must include a value for the label prop to use the isOptional prop');
+      return new Error(
+        'Must include a value for the label prop to use the isOptional prop'
+      );
     }
     return null;
   },
@@ -211,7 +260,9 @@ Input.propTypes = {
    */
   isRequired: function verifyIsRequiredProp(props) {
     if (props.isRequired && !props.label) {
-      return new Error('Must include a value for the label prop to use the isRequired prop');
+      return new Error(
+        'Must include a value for the label prop to use the isRequired prop'
+      );
     }
     return null;
   },
@@ -221,6 +272,7 @@ Input.displayName = 'Input';
 Input.defaultProps = {
   note: null,
   isRequired: false,
+  iconPosition: 'left',
 };
 
 export default Input;
